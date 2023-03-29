@@ -1,0 +1,1394 @@
+{
+  "FUNC_PKT": {
+    "getUShort": 2, 
+    "getLong": 4, 
+    "getULong": 4, 
+    "getUChar": 1, 
+    "getShort": 2, 
+    "memcpy": -2
+  }, 
+  "NetWare/IP Option": {
+    "PreInfo": [], 
+    "Value": [
+      4, 
+      7, 
+      10, 
+      3, 
+      6, 
+      11, 
+      5, 
+      8, 
+      2, 
+      9, 
+      1
+    ]
+  }, 
+  "Agent Information Field": {
+    "PreInfo": [], 
+    "Value": [
+      2, 
+      5, 
+      1, 
+      4
+    ]
+  }, 
+  "value": {
+    "PreInfo": [], 
+    "Value": [
+      30, 
+      64, 
+      98, 
+      52, 
+      79, 
+      90, 
+      118, 
+      62, 
+      46, 
+      66, 
+      39, 
+      34, 
+      63, 
+      75, 
+      19, 
+      92, 
+      16, 
+      36, 
+      108, 
+      17, 
+      45, 
+      72, 
+      9, 
+      27, 
+      41, 
+      15, 
+      255, 
+      7, 
+      57, 
+      61, 
+      89, 
+      65, 
+      69, 
+      23, 
+      48, 
+      40, 
+      68, 
+      58, 
+      43, 
+      42, 
+      26, 
+      5, 
+      88, 
+      53, 
+      8, 
+      35, 
+      38, 
+      117, 
+      49, 
+      22, 
+      12, 
+      55, 
+      85, 
+      119, 
+      29, 
+      28, 
+      21, 
+      59, 
+      70, 
+      13, 
+      50, 
+      82, 
+      25, 
+      2, 
+      124, 
+      47, 
+      3, 
+      60, 
+      87, 
+      24, 
+      33, 
+      6, 
+      1, 
+      91, 
+      14, 
+      86, 
+      0, 
+      67, 
+      10, 
+      4, 
+      76, 
+      73, 
+      37, 
+      51, 
+      71, 
+      44, 
+      32, 
+      74, 
+      78, 
+      20, 
+      54, 
+      31, 
+      56, 
+      125, 
+      77, 
+      11, 
+      18
+    ]
+  }, 
+  "Struct_list": {
+    "Mask Supplier": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "NIS-Domain-Name": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "NIS Client Domain Name"
+      ], 
+      "RFC2132"
+    ], 
+    "User-Auth": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Length", 
+        "URL list"
+      ], 
+      "RFC2485"
+    ], 
+    "Overload": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "Service Scope": [
+      8, 
+      [
+        8, 
+        -1
+      ], 
+      [
+        "Mandatory", 
+        "Scope List"
+      ], 
+      "RFC2610"
+    ], 
+    "Authentication": [
+      88, 
+      [
+        8, 
+        8, 
+        8, 
+        64, 
+        -1
+      ], 
+      [
+        "Protocol", 
+        "Algorithm", 
+        "RDM", 
+        "Replay Detection", 
+        "Authentication Information"
+      ], 
+      "RFC3118"
+    ], 
+    "Subnet Selection Option": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "IPv4 Address"
+      ], 
+      "RFC3011"
+    ], 
+    "NetWare/IP Domain": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "NetWare/IP Domain Name"
+      ], 
+      "RFC2242"
+    ], 
+    "NETBIOS Node Type": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Node Type"
+      ], 
+      "RFC2132"
+    ], 
+    "Server-Name": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "TFTP server"
+      ], 
+      "RFC2132"
+    ], 
+    "Keepalive Data": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "Trailers": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "StreetTalk-Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Forward On/Off": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "Vendor-specific information": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "Data item"
+      ], 
+      "RFC2132"
+    ], 
+    "associated-ip option": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC4388"
+    ], 
+    "Swap Server": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Swap Server Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Ethernet": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "IPv6-Only Preferred": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC8925"
+    ], 
+    "Root Path": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Root Disk Pathname"
+      ], 
+      "RFC2132"
+    ], 
+    "NETBIOS Dist Srv": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "DOCSIS Device Class Suboption": [
+      48, 
+      [
+        8, 
+        8, 
+        32
+      ], 
+      [
+        "SubOpt", 
+        "Len", 
+        "Device Class"
+      ], 
+      "RFC3256"
+    ], 
+    "WWW-Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "LPR Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "PRIMARY_DSS": [
+      48, 
+      [
+        8, 
+        8, 
+        32
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "address"
+      ], 
+      "RFC2242"
+    ], 
+    "MTU Subnet": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "NIS Servers": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "SrcRte On/Off": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "Domain Name": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Domain Name"
+      ], 
+      "RFC2132"
+    ], 
+    "NWIP_1_1": [
+      24, 
+      [
+        8, 
+        8, 
+        8
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "Value"
+      ], 
+      "RFC2242"
+    ], 
+    "Log Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "DHCP Max Msg Size": [
+      16, 
+      [
+        16
+      ], 
+      [
+        "Length"
+      ], 
+      "RFC2132"
+    ], 
+    "Client Id": [
+      8, 
+      [
+        8, 
+        -1
+      ], 
+      [
+        "T", 
+        "Client-Identifie"
+      ], 
+      "RFC2132"
+    ], 
+    "BCMCS Controller IPv4 address option": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "Address"
+      ], 
+      "RFC4280"
+    ], 
+    "NIS-Server-Addr": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "SMTP-Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Default IP TTL": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "TTL"
+      ], 
+      "RFC2132"
+    ], 
+    "Protocol Summary": [
+      1888, 
+      [
+        8, 
+        8, 
+        8, 
+        8, 
+        32, 
+        16, 
+        16, 
+        32, 
+        32, 
+        32, 
+        32, 
+        128, 
+        512, 
+        1024, 
+        -1
+      ], 
+      [
+        "op", 
+        "htype", 
+        "hlen", 
+        "hops", 
+        "xid", 
+        "secs", 
+        "flags", 
+        "ciaddr", 
+        "yiaddr", 
+        "siaddr", 
+        "giaddr", 
+        "chaddr", 
+        "sname", 
+        "file", 
+        "options"
+      ], 
+      "RFC2131"
+    ], 
+    "X Window Font": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "NIS Domain": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "NIS Domain Name"
+      ], 
+      "RFC2132"
+    ], 
+    "Home-Agent-Addrs": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Home Agent Addresses"
+      ], 
+      "RFC2132"
+    ], 
+    "Agent Circuit ID Sub-option": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "SubOpt", 
+        "Len", 
+        "Circuit ID"
+      ], 
+      "RFC3046"
+    ], 
+    "Renewal Time": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "T1 Interval"
+      ], 
+      "RFC2132"
+    ], 
+    "NWIP_EXIST_BUT_TOO_BIG": [
+      16, 
+      [
+        8, 
+        8
+      ], 
+      [
+        "Code", 
+        "Len"
+      ], 
+      "RFC2242"
+    ], 
+    "Vendor Specific": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Vendor-specific information"
+      ], 
+      "RFC2132"
+    ], 
+    "NTP Servers": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "NWIP_EXIST_IN_SNAME_FILE": [
+      16, 
+      [
+        8, 
+        8
+      ], 
+      [
+        "Code", 
+        "Len"
+      ], 
+      "RFC2242"
+    ], 
+    "MTU Interface": [
+      16, 
+      [
+        16
+      ], 
+      [
+        "MTU"
+      ], 
+      "RFC2132"
+    ], 
+    "Name Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "BCMCS Controller Domain Name list": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "FQDN(s) of BCMCS Controller"
+      ], 
+      "RFC4280"
+    ], 
+    "PREFERRED_DSS": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "address"
+      ], 
+      "RFC2242"
+    ], 
+    "AUTORETRIES": [
+      24, 
+      [
+        8, 
+        8, 
+        8
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "Value"
+      ], 
+      "RFC2242"
+    ], 
+    "DHCP Msg Type": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Type"
+      ], 
+      "RFC2132"
+    ], 
+    "Quotes Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "ARP Timeout": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Time"
+      ], 
+      "RFC2132"
+    ], 
+    "NWIP_DOES_NOT_EXIST": [
+      16, 
+      [
+        8, 
+        8
+      ], 
+      [
+        "Code", 
+        "Len"
+      ], 
+      "RFC2242"
+    ], 
+    "options": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "value"
+      ], 
+      "RFC2131"
+    ], 
+    "Name Service Search": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "ns"
+      ], 
+      "RFC2937"
+    ], 
+    "AUTORETRY_SECS": [
+      24, 
+      [
+        8, 
+        8, 
+        8
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "Value"
+      ], 
+      "RFC2242"
+    ], 
+    "X Window Manager": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Max DG Assembly": [
+      16, 
+      [
+        16
+      ], 
+      [
+        "Size"
+      ], 
+      "RFC2132"
+    ], 
+    "Hostname": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Host Name"
+      ], 
+      "RFC2132"
+    ], 
+    "Parameter List": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Option Codes"
+      ], 
+      "RFC2132"
+    ], 
+    "NDS Servers": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2241"
+    ], 
+    "Domain Search": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Length", 
+        "Searchstring"
+      ], 
+      "RFC3397"
+    ], 
+    "Mask Discovery": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "Broadcast Address": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Broadcast Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Policy Filter": [
+      0, 
+      [
+        -1, 
+        -1
+      ], 
+      [
+        "Address", 
+        "Mask"
+      ], 
+      "RFC2132"
+    ], 
+    "Rebinding Time": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "T2 Interval"
+      ], 
+      "RFC2132"
+    ], 
+    "POP3-Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Boot File Size": [
+      16, 
+      [
+        16
+      ], 
+      [
+        "File Size"
+      ], 
+      "RFC2132"
+    ], 
+    "Address Request": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "MTU Plateau": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Size"
+      ], 
+      "RFC2132"
+    ], 
+    "Relay Agent Information": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Agent Information Field"
+      ], 
+      "RFC3046"
+    ], 
+    "Time Offset": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Time Offset"
+      ], 
+      "RFC2132"
+    ], 
+    "V-I Vendor Class": [
+      16, 
+      [
+        8, 
+        8, 
+        -1, 
+        -1, 
+        -1
+      ], 
+      [
+        "option-code", 
+        "option-len", 
+        "enterprise-number", 
+        "data-len", 
+        "vendor-class-data"
+      ], 
+      "RFC3925"
+    ], 
+    "NETBIOS Scope": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "NetBIOS Scope"
+      ], 
+      "RFC2132"
+    ], 
+    "Router": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Class Id": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Vendor class Ide"
+      ], 
+      "RFC2132"
+    ], 
+    "NDS Context": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "Initial NDS Context"
+      ], 
+      "RFC2241"
+    ], 
+    "MTU Timeout": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Timeout"
+      ], 
+      "RFC2132"
+    ], 
+    "Static Route": [
+      0, 
+      [
+        -1, 
+        -1
+      ], 
+      [
+        "Destination", 
+        "Router"
+      ], 
+      "RFC2132"
+    ], 
+    "NWIP_EXIST_IN_OPTIONS_AREA": [
+      16, 
+      [
+        8, 
+        8
+      ], 
+      [
+        "Code", 
+        "Len"
+      ], 
+      "RFC2242"
+    ], 
+    "Domain Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "NEAREST_NWIP_SERVER": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "address"
+      ], 
+      "RFC2242"
+    ], 
+    "Subnet Mask": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Subnet Mask"
+      ], 
+      "RFC2132"
+    ], 
+    "client-last-transaction-time option": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Seconds in the past"
+      ], 
+      "RFC4388"
+    ], 
+    "Merit Dump File": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Dump File Pathname"
+      ], 
+      "RFC2132"
+    ], 
+    "Agent Remote ID Sub-option": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "SubOpt", 
+        "Len", 
+        "Agent Remote ID"
+      ], 
+      "RFC3046"
+    ], 
+    "NDS Tree Name": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "NDS Tree Name"
+      ], 
+      "RFC2241"
+    ], 
+    "Bootfile-Name": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Bootfile name"
+      ], 
+      "RFC2132"
+    ], 
+    "Impress Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Time Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "STDA-Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Finger-Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "NSQ_BROADCAST": [
+      24, 
+      [
+        8, 
+        8, 
+        8
+      ], 
+      [
+        "Code", 
+        "Len", 
+        "Value"
+      ], 
+      "RFC2242"
+    ], 
+    "Default TCP TTL": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "TTL"
+      ], 
+      "RFC2132"
+    ], 
+    "Address Time": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Lease Time"
+      ], 
+      "RFC2132"
+    ], 
+    "NNTP-Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "NETBIOS Name Srv": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Router Request": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "IRC-Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Link selection Sub-option": [
+      48, 
+      [
+        8, 
+        8, 
+        32
+      ], 
+      [
+        "SubOpt", 
+        "Len", 
+        "subnet IP address"
+      ], 
+      "RFC3527"
+    ], 
+    "Keepalive Time": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Time"
+      ], 
+      "RFC2132"
+    ], 
+    "DHCP Server Id": [
+      32, 
+      [
+        32
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Router Discovery": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC2132"
+    ], 
+    "DHCP Message": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Text"
+      ], 
+      "RFC2132"
+    ], 
+    "V-I Vendor-Specific Information": [
+      40, 
+      [
+        8, 
+        32, 
+        -1, 
+        -1, 
+        -1
+      ], 
+      [
+        "option-code", 
+        "option-len", 
+        "enterprise-number", 
+        "data-len", 
+        "option-data"
+      ], 
+      "RFC3925"
+    ], 
+    "User-Class": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Value"
+      ], 
+      "RFC3004"
+    ], 
+    "RLP Server": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Address"
+      ], 
+      "RFC2132"
+    ], 
+    "Extension File": [
+      0, 
+      [
+        -1
+      ], 
+      [
+        "Extensions Pathname"
+      ], 
+      "RFC2132"
+    ]
+  }, 
+  "Entry_Cand": "do_packet"
+}

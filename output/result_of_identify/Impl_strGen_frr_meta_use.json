@@ -1,0 +1,125 @@
+{
+  "FUNC_PKT":["stream_getw","stream_getc","ringbuf_peek", "stream_getl", "stream_get2","stream_get_from","stream_getc2","stream_getc_from","stream_getw2","stream_getw_from","stream_get3","stream_get3_from","stream_getl2","stream_getl_from","stream_getq","stream_getq_from","stream_getq2","stream_get_ipv4","stream_get_ipaddr","stream_getf", "stream_getd","stream_forward_getp"],
+  "OTHER": {
+  },
+  "Capability Code": {
+    "Impl_Loc":["bgp_capability_parse"],
+    "Multiprotocol Extensions for BGP-4": {
+      "Type": 1,
+      "Len": 32
+    },
+    "Outbound Route Filtering Capability": {
+      "Type": 3,
+      "Len": 40
+    },
+    "Extended Next Hop Encoding": {
+      "Type": 5,
+      "Len": 48
+    },
+    "Multiple Labels Capability": {
+      "Type": 8,
+      "Len": 32
+    },
+    "Graceful Restart Capability": {
+      "Type": 64,
+      "Len": 48
+    },
+    "ADD-PATH Capability": {
+      "Type": 69,
+      "Len": 32
+    },
+    "Long-Lived Graceful Restart (LLGR) Capability": {
+      "Type": 71,
+      "Len": 56
+    },
+    "FQDN Capability": {
+      "Type": 73,
+      "Len": 16
+    },
+    "Support for 4-octet AS number capability": {
+      "Type": 65,
+      "Len": 32
+    }
+  },
+  "Parameter Type": {
+    "Impl_Loc":["bgp_open_option_parse"],
+    "Capabilities": {
+      "Type": 2,
+      "Len": 16
+    },
+    "Extended Length": {
+      "Type": 255,
+      "Len": 24
+    }
+  },
+  "Type": {
+    "Impl_Loc":["bgp_process_packet"],
+    "ROUTE-REFRESH": {
+      "Type": 5,
+      "Len": 32
+    },
+    "CAPABILITY": {
+      "Type": 6,
+      "Len": 64
+    }
+  },
+  "Attribute Type Code": {
+    "Impl_Loc":["bgp_attr_parse"],
+    "MP_REACH_NLRI": {
+      "Type": 14,
+      "Len": 40
+    },
+    "MP_UNREACH_NLRI": {
+      "Type": 15,
+      "Len": 24
+    },
+    "PMSI_TUNNEL": {
+      "Type": 22,
+      "Len": 40
+    },
+    "Tunnel Encapsulation": {
+      "Type": 23,
+      "Len": 32
+    },
+    "IPv6 Address Specific Extended Community": {
+      "Type": 25,
+      "Len": 160
+    },
+    "PE Distinguisher Labels": {
+      "Type": 27,
+      "Len": 34
+    },
+    "LARGE_COMMUNITY": {
+      "Type": 32,
+      "Len": 96
+    },
+    "COMMUNITY": {
+      "Type": 8,
+      "Len": 32
+    },
+    "ORIGINATOR_ID": {
+      "Type": 9,
+      "Len": 32
+    },
+    "CLUSTER_LIST": {
+      "Type": 10,
+      "Len": 32
+    },
+    "EXTENDED COMMUNITIES": {
+      "Type": 16,
+      "Len": 64
+    },
+    "BGP Prefix-SID": {
+      "Indirect": "", 
+      "Type": 40, 
+      "Len": 24
+      
+    }, 
+    "Only to Customer (OTC)": {
+      "Indirect": "", 
+      "Type": 35, 
+      "Len": 32
+      
+    }
+  }
+}

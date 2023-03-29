@@ -1,0 +1,5820 @@
+{
+  "Protocol Summary": {
+    "struct": {
+      "op": {
+        "bitwidth": {
+          "len": 8,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "htype": {
+        "bitwidth": {
+          "len": 8,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "hlen": {
+        "bitwidth": {
+          "len": 8,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "hops": {
+        "bitwidth": {
+          "len": 8,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "xid": {
+        "bitwidth": {
+          "len": 32,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "secs": {
+        "bitwidth": {
+          "len": 16,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "flags": {
+        "bitwidth": {
+          "len": 16,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "ciaddr": {
+        "bitwidth": {
+          "len": 32,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "yiaddr": {
+        "bitwidth": {
+          "len": 32,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "siaddr": {
+        "bitwidth": {
+          "len": 32,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "giaddr": {
+        "bitwidth": {
+          "len": 32,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "chaddr": {
+        "bitwidth": {
+          "len": 128,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "sname": {
+        "bitwidth": {
+          "len": 512,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "file": {
+        "bitwidth": {
+          "len": 1024,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "options": {
+        "bitwidth": {
+          "len": -1,
+          "type": "bytes"
+        },
+        "struct": {
+          "Code": {
+            "bitwidth": {
+              "len": 8,
+              "type": "byte"
+            },
+            "rule": []
+          },
+          "Len": {
+            "bitwidth": {
+              "len": 8,
+              "type": "byte"
+            },
+            "rule": []
+          },
+          "value": {
+            "bitwidth": {
+              "len": -1,
+              "type": "byte"
+            },
+            "extend_struct": {
+              "Pad": {
+                "value": "0",
+                "info": {
+                  "chapter": "3.1",
+                  "refer": "RFC2132"
+                },
+                "rule": []
+              },
+              "Subnet Mask": {
+                "value": "1",
+                "struct": {
+                  "Subnet Mask": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.3",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Subnet Mask",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Subnet Mask"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Subnet Mask"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Time Offset": {
+                "value": "2",
+                "struct": {
+                  "Time Offset": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.4",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Time Offset",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Time Offset"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Time Offset"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Router": {
+                "value": "3",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.5",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Router",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Router"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Router"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Time Server": {
+                "value": "4",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.6",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Time Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Time Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Time Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Name Server": {
+                "value": "5",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.7",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Name Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Name Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Name Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Domain Server": {
+                "value": "6",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.8",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Domain Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Domain Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Domain Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Log Server": {
+                "value": "7",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.9",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Log Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Log Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Log Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Quotes Server": {
+                "value": "8",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.10",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Quotes Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Quotes Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Quotes Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "LPR Server": {
+                "value": "9",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.11",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "LPR Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "LPR Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "LPR Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Impress Server": {
+                "value": "10",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.12",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Impress Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Impress Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Impress Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "RLP Server": {
+                "value": "11",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.13",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "RLP Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "RLP Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "RLP Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Hostname": {
+                "value": "12",
+                "struct": {
+                  "Host Name": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.14",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Hostname",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Hostname"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Hostname"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Boot File Size": {
+                "value": "13",
+                "struct": {
+                  "File Size": {
+                    "bitwidth": {
+                      "len": 16,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.15",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Boot File Size",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Boot File Size"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Boot File Size"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Merit Dump File": {
+                "value": "14",
+                "struct": {
+                  "Dump File Pathname": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.16",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Merit Dump File",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Merit Dump File"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Merit Dump File"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Domain Name": {
+                "value": "15",
+                "struct": {
+                  "Domain Name": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.17",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Domain Name",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Domain Name"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Domain Name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Swap Server": {
+                "value": "16",
+                "struct": {
+                  "Swap Server Address": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.18",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Swap Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Swap Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Swap Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Root Path": {
+                "value": "17",
+                "struct": {
+                  "Root Disk Pathname": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.19",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Root Path",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Root Path"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Root Path"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Extension File": {
+                "value": "18",
+                "struct": {
+                  "Extensions Pathname": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3.20",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Extension File",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Extension File"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Extension File"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Forward On/Off": {
+                "value": "19",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.1",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Forward On/Off",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Forward On/Off"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Forward On/Off"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "SrcRte On/Off": {
+                "value": "20",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.2",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "SrcRte On/Off",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "SrcRte On/Off"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "SrcRte On/Off"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Policy Filter": {
+                "value": "21",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "Mask": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "int"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.3",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Policy Filter",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Policy Filter"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Policy Filter"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Max DG Assembly": {
+                "value": "22",
+                "struct": {
+                  "Size": {
+                    "bitwidth": {
+                      "len": 16,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.4",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Max DG Assembly",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Max DG Assembly"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Max DG Assembly"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Default IP TTL": {
+                "value": "23",
+                "struct": {
+                  "TTL": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.5",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Default IP TTL",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Default IP TTL"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Default IP TTL"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "MTU Timeout": {
+                "value": "24",
+                "struct": {
+                  "Timeout": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.6",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "MTU Timeout",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "MTU Timeout"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "MTU Timeout"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "MTU Plateau": {
+                "value": "25",
+                "struct": {
+                  "Size": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.7",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "MTU Plateau",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "MTU Plateau"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "MTU Plateau"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "MTU Interface": {
+                "value": "26",
+                "struct": {
+                  "MTU": {
+                    "bitwidth": {
+                      "len": 16,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "5.1",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "MTU Interface",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "MTU Interface"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "MTU Interface"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "MTU Subnet": {
+                "value": "27",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "5.2",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "MTU Subnet",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "MTU Subnet"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "MTU Subnet"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Broadcast Address": {
+                "value": "28",
+                "struct": {
+                  "Broadcast Address": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "5.3",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Broadcast Address",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Broadcast Address"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Broadcast Address"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Mask Discovery": {
+                "value": "29",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "5.4",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Mask Discovery",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Mask Discovery"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Mask Discovery"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Mask Supplier": {
+                "value": "30",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "5.5",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Mask Supplier",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Mask Supplier"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Mask Supplier"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Router Discovery": {
+                "value": "31",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "5.6",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Router Discovery",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Router Discovery"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Router Discovery"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Router Request": {
+                "value": "32",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "5.7",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Router Request",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Router Request"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Router Request"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Static Route": {
+                "value": "33",
+                "struct": {
+                  "Destination": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "Router": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "5.8",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Static Route",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Static Route"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Static Route"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Trailers": {
+                "value": "34",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "6.1",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Trailers",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Trailers"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Trailers"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "ARP Timeout": {
+                "value": "35",
+                "struct": {
+                  "Time": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "6.2",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "ARP Timeout",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "ARP Timeout"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "ARP Timeout"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Ethernet": {
+                "value": "36",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "6.3",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Ethernet",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Ethernet"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Ethernet"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Default TCP TTL": {
+                "value": "37",
+                "struct": {
+                  "TTL": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "7.1",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Default TCP TTL",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Default TCP TTL"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Default TCP TTL"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Keepalive Time": {
+                "value": "38",
+                "struct": {
+                  "Time": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "7.2",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Keepalive Time",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Keepalive Time"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Keepalive Time"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Keepalive Data": {
+                "value": "39",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "7.3",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Keepalive Data",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Keepalive Data"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Keepalive Data"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NIS Domain": {
+                "value": "40",
+                "struct": {
+                  "NIS Domain Name": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.1",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NIS Domain",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NIS Domain"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NIS Domain"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NIS Servers": {
+                "value": "41",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.2",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NIS Servers",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NIS Servers"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NIS Servers"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NTP Servers": {
+                "value": "42",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.3",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NTP Servers",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NTP Servers"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NTP Servers"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Vendor Specific": {
+                "value": "43",
+                "struct": {
+                  "Vendor-specific information": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "bytes"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "bytes"
+                        },
+                        "rule": []
+                      },
+                      "Data item": {
+                        "bitwidth": {
+                          "len": -1,
+                          "type": "bytes"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "8.4",
+                      "refer": "RFC2132"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "Vendor-specific information",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "Vendor-specific information"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 16
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "Vendor-specific information"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "info": {
+                  "chapter": "8.4",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Vendor Specific",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Vendor Specific"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Vendor Specific"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NETBIOS Name Srv": {
+                "value": "44",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.5",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NETBIOS Name Srv",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NETBIOS Name Srv"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NETBIOS Name Srv"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NETBIOS Dist Srv": {
+                "value": "45",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.6",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NETBIOS Dist Srv",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NETBIOS Dist Srv"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NETBIOS Dist Srv"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NETBIOS Node Type": {
+                "value": "46",
+                "struct": {
+                  "Node Type": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.7",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NETBIOS Node Type",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NETBIOS Node Type"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NETBIOS Node Type"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NETBIOS Scope": {
+                "value": "47",
+                "struct": {
+                  "NetBIOS Scope": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.8",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NETBIOS Scope",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NETBIOS Scope"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NETBIOS Scope"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "X Window Font": {
+                "value": "48",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.9",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "X Window Font",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "X Window Font"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "X Window Font"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "X Window Manager": {
+                "value": "49",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.10",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "X Window Manager",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "X Window Manager"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "X Window Manager"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Address Request": {
+                "value": "50",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.1",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Address Request",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Address Request"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Address Request"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Address Time": {
+                "value": "51",
+                "struct": {
+                  "Lease Time": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.2",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Address Time",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Address Time"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Address Time"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Overload": {
+                "value": "52",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.3",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Overload",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Overload"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Overload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "DHCP Msg Type": {
+                "value": "53",
+                "struct": {
+                  "Type": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.6",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "DHCP Msg Type",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "DHCP Msg Type"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "DHCP Msg Type"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "DHCP Server Id": {
+                "value": "54",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.7",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "DHCP Server Id",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "DHCP Server Id"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "DHCP Server Id"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Parameter List": {
+                "value": "55",
+                "struct": {
+                  "Option Codes": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.8",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Parameter List",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Parameter List"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Parameter List"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "DHCP Message": {
+                "value": "56",
+                "struct": {
+                  "Text": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.9",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "DHCP Message",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "DHCP Message"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "DHCP Message"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "DHCP Max Msg Size": {
+                "value": "57",
+                "struct": {
+                  "Length": {
+                    "bitwidth": {
+                      "len": 16,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.10",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "DHCP Max Msg Size",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "DHCP Max Msg Size"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "DHCP Max Msg Size"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Renewal Time": {
+                "value": "58",
+                "struct": {
+                  "T1 Interval": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.11",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Renewal Time",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Renewal Time"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Renewal Time"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Rebinding Time": {
+                "value": "59",
+                "struct": {
+                  "T2 Interval": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.12",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Rebinding Time",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Rebinding Time"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Rebinding Time"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Class Id": {
+                "value": "60",
+                "struct": {
+                  "Vendor class Ide": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.13",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Class Id",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Class Id"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Class Id"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Client Id": {
+                "value": "61",
+                "struct": {
+                  "T": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "bits"
+                    },
+                    "rule": []
+                  },
+                  "Client-Identifie": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.14",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Client Id",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Client Id"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Client Id"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NetWare/IP Domain": {
+                "value": "62",
+                "struct": {
+                  "NetWare/IP Domain Name": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "2",
+                  "refer": "RFC2242"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NetWare/IP Domain",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NetWare/IP Domain"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NetWare/IP Domain"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NetWare/IP Option": {
+                "value": "63",
+                "extend_struct": {
+                  "NWIP_DOES_NOT_EXIST": {
+                    "value": "1",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "2",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "NWIP_DOES_NOT_EXIST",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "NWIP_DOES_NOT_EXIST"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 16
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "NWIP_DOES_NOT_EXIST"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "NWIP_EXIST_IN_OPTIONS_AREA": {
+                    "value": "2",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "3",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "NWIP_EXIST_IN_OPTIONS_AREA",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "NWIP_EXIST_IN_OPTIONS_AREA"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 16
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "NWIP_EXIST_IN_OPTIONS_AREA"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "NWIP_EXIST_IN_SNAME_FILE": {
+                    "value": "3",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "2",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "NWIP_EXIST_IN_SNAME_FILE",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "NWIP_EXIST_IN_SNAME_FILE"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 16
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "NWIP_EXIST_IN_SNAME_FILE"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "NWIP_EXIST_BUT_TOO_BIG": {
+                    "value": "4",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "3",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "NWIP_EXIST_BUT_TOO_BIG",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "NWIP_EXIST_BUT_TOO_BIG"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 16
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "NWIP_EXIST_BUT_TOO_BIG"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "NSQ_BROADCAST": {
+                    "value": "5",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Value": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "3",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "NSQ_BROADCAST",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "NSQ_BROADCAST"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 24
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "NSQ_BROADCAST"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "PREFERRED_DSS": {
+                    "value": "6",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "address": {
+                        "bitwidth": {
+                          "len": -1,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "3",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "PREFERRED_DSS",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "PREFERRED_DSS"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 16
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "PREFERRED_DSS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "NEAREST_NWIP_SERVER": {
+                    "value": "7",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "address": {
+                        "bitwidth": {
+                          "len": -1,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "3",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "NEAREST_NWIP_SERVER",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "NEAREST_NWIP_SERVER"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 16
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "NEAREST_NWIP_SERVER"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "AUTORETRIES": {
+                    "value": "8",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Value": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "3",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "AUTORETRIES",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "AUTORETRIES"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 24
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "AUTORETRIES"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "AUTORETRY_SECS": {
+                    "value": "9",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Value": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "3",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "AUTORETRY_SECS",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "AUTORETRY_SECS"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 24
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "AUTORETRY_SECS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "NWIP_1_1": {
+                    "value": "10",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Value": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "3",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "NWIP_1_1",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "NWIP_1_1"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 24
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "NWIP_1_1"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "PRIMARY_DSS": {
+                    "value": "11",
+                    "struct": {
+                      "Code": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "Len": {
+                        "bitwidth": {
+                          "len": 8,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      },
+                      "address": {
+                        "bitwidth": {
+                          "len": 32,
+                          "type": "byte"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "info": {
+                      "chapter": "3",
+                      "refer": "RFC2242"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "PRIMARY_DSS",
+                          "Implicit": 1
+                        },
+                        "Structure": {
+                          "structr_name": "PRIMARY_DSS"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": 35,
+                                "rhs": 48
+                              }
+                            ],
+                            "connect": [],
+                            "type": 1,
+                            "keyword": "PRIMARY_DSS"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "info": {
+                  "chapter": "3",
+                  "refer": "RFC2242"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NetWare/IP Option"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "1"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "2"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "3"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "4"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "5"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "6"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "7"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "8"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "9"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "10"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "11"
+                          }
+                        ],
+                        "connect": [
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2
+                        ],
+                        "type": 3,
+                        "keyword": "NetWare/IP Option"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NIS-Domain-Name": {
+                "value": "64",
+                "struct": {
+                  "NIS Client Domain Name": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.11",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NIS-Domain-Name",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NIS-Domain-Name"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NIS-Domain-Name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NIS-Server-Addr": {
+                "value": "65",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.12",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NIS-Server-Addr",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NIS-Server-Addr"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NIS-Server-Addr"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Server-Name": {
+                "value": "66",
+                "struct": {
+                  "TFTP server": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.4",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Server-Name",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Server-Name"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Server-Name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Bootfile-Name": {
+                "value": "67",
+                "struct": {
+                  "Bootfile name": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "9.5",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Bootfile-Name",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Bootfile-Name"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Bootfile-Name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Home-Agent-Addrs": {
+                "value": "68",
+                "struct": {
+                  "Home Agent Addresses": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.13",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Home-Agent-Addrs",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Home-Agent-Addrs"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Home-Agent-Addrs"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "SMTP-Server": {
+                "value": "69",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.14",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "SMTP-Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "SMTP-Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "SMTP-Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "POP3-Server": {
+                "value": "70",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.15",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "POP3-Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "POP3-Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "POP3-Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NNTP-Server": {
+                "value": "71",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.16",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NNTP-Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NNTP-Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NNTP-Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "WWW-Server": {
+                "value": "72",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.17",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "WWW-Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "WWW-Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "WWW-Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Finger-Server": {
+                "value": "73",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.18",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Finger-Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Finger-Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Finger-Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "IRC-Server": {
+                "value": "74",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.19",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "IRC-Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "IRC-Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "IRC-Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "StreetTalk-Server": {
+                "value": "75",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.20",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "StreetTalk-Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "StreetTalk-Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "StreetTalk-Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "STDA-Server": {
+                "value": "76",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "8.21",
+                  "refer": "RFC2132"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "STDA-Server",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "STDA-Server"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "STDA-Server"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "User-Class": {
+                "value": "77",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "",
+                  "refer": "RFC3004"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "User-Class",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "User-Class"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "User-Class"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Directory Agent": {
+                "value": "78",
+                "sturct": {
+                  "Mandatory": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    }
+                  },
+                  "a": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "byte"
+                    }
+                  }
+                },
+                "info": {
+                  "chapter": "3",
+                  "refer": "RFC2610"
+                },
+                "rule": []
+              },
+              "Service Scope": {
+                "value": "79",
+                "struct": {
+                  "Mandatory": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "Scope List": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4",
+                  "refer": "RFC2610"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Service Scope",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Service Scope"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Service Scope"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Relay Agent Information": {
+                "value": "82",
+                "struct": {
+                  "Agent Information Field": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "extend_struct": {
+                      "Agent Circuit ID Sub-option": {
+                        "value": "1",
+                        "struct": {
+                          "SubOpt": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Len": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Circuit ID": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "3.1",
+                          "refer": "RFC3046"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "Agent Circuit ID Sub-option",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "Agent Circuit ID Sub-option"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 16
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "Agent Circuit ID Sub-option"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "Agent Remote ID Sub-option": {
+                        "value": "2",
+                        "struct": {
+                          "SubOpt": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Len": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Agent Remote ID": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "3.2",
+                          "refer": "RFC3046"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "Agent Remote ID Sub-option",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "Agent Remote ID Sub-option"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 16
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "Agent Remote ID Sub-option"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "DOCSIS Device Class Suboption": {
+                        "value": "4",
+                        "struct": {
+                          "SubOpt": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Len": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Device Class": {
+                            "bitwidth": {
+                              "len": 32,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "",
+                          "refer": "RFC3256"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "DOCSIS Device Class Suboption",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "DOCSIS Device Class Suboption"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 48
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "DOCSIS Device Class Suboption"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "Link selection Sub-option": {
+                        "value": "5",
+                        "struct": {
+                          "SubOpt": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Len": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "subnet IP address": {
+                            "bitwidth": {
+                              "len": 32,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "",
+                          "refer": "RFC3527"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "Link selection Sub-option",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "Link selection Sub-option"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 48
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "Link selection Sub-option"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "Agent Information Field"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "1"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "2"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "4"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "5"
+                              }
+                            ],
+                            "connect": [
+                              2,
+                              2,
+                              2,
+                              2
+                            ],
+                            "type": 3,
+                            "keyword": "Agent Information Field"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "info": {
+                  "chapter": "",
+                  "refer": "RFC3046"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Relay Agent Information",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Relay Agent Information"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Relay Agent Information"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NDS Servers": {
+                "value": "85",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "2",
+                  "refer": "RFC2241"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NDS Servers",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NDS Servers"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NDS Servers"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NDS Tree Name": {
+                "value": "86",
+                "struct": {
+                  "Code": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "Len": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "NDS Tree Name": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3",
+                  "refer": "RFC2241"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NDS Tree Name",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NDS Tree Name"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NDS Tree Name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "NDS Context": {
+                "value": "87",
+                "struct": {
+                  "Code": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "Len": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "Initial NDS Context": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4",
+                  "refer": "RFC2241"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "NDS Context",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "NDS Context"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "NDS Context"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "BCMCS Controller Domain Name list": {
+                "value": "88",
+                "struct": {
+                  "Code": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "Len": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "FQDN(s) of BCMCS Controller": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.1",
+                  "refer": "RFC4280"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "BCMCS Controller Domain Name list",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "BCMCS Controller Domain Name list"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "BCMCS Controller Domain Name list"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "BCMCS Controller IPv4 address option": {
+                "value": "89",
+                "struct": {
+                  "Code": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "Len": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.3",
+                  "refer": "RFC4280"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "BCMCS Controller IPv4 address option",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "BCMCS Controller IPv4 address option"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "BCMCS Controller IPv4 address option"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Authentication": {
+                "value": "90",
+                "struct": {
+                  "Protocol": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "Algorithm": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "RDM": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "Replay Detection": {
+                    "bitwidth": {
+                      "len": 64,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "Authentication Information": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "qword"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "",
+                  "refer": "RFC3118"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Authentication",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Authentication"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 88
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Authentication"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "client-last-transaction-time option": {
+                "value": "91",
+                "struct": {
+                  "Seconds in the past": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "6.1",
+                  "refer": "RFC4388"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "client-last-transaction-time option",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "client-last-transaction-time option"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 8
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "client-last-transaction-time option"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "associated-ip option": {
+                "value": "92",
+                "struct": {
+                  "Address": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "6.1",
+                  "refer": "RFC4388"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "associated-ip option",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "associated-ip option"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "associated-ip option"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "User-Auth": {
+                "value": "98",
+                "struct": {
+                  "Code": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "Length": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "URL list": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "",
+                  "refer": "RFC2485"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "User-Auth",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "User-Auth"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "User-Auth"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "IPv6-Only Preferred": {
+                "value": "108",
+                "struct": {
+                  "Value": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3",
+                  "refer": "RFC8925"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "IPv6-Only Preferred",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "IPv6-Only Preferred"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "IPv6-Only Preferred"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Name Service Search": {
+                "value": "117",
+                "struct": {
+                  "ns": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "word"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "",
+                  "refer": "RFC2937"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Name Service Search",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Name Service Search"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Name Service Search"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Subnet Selection Option": {
+                "value": "118",
+                "struct": {
+                  "IPv4 Address": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "",
+                  "refer": "RFC3011"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Subnet Selection Option",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Subnet Selection Option"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 32
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Subnet Selection Option"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Domain Search": {
+                "value": "119",
+                "struct": {
+                  "Code": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "Length": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "Searchstring": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "",
+                  "refer": "RFC3397"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Domain Search",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Domain Search"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Domain Search"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "V-I Vendor Class": {
+                "value": "124",
+                "struct": {
+                  "option-code": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "option-len": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "dword"
+                    },
+                    "rule": []
+                  },
+                  "enterprise-number": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "dword"
+                    },
+                    "rule": []
+                  },
+                  "data-len": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "vendor-class-data": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "3",
+                  "refer": "RFC3925"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "V-I Vendor Class",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "V-I Vendor Class"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 16
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "V-I Vendor Class"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "V-I Vendor-Specific Information": {
+                "value": "125",
+                "struct": {
+                  "option-code": {
+                    "bitwidth": {
+                      "len": 8,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "option-len": {
+                    "bitwidth": {
+                      "len": 32,
+                      "type": "dword"
+                    },
+                    "rule": []
+                  },
+                  "enterprise-number": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "dword"
+                    },
+                    "rule": []
+                  },
+                  "data-len": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "byte"
+                    },
+                    "rule": []
+                  },
+                  "option-data": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4",
+                  "refer": "RFC3925"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "V-I Vendor-Specific Information",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "V-I Vendor-Specific Information"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 40
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "V-I Vendor-Specific Information"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "End": {
+                "value": "255",
+                "info": {
+                  "chapter": "3.2",
+                  "refer": "RFC2132"
+                },
+                "rule": []
+              }
+            },
+            "rule": [
+              {
+                "OP": {
+                  "USE": "value"
+                },
+                "Cond": [
+                  {
+                    "rfc_cond": [
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "0"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "1"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "2"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "3"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "4"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "5"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "6"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "7"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "8"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "9"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "10"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "11"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "12"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "13"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "14"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "15"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "16"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "17"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "18"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "19"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "20"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "21"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "22"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "23"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "24"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "25"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "26"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "27"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "28"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "29"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "30"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "31"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "32"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "33"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "34"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "35"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "36"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "37"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "38"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "39"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "40"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "41"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "42"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "43"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "44"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "45"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "46"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "47"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "48"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "49"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "50"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "51"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "52"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "53"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "54"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "55"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "56"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "57"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "58"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "59"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "60"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "61"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "62"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "63"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "64"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "65"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "66"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "67"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "68"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "69"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "70"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "71"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "72"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "73"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "74"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "75"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "76"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "77"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "78"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "79"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "82"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "85"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "86"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "87"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "88"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "89"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "90"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "91"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "92"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "98"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "108"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "117"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "118"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "119"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "124"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "125"
+                      },
+                      {
+                        "lhs": "x",
+                        "predicate": "32",
+                        "rhs": "255"
+                      }
+                    ],
+                    "connect": [
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2,
+                      2
+                    ],
+                    "type": 3,
+                    "keyword": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "info": {
+          "chapter": "2",
+          "refer": "RFC2131"
+        },
+        "rule": [
+          {
+            "OP": {
+              "USE": "options",
+              "Implicit": 1
+            },
+            "Structure": {
+              "structr_name": "options"
+            },
+            "Cond": [
+              {
+                "rfc_cond": [
+                  {
+                    "lhs": "x",
+                    "predicate": 35,
+                    "rhs": 16
+                  }
+                ],
+                "connect": [],
+                "type": 1,
+                "keyword": "options"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "info": {
+      "chapter": "2",
+      "refer": "RFC2131"
+    },
+    "rule": [
+      {
+        "OP": {
+          "USE": "Protocol Summary",
+          "Implicit": 1
+        },
+        "Structure": {
+          "structr_name": "Protocol Summary"
+        },
+        "Cond": [
+          {
+            "rfc_cond": [
+              {
+                "lhs": "x",
+                "predicate": 35,
+                "rhs": 1888
+              }
+            ],
+            "connect": [],
+            "type": 1,
+            "keyword": "Protocol Summary"
+          }
+        ]
+      }
+    ]
+  }
+}

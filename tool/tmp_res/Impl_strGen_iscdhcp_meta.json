@@ -1,0 +1,690 @@
+{
+  "NetWare/IP Option": {
+    "NWIP_EXIST_BUT_TOO_BIG": {
+      "Indirect": "", 
+      "Type": 4, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "AUTORETRY_SECS": {
+      "Indirect": "", 
+      "Type": 9, 
+      "Len": 24, 
+      "arg": 255
+    }, 
+    "NWIP_1_1": {
+      "Indirect": "", 
+      "Type": 10, 
+      "Len": 24, 
+      "arg": 255
+    }, 
+    "NWIP_EXIST_IN_SNAME_FILE": {
+      "Indirect": "", 
+      "Type": 3, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "PREFERRED_DSS": {
+      "Indirect": "", 
+      "Type": 6, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "PRIMARY_DSS": {
+      "Indirect": "", 
+      "Type": 11, 
+      "Len": 48, 
+      "arg": 255
+    }, 
+    "NSQ_BROADCAST": {
+      "Indirect": "", 
+      "Type": 5, 
+      "Len": 24, 
+      "arg": 255
+    }, 
+    "AUTORETRIES": {
+      "Indirect": "", 
+      "Type": 8, 
+      "Len": 24, 
+      "arg": 255
+    }, 
+    "NWIP_EXIST_IN_OPTIONS_AREA": {
+      "Indirect": "", 
+      "Type": 2, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "NEAREST_NWIP_SERVER": {
+      "Indirect": "", 
+      "Type": 7, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Array": 0, 
+    "NWIP_DOES_NOT_EXIST": {
+      "Indirect": "", 
+      "Type": 1, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Impl_Loc": []
+  }, 
+  "Agent Information Field": {
+    "DOCSIS Device Class Suboption": {
+      "Indirect": "", 
+      "Type": 4, 
+      "Len": 48, 
+      "arg": 255
+    }, 
+    "Agent Remote ID Sub-option": {
+      "Indirect": "", 
+      "Type": 2, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Link selection Sub-option": {
+      "Indirect": "", 
+      "Type": 5, 
+      "Len": 48, 
+      "arg": 255
+    }, 
+    "Array": 0, 
+    "Agent Circuit ID Sub-option": {
+      "Indirect": "", 
+      "Type": 1, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Impl_Loc": []
+  }, 
+  "OTHER": {
+    "Vendor-specific information": {
+      "Indirect": "", 
+      "Type": 0, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Protocol Summary": {
+      "Indirect": "", 
+      "Type": 0, 
+      "Len": 1888, 
+      "arg": 255
+    }, 
+    "options": {
+      "Indirect": "", 
+      "Type": 0, 
+      "Len": 16, 
+      "arg": 255
+    }
+  }, 
+  "FUNC_PKT": {
+    "getUShort": 2, 
+    "getLong": 4, 
+    "getULong": 4, 
+    "getUChar": 1, 
+    "getShort": 2, 
+    "memcpy": -2
+  }, 
+  "value": {
+    "Mask Supplier": {
+      "Indirect": "", 
+      "Type": 30, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "NIS-Domain-Name": {
+      "Indirect": "", 
+      "Type": 64, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "User-Auth": {
+      "Indirect": "", 
+      "Type": 98, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Overload": {
+      "Indirect": "", 
+      "Type": 52, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "Service Scope": {
+      "Indirect": "", 
+      "Type": 79, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "Authentication": {
+      "Indirect": "", 
+      "Type": 90, 
+      "Len": 88, 
+      "arg": 255
+    }, 
+    "Subnet Selection Option": {
+      "Indirect": "", 
+      "Type": 118, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "NetWare/IP Domain": {
+      "Indirect": "", 
+      "Type": 62, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "NETBIOS Node Type": {
+      "Indirect": "", 
+      "Type": 46, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "Server-Name": {
+      "Indirect": "", 
+      "Type": 66, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Keepalive Data": {
+      "Indirect": "", 
+      "Type": 39, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "Trailers": {
+      "Indirect": "", 
+      "Type": 34, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "StreetTalk-Server": {
+      "Indirect": "", 
+      "Type": 75, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Forward On/Off": {
+      "Indirect": "", 
+      "Type": 19, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "associated-ip option": {
+      "Indirect": "", 
+      "Type": 92, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Swap Server": {
+      "Indirect": "", 
+      "Type": 16, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "Ethernet": {
+      "Indirect": "", 
+      "Type": 36, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "IPv6-Only Preferred": {
+      "Indirect": "", 
+      "Type": 108, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "Root Path": {
+      "Indirect": "", 
+      "Type": 17, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "NETBIOS Dist Srv": {
+      "Indirect": "", 
+      "Type": 45, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "WWW-Server": {
+      "Indirect": "", 
+      "Type": 72, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "LPR Server": {
+      "Indirect": "", 
+      "Type": 9, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "MTU Subnet": {
+      "Indirect": "", 
+      "Type": 27, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "NIS Servers": {
+      "Indirect": "", 
+      "Type": 41, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Domain Name": {
+      "Indirect": "", 
+      "Type": 15, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Log Server": {
+      "Indirect": "", 
+      "Type": 7, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "DHCP Max Msg Size": {
+      "Indirect": "", 
+      "Type": 57, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Client Id": {
+      "Indirect": "", 
+      "Type": 61, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "BCMCS Controller IPv4 address option": {
+      "Indirect": "", 
+      "Type": 89, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "NIS-Server-Addr": {
+      "Indirect": "", 
+      "Type": 65, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "SMTP-Server": {
+      "Indirect": "", 
+      "Type": 69, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Default IP TTL": {
+      "Indirect": "", 
+      "Type": 23, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "X Window Font": {
+      "Indirect": "", 
+      "Type": 48, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "NIS Domain": {
+      "Indirect": "", 
+      "Type": 40, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "Home-Agent-Addrs": {
+      "Indirect": "", 
+      "Type": 68, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Renewal Time": {
+      "Indirect": "", 
+      "Type": 58, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "Vendor Specific": {
+      "Indirect": "", 
+      "Type": 43, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "NTP Servers": {
+      "Indirect": "", 
+      "Type": 42, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "MTU Interface": {
+      "Indirect": "", 
+      "Type": 26, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Name Server": {
+      "Indirect": "", 
+      "Type": 5, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "BCMCS Controller Domain Name list": {
+      "Indirect": "", 
+      "Type": 88, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "DHCP Msg Type": {
+      "Indirect": "", 
+      "Type": 53, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "Quotes Server": {
+      "Indirect": "", 
+      "Type": 8, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "ARP Timeout": {
+      "Indirect": "", 
+      "Type": 35, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "SrcRte On/Off": {
+      "Indirect": "", 
+      "Type": 20, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "Name Service Search": {
+      "Indirect": "", 
+      "Type": 117, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "X Window Manager": {
+      "Indirect": "", 
+      "Type": 49, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Max DG Assembly": {
+      "Indirect": "", 
+      "Type": 22, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Hostname": {
+      "Indirect": "", 
+      "Type": 12, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Parameter List": {
+      "Indirect": "", 
+      "Type": 55, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "NDS Servers": {
+      "Indirect": "", 
+      "Type": 85, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Domain Search": {
+      "Indirect": "", 
+      "Type": 119, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Impl_Loc": [], 
+    "Mask Discovery": {
+      "Indirect": "", 
+      "Type": 29, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "Broadcast Address": {
+      "Indirect": "", 
+      "Type": 28, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "Policy Filter": {
+      "Indirect": "", 
+      "Type": 21, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Rebinding Time": {
+      "Indirect": "", 
+      "Type": 59, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "POP3-Server": {
+      "Indirect": "", 
+      "Type": 70, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Boot File Size": {
+      "Indirect": "", 
+      "Type": 13, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Address Request": {
+      "Indirect": "", 
+      "Type": 50, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "MTU Plateau": {
+      "Indirect": "", 
+      "Type": 25, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Relay Agent Information": {
+      "Indirect": "", 
+      "Type": 82, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Time Offset": {
+      "Indirect": "", 
+      "Type": 2, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "NETBIOS Scope": {
+      "Indirect": "", 
+      "Type": 47, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "NDS Tree Name": {
+      "Indirect": "", 
+      "Type": 86, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Router": {
+      "Indirect": "", 
+      "Type": 3, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Class Id": {
+      "Indirect": "", 
+      "Type": 60, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "NDS Context": {
+      "Indirect": "", 
+      "Type": 87, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "MTU Timeout": {
+      "Indirect": "", 
+      "Type": 24, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "Static Route": {
+      "Indirect": "", 
+      "Type": 33, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Domain Server": {
+      "Indirect": "", 
+      "Type": 6, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Subnet Mask": {
+      "Indirect": "", 
+      "Type": 1, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "client-last-transaction-time option": {
+      "Indirect": "", 
+      "Type": 91, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "Merit Dump File": {
+      "Indirect": "", 
+      "Type": 14, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "V-I Vendor Class": {
+      "Indirect": "", 
+      "Type": 124, 
+      "Len": 16, 
+      "arg": 255
+    }, 
+    "Bootfile-Name": {
+      "Indirect": "", 
+      "Type": 67, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Impress Server": {
+      "Indirect": "", 
+      "Type": 10, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Time Server": {
+      "Indirect": "", 
+      "Type": 4, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "STDA-Server": {
+      "Indirect": "", 
+      "Type": 76, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Finger-Server": {
+      "Indirect": "", 
+      "Type": 73, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Default TCP TTL": {
+      "Indirect": "", 
+      "Type": 37, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "Address Time": {
+      "Indirect": "", 
+      "Type": 51, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "NNTP-Server": {
+      "Indirect": "", 
+      "Type": 71, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "NETBIOS Name Srv": {
+      "Indirect": "", 
+      "Type": 44, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Router Request": {
+      "Indirect": "", 
+      "Type": 32, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "IRC-Server": {
+      "Indirect": "", 
+      "Type": 74, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Keepalive Time": {
+      "Indirect": "", 
+      "Type": 38, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "DHCP Server Id": {
+      "Indirect": "", 
+      "Type": 54, 
+      "Len": 32, 
+      "arg": 255
+    }, 
+    "Router Discovery": {
+      "Indirect": "", 
+      "Type": 31, 
+      "Len": 8, 
+      "arg": 255
+    }, 
+    "DHCP Message": {
+      "Indirect": "", 
+      "Type": 56, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "V-I Vendor-Specific Information": {
+      "Indirect": "", 
+      "Type": 125, 
+      "Len": 40, 
+      "arg": 255
+    }, 
+    "User-Class": {
+      "Indirect": "", 
+      "Type": 77, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "RLP Server": {
+      "Indirect": "", 
+      "Type": 11, 
+      "Len": 0, 
+      "arg": 255
+    }, 
+    "Array": 0, 
+    "Extension File": {
+      "Indirect": "", 
+      "Type": 18, 
+      "Len": 0, 
+      "arg": 255
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "SPECIAL":{
+        
+    },
+  
+
+    "FUNC_PKT":{"getULong":4,"getLong":4,"getUShort":2,"getShort":2,"getUChar":1,"memcpy":-2},
+    "Entry_Cand": "do_packet"
+
+
+}

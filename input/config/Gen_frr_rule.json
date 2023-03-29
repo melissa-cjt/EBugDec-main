@@ -1,0 +1,1646 @@
+[
+  {
+    "OP": {
+      "USE": "Parameter Type"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "0"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "255"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "Parameter Type"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Capability Code"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "255"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "5"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "6"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "8"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "9"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "64"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "65"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "67"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "69"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "70"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "71"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "73"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "Capability Code"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Multiprotocol Extensions for BGP-4",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Multiprotocol Extensions for BGP-4"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Multiprotocol Extensions for BGP-4"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Outbound Route Filtering Capability",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Outbound Route Filtering Capability"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 40
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Outbound Route Filtering Capability"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Extended Next Hop Encoding",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Extended Next Hop Encoding"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 48
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Extended Next Hop Encoding"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Multiple Labels Capability",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Multiple Labels Capability"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Multiple Labels Capability"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "BGP Role",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "BGP Role"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 8
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "BGP Role"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "BGP Role"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": 0
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": 1
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": 2
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": 3
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": 4
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "BGP Role"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Restart Flags"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "0"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          }
+        ],
+        "connect": [
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "Restart Flags"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Graceful Restart Capability",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Graceful Restart Capability"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 48
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Graceful Restart Capability"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "ADD-PATH Capability",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "ADD-PATH Capability"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "ADD-PATH Capability"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Long-Lived Graceful Restart (LLGR) Capability",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Long-Lived Graceful Restart (LLGR) Capability"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 56
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Long-Lived Graceful Restart (LLGR) Capability"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "FQDN Capability",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "FQDN Capability"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 16
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "FQDN Capability"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Capabilities",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Capabilities"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 16
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Capabilities"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Extended Length",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Extended Length"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 24
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Extended Length"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Optional Parameters",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Optional Parameters"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 0
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Optional Parameters"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "OPEN",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "OPEN"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 80
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "OPEN"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Withdrawn Routes",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Withdrawn Routes"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 1
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Withdrawn Routes"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Attribute Type Code"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "4"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "5"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "6"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "7"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "8"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "9"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "10"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "14"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "15"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "16"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "17"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "18"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "22"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "23"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "25"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "27"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "32"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "35"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "40"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "255"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "Attribute Type Code"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "MP_REACH_NLRI",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "MP_REACH_NLRI"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 40
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "MP_REACH_NLRI"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "MP_UNREACH_NLRI",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "MP_UNREACH_NLRI"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 24
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "MP_UNREACH_NLRI"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "PMSI_TUNNEL",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "PMSI_TUNNEL"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 40
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "PMSI_TUNNEL"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Tunnel Encapsulation",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Tunnel Encapsulation"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Tunnel Encapsulation"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "IPv6 Address Specific Extended Community",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "IPv6 Address Specific Extended Community"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 160
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "IPv6 Address Specific Extended Community"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "PE Distinguisher Labels",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "PE Distinguisher Labels"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 34
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "PE Distinguisher Labels"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "LARGE_COMMUNITY",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "LARGE_COMMUNITY"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 96
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "LARGE_COMMUNITY"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "type"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "0"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "type"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "BGP Prefix-SID",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "BGP Prefix-SID"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 24
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "BGP Prefix-SID"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Path Attributes",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Path Attributes"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 2
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Path Attributes"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "UPDATE",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "UPDATE"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "UPDATE"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Error Code"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "4"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "5"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "6"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "7"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "Error Code"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Message Header Error subcodes"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "Message Header Error subcodes"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "OPEN Message Error subcodes"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "4"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "6"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "7"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "11"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "OPEN Message Error subcodes"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "UPDATE Message Error subcodes"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "4"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "5"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "6"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "8"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "9"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "10"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "11"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "UPDATE Message Error subcodes"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "BGP Finite State Machine Error Subcodes"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "0"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "BGP Finite State Machine Error Subcodes"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "BGP Cease NOTIFICATION message subcodes"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "4"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "5"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "6"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "7"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "8"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "9"
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "BGP Cease NOTIFICATION message subcodes"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "BGP ROUTE-REFRESH Message Error subcodes"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "0"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          }
+        ],
+        "connect": [
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "BGP ROUTE-REFRESH Message Error subcodes"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "NOTIFICATION",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "NOTIFICATION"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 16
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "NOTIFICATION"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "ROUTE-REFRESH",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "ROUTE-REFRESH"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "ROUTE-REFRESH"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "CAPABILITY",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "CAPABILITY"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 64
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "CAPABILITY"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Type"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "1"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "2"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "3"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "4"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": "5"
+          },
+          {
+            "lhs": "x",
+            "predicate": "32",
+            "rhs": 6
+          }
+        ],
+        "connect": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "type": 3,
+        "keyword": "Type"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Message Header Format",
+      "Implicit": 1
+    },
+    "Structure": {
+      "structr_name": "Message Header Format"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 35,
+            "rhs": 152
+          }
+        ],
+        "connect": [],
+        "type": 1,
+        "keyword": "Message Header Format"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Route Refresh Capability for BGP-4"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 0
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "Route Refresh Capability for BGP-4"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "BGP Extended Message"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 0
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "BGP Extended Message"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Support for 4-octet AS number capability"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "Support for 4-octet AS number capability"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Enhanced Route Refresh Capability"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 0
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "Enhanced Route Refresh Capability"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "MULTI_EXIT_DISC"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "MULTI_EXIT_DISC"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "COMMUNITY"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "COMMUNITY"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "ORIGINATOR_ID"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "ORIGINATOR_ID"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "CLUSTER_LIST"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "CLUSTER_LIST"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "EXTENDED COMMUNITIES"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 64
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "EXTENDED COMMUNITIES"
+      }
+    ]
+  },
+  {
+    "OP": {
+      "USE": "Only to Customer (OTC)"
+    },
+    "Cond": [
+      {
+        "rfc_cond": [
+          {
+            "lhs": "x",
+            "predicate": 32,
+            "rhs": 32
+          }
+        ],
+        "connect": [],
+        "type": 2,
+        "keyword": "Only to Customer (OTC)"
+      }
+    ]
+  }
+]

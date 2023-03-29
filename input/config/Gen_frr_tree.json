@@ -1,0 +1,3652 @@
+{
+  "Message Header Format": {
+    "struct": {
+      "Marker": {
+        "bitwidth": {
+          "len": 128,
+          "type": "bytes"
+        },
+        "rule": []
+      },
+      "Length": {
+        "bitwidth": {
+          "len": 16,
+          "type": "word"
+        },
+        "rule": []
+      },
+      "Type": {
+        "bitwidth": {
+          "len": 8,
+          "type": "byte"
+        },
+        "extend_struct": {
+          "OPEN": {
+            "value": "1",
+            "struct": {
+              "Version": {
+                "bitwidth": {
+                  "len": 8,
+                  "type": "byte"
+                },
+                "rule": []
+              },
+              "My Autonomous System": {
+                "bitwidth": {
+                  "len": 16,
+                  "type": "word"
+                },
+                "rule": []
+              },
+              "Hold Time": {
+                "bitwidth": {
+                  "len": 16,
+                  "type": "word"
+                },
+                "rule": []
+              },
+              "BGP Identifier": {
+                "bitwidth": {
+                  "len": 32,
+                  "type": "dword"
+                },
+                "rule": []
+              },
+              "Optional Parameters Length": {
+                "bitwidth": {
+                  "len": 8,
+                  "type": "byte"
+                },
+                "rule": []
+              },
+              "Optional Parameters": {
+                "struct": {
+                  "Parameter Type": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "extend_value": {
+                      "Reserved": {
+                        "value": "0",
+                        "info": {
+                          "chapter": "",
+                          "refer": "RFC5492"
+                        }
+                      },
+                      "Authentication (deprecated)": {
+                        "value": "1",
+                        "info": {
+                          "chapter": "",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Capabilities": {
+                        "value": "2",
+                        "info": {
+                          "chapter": "4",
+                          "refer": "RFC5492"
+                        }
+                      },
+                      "Extended Length": {
+                        "value": "255",
+                        "info": {
+                          "chapter": "2",
+                          "refer": "RFC9072"
+                        }
+                      }
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "Parameter Type"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "0"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "1"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "2"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "255"
+                              }
+                            ],
+                            "connect": [
+                              2,
+                              2,
+                              2,
+                              2
+                            ],
+                            "type": 3,
+                            "keyword": "Parameter Type"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "Parameter Length": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "Parameter Value": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "extend_struct": {
+                      "Reserved": {
+                        "info": {
+                          "chapter": "",
+                          "refer": "RFC5492"
+                        },
+                        "rule": []
+                      },
+                      "Authentication (deprecated)": {
+                        "info": {
+                          "chapter": "",
+                          "refer": "RFC4271"
+                        },
+                        "rule": []
+                      },
+                      "Capabilities": {
+                        "struct": {
+                          "Capability Code": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "extend_value": {
+                              "Reserved": {
+                                "value": "255",
+                                "info": {
+                                  "chapter": "",
+                                  "refer": "RFC5492"
+                                }
+                              },
+                              "Multiprotocol Extensions for BGP-4": {
+                                "value": "1",
+                                "info": {
+                                  "chapter": "WHOLE",
+                                  "refer": "RFC2858"
+                                }
+                              },
+                              "Route Refresh Capability for BGP-4": {
+                                "value": "2",
+                                "info": {
+                                  "chapter": "2. Route Refresh Capability",
+                                  "refer": "RFC2918"
+                                }
+                              },
+                              "Outbound Route Filtering Capability": {
+                                "value": "3",
+                                "info": {
+                                  "chapter": "WHOLE",
+                                  "refer": "RFC5291"
+                                }
+                              },
+                              "Extended Next Hop Encoding": {
+                                "value": "5",
+                                "info": {
+                                  "chapter": "4",
+                                  "refer": "RFC8950"
+                                }
+                              },
+                              "BGP Extended Message": {
+                                "value": "6",
+                                "info": {
+                                  "chapter": "3.  BGP Extended Message Capability",
+                                  "refer": "RFC8654"
+                                }
+                              },
+                              "Multiple Labels Capability": {
+                                "value": "8",
+                                "info": {
+                                  "chapter": "2.1",
+                                  "refer": "RFC8277"
+                                }
+                              },
+                              "BGP Role": {
+                                "value": "9",
+                                "info": {
+                                  "chapter": "4",
+                                  "refer": "RFC9234"
+                                }
+                              },
+                              "Graceful Restart Capability": {
+                                "value": "64",
+                                "info": {
+                                  "chapter": "3",
+                                  "refer": "RFC4724"
+                                }
+                              },
+                              "Support for 4-octet AS number capability": {
+                                "value": "65",
+                                "info": {
+                                  "chapter": "WHOLE",
+                                  "refer": "RFC6793"
+                                }
+                              },
+                              "Support for Dynamic Capability (capability specific)": {
+                                "value": "67",
+                                "info": {
+                                  "chapter": "",
+                                  "refer": "draft-ietf-idr-dynamic-cap"
+                                }
+                              },
+                              "ADD-PATH Capability": {
+                                "value": "69",
+                                "info": {
+                                  "chapter": "4",
+                                  "refer": "RFC7911"
+                                }
+                              },
+                              "Enhanced Route Refresh Capability": {
+                                "value": "70",
+                                "info": {
+                                  "chapter": "3.1.  Enhanced Route Refresh Capability",
+                                  "refer": "RFC7313"
+                                }
+                              },
+                              "Long-Lived Graceful Restart (LLGR) Capability": {
+                                "value": "71",
+                                "info": {
+                                  "chapter": "3.1.  Long-lived Graceful Restart Capability",
+                                  "refer": "draft-uttaro-idr-bgp-persistence"
+                                }
+                              },
+                              "FQDN Capability": {
+                                "value": "73",
+                                "info": {
+                                  "chapter": "3.  FQDN Capability",
+                                  "refer": "draft-walton-bgp-hostname-capability"
+                                }
+                              }
+                            },
+                            "rule": [
+                              {
+                                "OP": {
+                                  "USE": "Capability Code"
+                                },
+                                "Cond": [
+                                  {
+                                    "rfc_cond": [
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "255"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "1"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "2"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "3"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "5"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "6"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "8"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "9"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "64"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "65"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "67"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "69"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "70"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "71"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "73"
+                                      }
+                                    ],
+                                    "connect": [
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2,
+                                      2
+                                    ],
+                                    "type": 3,
+                                    "keyword": "Capability Code"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "Capability Length": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Capability Value": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "extend_struct": {
+                              "Reserved": {
+                                "info": {
+                                  "chapter": "",
+                                  "refer": "RFC5492"
+                                },
+                                "rule": []
+                              },
+                              "Multiprotocol Extensions for BGP-4": {
+                                "struct": {
+                                  "AFI": {
+                                    "bitwidth": {
+                                      "len": 16,
+                                      "type": "bits"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Reserved": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bits"
+                                    },
+                                    "rule": []
+                                  },
+                                  "SAFI": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bits"
+                                    },
+                                    "rule": []
+                                  }
+                                },
+                                "info": {
+                                  "chapter": "WHOLE",
+                                  "refer": "RFC2858"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "Multiprotocol Extensions for BGP-4",
+                                      "Implicit": 1
+                                    },
+                                    "Structure": {
+                                      "structr_name": "Multiprotocol Extensions for BGP-4"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 35,
+                                            "rhs": 32
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 1,
+                                        "keyword": "Multiprotocol Extensions for BGP-4"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "Route Refresh Capability for BGP-4": {
+                                "info": {
+                                  "chapter": "2. Route Refresh Capability",
+                                  "refer": "RFC2918"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "Route Refresh Capability for BGP-4"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 32,
+                                            "rhs": 0
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 2,
+                                        "keyword": "Route Refresh Capability for BGP-4"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "bitwidth": {
+                                  "len": 0,
+                                  "type": "byte"
+                                }
+                              },
+                              "Outbound Route Filtering Capability": {
+                                "struct": {
+                                  "Address Family Identifier": {
+                                    "bitwidth": {
+                                      "len": 16,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Reserved ": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Subsequent Address Family Identifier": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Number of ORF": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  }
+                                },
+                                "info": {
+                                  "chapter": "WHOLE",
+                                  "refer": "RFC5291"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "Outbound Route Filtering Capability",
+                                      "Implicit": 1
+                                    },
+                                    "Structure": {
+                                      "structr_name": "Outbound Route Filtering Capability"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 35,
+                                            "rhs": 40
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 1,
+                                        "keyword": "Outbound Route Filtering Capability"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "Extended Next Hop Encoding": {
+                                "struct": {
+                                  "NLRI AFI - 1": {
+                                    "bitwidth": {
+                                      "len": 16,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "NLRI SAFI - 1": {
+                                    "bitwidth": {
+                                      "len": 16,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Nexthop AFI - 1": {
+                                    "bitwidth": {
+                                      "len": 16,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  }
+                                },
+                                "info": {
+                                  "chapter": "4",
+                                  "refer": "RFC8950"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "Extended Next Hop Encoding",
+                                      "Implicit": 1
+                                    },
+                                    "Structure": {
+                                      "structr_name": "Extended Next Hop Encoding"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 35,
+                                            "rhs": 48
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 1,
+                                        "keyword": "Extended Next Hop Encoding"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "BGP Extended Message": {
+                                "info": {
+                                  "chapter": "3.  BGP Extended Message Capability",
+                                  "refer": "RFC8654"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "BGP Extended Message"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 32,
+                                            "rhs": 0
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 2,
+                                        "keyword": "BGP Extended Message"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "bitwidth": {
+                                  "len": 0,
+                                  "type": "byte"
+                                }
+                              },
+                              "Multiple Labels Capability": {
+                                "struct": {
+                                  "AFI": {
+                                    "bitwidth": {
+                                      "len": 16,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "SAFI": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Count": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  }
+                                },
+                                "info": {
+                                  "chapter": "2.1",
+                                  "refer": "RFC8277"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "Multiple Labels Capability",
+                                      "Implicit": 1
+                                    },
+                                    "Structure": {
+                                      "structr_name": "Multiple Labels Capability"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 35,
+                                            "rhs": 32
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 1,
+                                        "keyword": "Multiple Labels Capability"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "BGP Role": {
+                                "struct": {
+                                  "Role name": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  }
+                                },
+                                "extend_value": {
+                                  "Provider": {
+                                    "value": 0,
+                                    "info": {
+                                      "chapter": "4",
+                                      "refer": "RFC9234"
+                                    }
+                                  },
+                                  "RS": {
+                                    "value": 1,
+                                    "info": {
+                                      "chapter": "4",
+                                      "refer": "RFC9234"
+                                    }
+                                  },
+                                  "RS-Client": {
+                                    "value": 2,
+                                    "info": {
+                                      "chapter": "4",
+                                      "refer": "RFC9234"
+                                    }
+                                  },
+                                  "Customer": {
+                                    "value": 3,
+                                    "info": {
+                                      "chapter": "4",
+                                      "refer": "RFC9234"
+                                    }
+                                  },
+                                  "Peer": {
+                                    "value": 4,
+                                    "info": {
+                                      "chapter": "4",
+                                      "refer": "RFC9234"
+                                    }
+                                  }
+                                },
+                                "info": {
+                                  "chapter": "4",
+                                  "refer": "RFC9234"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "BGP Role",
+                                      "Implicit": 1
+                                    },
+                                    "Structure": {
+                                      "structr_name": "BGP Role"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 35,
+                                            "rhs": 8
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 1,
+                                        "keyword": "BGP Role"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "OP": {
+                                      "USE": "BGP Role"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": "32",
+                                            "rhs": 0
+                                          },
+                                          {
+                                            "lhs": "x",
+                                            "predicate": "32",
+                                            "rhs": 1
+                                          },
+                                          {
+                                            "lhs": "x",
+                                            "predicate": "32",
+                                            "rhs": 2
+                                          },
+                                          {
+                                            "lhs": "x",
+                                            "predicate": "32",
+                                            "rhs": 3
+                                          },
+                                          {
+                                            "lhs": "x",
+                                            "predicate": "32",
+                                            "rhs": 4
+                                          }
+                                        ],
+                                        "connect": [
+                                          2,
+                                          2,
+                                          2,
+                                          2,
+                                          2
+                                        ],
+                                        "type": 3,
+                                        "keyword": "BGP Role"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "Graceful Restart Capability": {
+                                "struct": {
+                                  "Restart Flags": {
+                                    "bitwidth": {
+                                      "len": 4,
+                                      "type": "bytes"
+                                    },
+                                    "extend_value": {
+                                      "Restart State": {
+                                        "value": "0",
+                                        "info": {
+                                          "chapter": "3",
+                                          "refer": "RFC4724"
+                                        }
+                                      },
+                                      "Notification": {
+                                        "value": "1",
+                                        "info": {
+                                          "chapter": "2",
+                                          "refer": "RFC8538"
+                                        }
+                                      }
+                                    },
+                                    "rule": [
+                                      {
+                                        "OP": {
+                                          "USE": "Restart Flags"
+                                        },
+                                        "Cond": [
+                                          {
+                                            "rfc_cond": [
+                                              {
+                                                "lhs": "x",
+                                                "predicate": "32",
+                                                "rhs": "0"
+                                              },
+                                              {
+                                                "lhs": "x",
+                                                "predicate": "32",
+                                                "rhs": "1"
+                                              }
+                                            ],
+                                            "connect": [
+                                              2,
+                                              2
+                                            ],
+                                            "type": 3,
+                                            "keyword": "Restart Flags"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "Restart Time in seconds": {
+                                    "bitwidth": {
+                                      "len": 12,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Address Family Identifier": {
+                                    "bitwidth": {
+                                      "len": 16,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Subsequent Address Family Identifier": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Flags for Address Family": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  }
+                                },
+                                "info": {
+                                  "chapter": "3",
+                                  "refer": "RFC4724"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "Graceful Restart Capability",
+                                      "Implicit": 1
+                                    },
+                                    "Structure": {
+                                      "structr_name": "Graceful Restart Capability"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 35,
+                                            "rhs": 48
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 1,
+                                        "keyword": "Graceful Restart Capability"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "Support for 4-octet AS number capability": {
+                                "info": {
+                                  "chapter": "3.  Protocol Extensions",
+                                  "refer": "RFC6793"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "Support for 4-octet AS number capability"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 32,
+                                            "rhs": 32
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 2,
+                                        "keyword": "Support for 4-octet AS number capability"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "bitwidth": {
+                                  "len": 32,
+                                  "type": "byte"
+                                }
+                              },
+                              "Support for Dynamic Capability (capability specific)": {
+                                "info": {
+                                  "chapter": "",
+                                  "refer": "draft-ietf-idr-dynamic-cap"
+                                },
+                                "rule": []
+                              },
+                              "ADD-PATH Capability": {
+                                "struct": {
+                                  "AFI": {
+                                    "bitwidth": {
+                                      "len": 16,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "SAFI": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "SendReceive": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  }
+                                },
+                                "info": {
+                                  "chapter": "4",
+                                  "refer": "RFC7911"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "ADD-PATH Capability",
+                                      "Implicit": 1
+                                    },
+                                    "Structure": {
+                                      "structr_name": "ADD-PATH Capability"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 35,
+                                            "rhs": 32
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 1,
+                                        "keyword": "ADD-PATH Capability"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "Enhanced Route Refresh Capability": {
+                                "info": {
+                                  "chapter": "3.1.  Enhanced Route Refresh Capability",
+                                  "refer": "RFC7313"
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "Enhanced Route Refresh Capability"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 32,
+                                            "rhs": 0
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 2,
+                                        "keyword": "Enhanced Route Refresh Capability"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "bitwidth": {
+                                  "len": 0,
+                                  "type": "byte"
+                                }
+                              },
+                              "Long-Lived Graceful Restart (LLGR) Capability": {
+                                "info": {
+                                  "chapter": "3.1.  Long-lived Graceful Restart Capability",
+                                  "refer": "draft-uttaro-idr-bgp-persistence"
+                                },
+                                "struct": {
+                                  "Address Family Identifier": {
+                                    "bitwidth": {
+                                      "len": 16,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Subsequent Address Family Identifier": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Flags for Address Family": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Long-lived Stale Time": {
+                                    "bitwidth": {
+                                      "len": 24,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  }
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "Long-Lived Graceful Restart (LLGR) Capability",
+                                      "Implicit": 1
+                                    },
+                                    "Structure": {
+                                      "structr_name": "Long-Lived Graceful Restart (LLGR) Capability"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 35,
+                                            "rhs": 56
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 1,
+                                        "keyword": "Long-Lived Graceful Restart (LLGR) Capability"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              "FQDN Capability": {
+                                "info": {
+                                  "chapter": "3.  FQDN Capability",
+                                  "refer": "draft-walton-bgp-hostname-capability"
+                                },
+                                "struct": {
+                                  "Hostname Length": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Hostname": {
+                                    "bitwidth": {
+                                      "len": -1,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Domain Name Length": {
+                                    "bitwidth": {
+                                      "len": 8,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  },
+                                  "Domain Name": {
+                                    "bitwidth": {
+                                      "len": -1,
+                                      "type": "bytes"
+                                    },
+                                    "rule": []
+                                  }
+                                },
+                                "rule": [
+                                  {
+                                    "OP": {
+                                      "USE": "FQDN Capability",
+                                      "Implicit": 1
+                                    },
+                                    "Structure": {
+                                      "structr_name": "FQDN Capability"
+                                    },
+                                    "Cond": [
+                                      {
+                                        "rfc_cond": [
+                                          {
+                                            "lhs": "x",
+                                            "predicate": 35,
+                                            "rhs": 16
+                                          }
+                                        ],
+                                        "connect": [],
+                                        "type": 1,
+                                        "keyword": "FQDN Capability"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "4",
+                          "refer": "RFC5492"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "Capabilities",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "Capabilities"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 16
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "Capabilities"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "Extended Length": {
+                        "struct": {
+                          "Non-Ext OP Type": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Extended Opt. Parameter Length": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Optional Parameters": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Parameter Type": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Parameter Length": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "word"
+                            },
+                            "rule": []
+                          },
+                          "Parameter Value": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "2",
+                          "refer": "RFC9072"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "Extended Length",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "Extended Length"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 24
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "Extended Length"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.2",
+                  "refer": "RFC4271"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Optional Parameters",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Optional Parameters"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 0
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Optional Parameters"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "info": {
+              "chapter": "4.2",
+              "refer": "RFC4271"
+            },
+            "rule": [
+              {
+                "OP": {
+                  "USE": "OPEN",
+                  "Implicit": 1
+                },
+                "Structure": {
+                  "structr_name": "OPEN"
+                },
+                "Cond": [
+                  {
+                    "rfc_cond": [
+                      {
+                        "lhs": "x",
+                        "predicate": 35,
+                        "rhs": 80
+                      }
+                    ],
+                    "connect": [],
+                    "type": 1,
+                    "keyword": "OPEN"
+                  }
+                ]
+              }
+            ]
+          },
+          "UPDATE": {
+            "value": "2",
+            "struct": {
+              "Withdrawn Routes Length": {
+                "bitwidth": {
+                  "len": 16,
+                  "type": "word"
+                },
+                "rule": []
+              },
+              "Withdrawn Routes": {
+                "struct": {
+                  "Length": {
+                    "bitwidth": {
+                      "len": 1,
+                      "type": "ip"
+                    },
+                    "rule": []
+                  },
+                  "Prefix": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "ip"
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.3",
+                  "refer": "RFC4271"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Withdrawn Routes",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Withdrawn Routes"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 1
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Withdrawn Routes"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Total Path Attribute Length": {
+                "bitwidth": {
+                  "len": 16,
+                  "type": "word"
+                },
+                "rule": []
+              },
+              "Path Attributes": {
+                "struct": {
+                  "Attribute Flags": {
+                    "bitwidth": {
+                      "len": 1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "Attribute Type Code": {
+                    "bitwidth": {
+                      "len": 1,
+                      "type": "bytes"
+                    },
+                    "extend_value": {
+                      "ORIGIN": {
+                        "value": "1",
+                        "info": {
+                          "chapter": "5.1.1.  ORIGIN",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "AS_PATH": {
+                        "value": "2",
+                        "info": {
+                          "chapter": "5.1.2.  AS_PATH",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "NEXT_HOP": {
+                        "value": "3",
+                        "info": {
+                          "chapter": "5.1.3.  NEXT_HOP",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "MULTI_EXIT_DISC": {
+                        "value": "4",
+                        "info": {
+                          "chapter": "5.1.4.  MULTI_EXIT_DISC",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "LOCAL_PREF": {
+                        "value": "5",
+                        "info": {
+                          "chapter": "5.1.5.  LOCAL_PREF",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "ATOMIC_AGGREGATE": {
+                        "value": "6",
+                        "info": {
+                          "chapter": "5.1.6.  ATOMIC_AGGREGATE",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "AGGREGATOR": {
+                        "value": "7",
+                        "info": {
+                          "chapter": "5.1.7.  AGGREGATOR",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "COMMUNITY": {
+                        "value": "8",
+                        "info": {
+                          "chapter": "COMMUNITIES attribute",
+                          "refer": "RFC1997"
+                        }
+                      },
+                      "ORIGINATOR_ID": {
+                        "value": "9",
+                        "info": {
+                          "chapter": "8.  Avoiding Routing Information Loops",
+                          "refer": "RFC4456"
+                        }
+                      },
+                      "CLUSTER_LIST": {
+                        "value": "10",
+                        "info": {
+                          "chapter": "8.  Avoiding Routing Information Loops",
+                          "refer": "RFC4456"
+                        }
+                      },
+                      "MP_REACH_NLRI": {
+                        "value": "14",
+                        "info": {
+                          "chapter": "3.  Multiprotocol Reachable NLRI - MP_REACH_NLRI (Type Code 14):",
+                          "refer": "RFC4760"
+                        }
+                      },
+                      "MP_UNREACH_NLRI": {
+                        "value": "15",
+                        "info": {
+                          "chapter": "4.  Multiprotocol Unreachable NLRI - MP_UNREACH_NLRI (Type Code 15):",
+                          "refer": "RFC4760"
+                        }
+                      },
+                      "EXTENDED COMMUNITIES": {
+                        "value": "16",
+                        "info": {
+                          "chapter": "2.  BGP Extended Communities Attribute",
+                          "refer": "RFC4360"
+                        }
+                      },
+                      "AS4_PATH": {
+                        "value": "17",
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC6793"
+                        }
+                      },
+                      "AS4_AGGREGATOR": {
+                        "value": "18",
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC6793"
+                        }
+                      },
+                      "PMSI_TUNNEL": {
+                        "value": "22",
+                        "info": {
+                          "chapter": "5",
+                          "refer": "RFC6514"
+                        }
+                      },
+                      "Tunnel Encapsulation": {
+                        "value": "23",
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC9012"
+                        }
+                      },
+                      "IPv6 Address Specific Extended Community": {
+                        "value": "25",
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC5701"
+                        }
+                      },
+                      "PE Distinguisher Labels": {
+                        "value": "27",
+                        "info": {
+                          "chapter": "8",
+                          "refer": "RFC6514"
+                        }
+                      },
+                      "LARGE_COMMUNITY": {
+                        "value": "32",
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC8092"
+                        }
+                      },
+                      "Only to Customer (OTC)": {
+                        "value": "35",
+                        "info": {
+                          "chapter": "5.  BGP Only to Customer (OTC) Attribute",
+                          "refer": "RFC9234"
+                        }
+                      },
+                      "BGP Prefix-SID": {
+                        "value": "40",
+                        "info": {
+                          "chapter": "2",
+                          "refer": "RFC8669"
+                        }
+                      },
+                      "Reserved for development": {
+                        "value": "255",
+                        "info": {
+                          "chapter": "",
+                          "refer": "RFC2042"
+                        }
+                      }
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "Attribute Type Code"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "1"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "2"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "3"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "4"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "5"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "6"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "7"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "8"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "9"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "10"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "14"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "15"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "16"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "17"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "18"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "22"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "23"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "25"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "27"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "32"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "35"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "40"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "255"
+                              }
+                            ],
+                            "connect": [
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2
+                            ],
+                            "type": 3,
+                            "keyword": "Attribute Type Code"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "Attribute Length": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "rule": []
+                  },
+                  "Attribute Value": {
+                    "bitwidth": {
+                      "len": -1,
+                      "type": "bytes"
+                    },
+                    "extend_struct": {
+                      "ORIGIN": {
+                        "info": {
+                          "chapter": "5.1.1.  ORIGIN",
+                          "refer": "RFC4271"
+                        },
+                        "rule": [],
+                        "bitwidth": {
+                          "len": -1,
+                          "type": "byte"
+                        }
+                      },
+                      "AS_PATH": {
+                        "info": {
+                          "chapter": "5.1.2.  AS_PATH",
+                          "refer": "RFC4271"
+                        },
+                        "rule": [],
+                        "bitwidth": {
+                          "len": -1,
+                          "type": "byte"
+                        }
+                      },
+                      "NEXT_HOP": {
+                        "info": {
+                          "chapter": "5.1.3.  NEXT_HOP",
+                          "refer": "RFC4271"
+                        },
+                        "rule": [],
+                        "bitwidth": {
+                          "len": -1,
+                          "type": "byte"
+                        }
+                      },
+                      "MULTI_EXIT_DISC": {
+                        "info": {
+                          "chapter": "5.1.4.  MULTI_EXIT_DISC",
+                          "refer": "RFC4271"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "MULTI_EXIT_DISC"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 32,
+                                    "rhs": 32
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 2,
+                                "keyword": "MULTI_EXIT_DISC"
+                              }
+                            ]
+                          }
+                        ],
+                        "bitwidth": {
+                          "len": 32,
+                          "type": "byte"
+                        }
+                      },
+                      "LOCAL_PREF": {
+                        "info": {
+                          "chapter": "5.1.5.  LOCAL_PREF",
+                          "refer": "RFC4271"
+                        },
+                        "rule": [],
+                        "bitwidth": {
+                          "len": -1,
+                          "type": "byte"
+                        }
+                      },
+                      "ATOMIC_AGGREGATE": {
+                        "info": {
+                          "chapter": "5.1.6.  ATOMIC_AGGREGATE",
+                          "refer": "RFC4271"
+                        },
+                        "rule": [],
+                        "bitwidth": {
+                          "len": -1,
+                          "type": "byte"
+                        }
+                      },
+                      "AGGREGATOR": {
+                        "info": {
+                          "chapter": "5.1.7.  AGGREGATOR",
+                          "refer": "RFC4271"
+                        },
+                        "rule": [],
+                        "bitwidth": {
+                          "len": -1,
+                          "type": "byte"
+                        }
+                      },
+                      "COMMUNITY": {
+                        "info": {
+                          "chapter": "COMMUNITIES attribute",
+                          "refer": "RFC1997"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "COMMUNITY"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 32,
+                                    "rhs": 32
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 2,
+                                "keyword": "COMMUNITY"
+                              }
+                            ]
+                          }
+                        ],
+                        "bitwidth": {
+                          "len": 32,
+                          "type": "byte"
+                        }
+                      },
+                      "ORIGINATOR_ID": {
+                        "info": {
+                          "chapter": "8.  Avoiding Routing Information Loops",
+                          "refer": "RFC4456"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "ORIGINATOR_ID"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 32,
+                                    "rhs": 32
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 2,
+                                "keyword": "ORIGINATOR_ID"
+                              }
+                            ]
+                          }
+                        ],
+                        "bitwidth": {
+                          "len": 32,
+                          "type": "byte"
+                        }
+                      },
+                      "CLUSTER_LIST": {
+                        "info": {
+                          "chapter": "8.  Avoiding Routing Information Loops",
+                          "refer": "RFC4456"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "CLUSTER_LIST"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 32,
+                                    "rhs": 32
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 2,
+                                "keyword": "CLUSTER_LIST"
+                              }
+                            ]
+                          }
+                        ],
+                        "bitwidth": {
+                          "len": 32,
+                          "type": "byte"
+                        }
+                      },
+                      "MP_REACH_NLRI": {
+                        "struct": {
+                          "Address Family Identifier": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Subsequent Address Family Identifier": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Length of Next Hop Network Address": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Network Address of Next Hop": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Reserved": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Network Layer Reachability Information": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "3.  Multiprotocol Reachable NLRI - MP_REACH_NLRI (Type Code 14):",
+                          "refer": "RFC4760"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "MP_REACH_NLRI",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "MP_REACH_NLRI"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 40
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "MP_REACH_NLRI"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "MP_UNREACH_NLRI": {
+                        "struct": {
+                          "Address Family Identifier": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Subsequent Address Family Identifier": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Withdrawn Routes": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "4.  Multiprotocol Unreachable NLRI - MP_UNREACH_NLRI (Type Code 15):",
+                          "refer": "RFC4760"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "MP_UNREACH_NLRI",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "MP_UNREACH_NLRI"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 24
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "MP_UNREACH_NLRI"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "EXTENDED COMMUNITIES": {
+                        "info": {
+                          "chapter": "2.  BGP Extended Communities Attribute",
+                          "refer": "RFC4360"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "EXTENDED COMMUNITIES"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 32,
+                                    "rhs": 64
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 2,
+                                "keyword": "EXTENDED COMMUNITIES"
+                              }
+                            ]
+                          }
+                        ],
+                        "bitwidth": {
+                          "len": 64,
+                          "type": "byte"
+                        }
+                      },
+                      "AS4_PATH": {
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC6793"
+                        },
+                        "rule": []
+                      },
+                      "AS4_AGGREGATOR": {
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC6793"
+                        },
+                        "rule": []
+                      },
+                      "PMSI_TUNNEL": {
+                        "struct": {
+                          "Flags": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "bytes"
+                            },
+                            "value": [],
+                            "rule": []
+                          },
+                          "Tunnel Type": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "bytes"
+                            },
+                            "value": [],
+                            "rule": []
+                          },
+                          "MPLS Label": {
+                            "bitwidth": {
+                              "len": 24,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Tunnel Identifier": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "5",
+                          "refer": "RFC6514"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "PMSI_TUNNEL",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "PMSI_TUNNEL"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 40
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "PMSI_TUNNEL"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "Tunnel Encapsulation": {
+                        "struct": {
+                          "Tunnel Type": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "word"
+                            },
+                            "rule": []
+                          },
+                          "Length": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "word"
+                            },
+                            "rule": []
+                          },
+                          "Value": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC9012"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "Tunnel Encapsulation",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "Tunnel Encapsulation"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 32
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "Tunnel Encapsulation"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "IPv6 Address Specific Extended Community": {
+                        "struct": {
+                          "0x00 or 0x40": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Sub-Type": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "byte"
+                            },
+                            "rule": []
+                          },
+                          "Global Administrator": {
+                            "bitwidth": {
+                              "len": 128,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Local Administrator": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "word"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC5701"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "IPv6 Address Specific Extended Community",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "IPv6 Address Specific Extended Community"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 160
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "IPv6 Address Specific Extended Community"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "PE Distinguisher Labels": {
+                        "struct": {
+                          "PE Address": {
+                            "bitwidth": {
+                              "len": 17,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "Label": {
+                            "bitwidth": {
+                              "len": 17,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "8",
+                          "refer": "RFC6514"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "PE Distinguisher Labels",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "PE Distinguisher Labels"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 34
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "PE Distinguisher Labels"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "LARGE_COMMUNITY": {
+                        "struct": {
+                          "Global Administrator": {
+                            "bitwidth": {
+                              "len": 32,
+                              "type": "dword"
+                            },
+                            "rule": []
+                          },
+                          "Local Data Part 1": {
+                            "bitwidth": {
+                              "len": 32,
+                              "type": "dword"
+                            },
+                            "rule": []
+                          },
+                          "Local Data Part 2": {
+                            "bitwidth": {
+                              "len": 32,
+                              "type": "dword"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "info": {
+                          "chapter": "WHOLE",
+                          "refer": "RFC8092"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "LARGE_COMMUNITY",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "LARGE_COMMUNITY"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 96
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "LARGE_COMMUNITY"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "Only to Customer (OTC)": {
+                        "info": {
+                          "chapter": "5.  BGP Only to Customer (OTC) Attribute",
+                          "refer": "RFC9234"
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "Only to Customer (OTC)"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 32,
+                                    "rhs": 32
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 2,
+                                "keyword": "Only to Customer (OTC)"
+                              }
+                            ]
+                          }
+                        ],
+                        "bitwidth": {
+                          "len": 32,
+                          "type": "byte"
+                        }
+                      },
+                      "BGP Prefix-SID": {
+                        "info": {
+                          "chapter": "2",
+                          "refer": "RFC8669"
+                        },
+                        "struct": {
+                          "type": {
+                            "bitwidth": {
+                              "len": 8,
+                              "type": "bytes"
+                            },
+                            "extend_value": {
+                              "Reserved": {
+                                "value": "0",
+                                "info": {
+                                  "chapter": "2",
+                                  "refer": "RFC8669"
+                                }
+                              },
+                              "Label-Index": {
+                                "value": "1",
+                                "info": {
+                                  "chapter": "2",
+                                  "refer": "RFC8669"
+                                }
+                              },
+                              "Originator SRGB": {
+                                "value": "3",
+                                "info": {
+                                  "chapter": "2",
+                                  "refer": "RFC8669"
+                                }
+                              }
+                            },
+                            "rule": [
+                              {
+                                "OP": {
+                                  "USE": "type"
+                                },
+                                "Cond": [
+                                  {
+                                    "rfc_cond": [
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "0"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "1"
+                                      },
+                                      {
+                                        "lhs": "x",
+                                        "predicate": "32",
+                                        "rhs": "3"
+                                      }
+                                    ],
+                                    "connect": [
+                                      2,
+                                      2,
+                                      2
+                                    ],
+                                    "type": 3,
+                                    "keyword": "type"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "length": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          },
+                          "value": {
+                            "bitwidth": {
+                              "len": -1,
+                              "type": "bytes"
+                            },
+                            "rule": []
+                          }
+                        },
+                        "rule": [
+                          {
+                            "OP": {
+                              "USE": "BGP Prefix-SID",
+                              "Implicit": 1
+                            },
+                            "Structure": {
+                              "structr_name": "BGP Prefix-SID"
+                            },
+                            "Cond": [
+                              {
+                                "rfc_cond": [
+                                  {
+                                    "lhs": "x",
+                                    "predicate": 35,
+                                    "rhs": 24
+                                  }
+                                ],
+                                "connect": [],
+                                "type": 1,
+                                "keyword": "BGP Prefix-SID"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "Reserved for development": {
+                        "info": {
+                          "chapter": "",
+                          "refer": "RFC2042"
+                        },
+                        "rule": []
+                      }
+                    },
+                    "rule": []
+                  }
+                },
+                "info": {
+                  "chapter": "4.3",
+                  "refer": "RFC4271"
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Path Attributes",
+                      "Implicit": 1
+                    },
+                    "Structure": {
+                      "structr_name": "Path Attributes"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": 35,
+                            "rhs": 2
+                          }
+                        ],
+                        "connect": [],
+                        "type": 1,
+                        "keyword": "Path Attributes"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Network Layer Reachability Information": {
+                "bitwidth": {
+                  "len": -1,
+                  "type": "ip"
+                },
+                "rule": []
+              }
+            },
+            "info": {
+              "chapter": "4.3",
+              "refer": "RFC4271"
+            },
+            "rule": [
+              {
+                "OP": {
+                  "USE": "UPDATE",
+                  "Implicit": 1
+                },
+                "Structure": {
+                  "structr_name": "UPDATE"
+                },
+                "Cond": [
+                  {
+                    "rfc_cond": [
+                      {
+                        "lhs": "x",
+                        "predicate": 35,
+                        "rhs": 32
+                      }
+                    ],
+                    "connect": [],
+                    "type": 1,
+                    "keyword": "UPDATE"
+                  }
+                ]
+              }
+            ]
+          },
+          "NOTIFICATION": {
+            "value": "3",
+            "struct": {
+              "Error Code": {
+                "bitwidth": {
+                  "len": 8,
+                  "type": "byte"
+                },
+                "extend_value": {
+                  "Message Header Error": {
+                    "value": "1",
+                    "info": {
+                      "chapter": "6.1.  Message Header Error Handling",
+                      "refer": "RFC4271"
+                    }
+                  },
+                  "OPEN Message Error": {
+                    "value": "2",
+                    "info": {
+                      "chapter": "6.2.  OPEN Message Error Handling",
+                      "refer": "RFC4271"
+                    }
+                  },
+                  "UPDATE Message Error": {
+                    "value": "3",
+                    "info": {
+                      "chapter": "6.3.  UPDATE Message Error Handling",
+                      "refer": "RFC4271"
+                    }
+                  },
+                  "Hold Timer Expired": {
+                    "value": "4",
+                    "info": {
+                      "chapter": "6.5.  Hold Timer Expired Error Handling",
+                      "refer": "RFC4271"
+                    }
+                  },
+                  "Finite State Machine Error": {
+                    "value": "5",
+                    "info": {
+                      "chapter": "6.6.  Finite State Machine Error Handling",
+                      "refer": "RFC4271"
+                    }
+                  },
+                  "Cease": {
+                    "value": "6",
+                    "info": {
+                      "chapter": "6.7.  Cease",
+                      "refer": "RFC4271"
+                    }
+                  },
+                  "ROUTE-REFRESH Message Error": {
+                    "value": "7",
+                    "info": {
+                      "chapter": "5",
+                      "refer": "RFC7313"
+                    }
+                  }
+                },
+                "rule": [
+                  {
+                    "OP": {
+                      "USE": "Error Code"
+                    },
+                    "Cond": [
+                      {
+                        "rfc_cond": [
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "1"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "2"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "3"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "4"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "5"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "6"
+                          },
+                          {
+                            "lhs": "x",
+                            "predicate": "32",
+                            "rhs": "7"
+                          }
+                        ],
+                        "connect": [
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2,
+                          2
+                        ],
+                        "type": 3,
+                        "keyword": "Error Code"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Error subcode": {
+                "bitwidth": {
+                  "len": 8,
+                  "type": "byte"
+                },
+                "extend_value": {
+                  "Message Header Error subcodes": {
+                    "extend_value": {
+                      "Connection Not Synchronized": {
+                        "value": "1",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Bad Message Length": {
+                        "value": "2",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Bad Message Type": {
+                        "value": "3",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      }
+                    },
+                    "info": {
+                      "chapter": "4.5",
+                      "refer": "RFC4271"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "Message Header Error subcodes"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "1"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "2"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "3"
+                              }
+                            ],
+                            "connect": [
+                              2,
+                              2,
+                              2
+                            ],
+                            "type": 3,
+                            "keyword": "Message Header Error subcodes"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "OPEN Message Error subcodes": {
+                    "extend_value": {
+                      "Unsupported Version Number": {
+                        "value": "1",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Bad Peer AS": {
+                        "value": "2",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Bad BGP Identifier": {
+                        "value": "3",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Unsupported Optional Parameter": {
+                        "value": "4",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Unacceptable Hold Time": {
+                        "value": "6",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Unsupported Capability": {
+                        "value": "7",
+                        "info": {
+                          "chapter": "5",
+                          "refer": "RFC5492"
+                        }
+                      },
+                      "Role Mismatch": {
+                        "value": "11",
+                        "info": {
+                          "chapter": "4.2",
+                          "refer": "RFC9234"
+                        }
+                      }
+                    },
+                    "info": {
+                      "chapter": "4.5",
+                      "refer": "RFC4271"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "OPEN Message Error subcodes"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "1"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "2"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "3"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "4"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "6"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "7"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "11"
+                              }
+                            ],
+                            "connect": [
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2
+                            ],
+                            "type": 3,
+                            "keyword": "OPEN Message Error subcodes"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "UPDATE Message Error subcodes": {
+                    "extend_value": {
+                      "Malformed Attribute List": {
+                        "value": "1",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Unrecognized Well-known Attribute": {
+                        "value": "2",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Missing Well-known Attribute": {
+                        "value": "3",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Attribute Flags Error": {
+                        "value": "4",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Attribute Length Error": {
+                        "value": "5",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Invalid ORIGIN Attribute": {
+                        "value": "6",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Invalid NEXT_HOP Attribute": {
+                        "value": "8",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Optional Attribute Error": {
+                        "value": "9",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Invalid Network Field": {
+                        "value": "10",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      },
+                      "Malformed AS_PATH": {
+                        "value": "11",
+                        "info": {
+                          "chapter": "4.5",
+                          "refer": "RFC4271"
+                        }
+                      }
+                    },
+                    "info": {
+                      "chapter": "4.5",
+                      "refer": "RFC4271"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "UPDATE Message Error subcodes"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "1"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "2"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "3"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "4"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "5"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "6"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "8"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "9"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "10"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "11"
+                              }
+                            ],
+                            "connect": [
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2
+                            ],
+                            "type": 3,
+                            "keyword": "UPDATE Message Error subcodes"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "BGP Finite State Machine Error Subcodes": {
+                    "extend_value": {
+                      "Unspecified Error": {
+                        "value": "0",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC6608"
+                        }
+                      },
+                      "Receive Unexpected Message in OpenSent State": {
+                        "value": "1",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC6608"
+                        }
+                      },
+                      "Receive Unexpected Message in OpenConfirm State": {
+                        "value": "2",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC6608"
+                        }
+                      },
+                      "Receive Unexpected Message in Established State": {
+                        "value": "3",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC6608"
+                        }
+                      }
+                    },
+                    "info": {
+                      "chapter": "4.5",
+                      "refer": "RFC4271"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "BGP Finite State Machine Error Subcodes"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "0"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "1"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "2"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "3"
+                              }
+                            ],
+                            "connect": [
+                              2,
+                              2,
+                              2,
+                              2
+                            ],
+                            "type": 3,
+                            "keyword": "BGP Finite State Machine Error Subcodes"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "BGP Cease NOTIFICATION message subcodes": {
+                    "extend_value": {
+                      "Maximum Number of Prefixes Reached": {
+                        "value": "1",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC4486"
+                        }
+                      },
+                      "Administrative Shutdown": {
+                        "value": "2",
+                        "struct": {
+                          "AFI": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "word"
+                            }
+                          },
+                          "SAFI": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "word"
+                            }
+                          },
+                          "Prefix upper bound": {
+                            "bitwidth": {
+                              "len": 16,
+                              "type": "word"
+                            }
+                          }
+                        },
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC4486"
+                        }
+                      },
+                      "Peer De-configured": {
+                        "value": "3",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC4486"
+                        }
+                      },
+                      "Administrative Reset": {
+                        "value": "4",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC4486"
+                        }
+                      },
+                      "Connection Rejected": {
+                        "value": "5",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC4486"
+                        }
+                      },
+                      "Other Configuration Change": {
+                        "value": "6",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC4486"
+                        }
+                      },
+                      "Connection Collision Resolution": {
+                        "value": "7",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC4486"
+                        }
+                      },
+                      "Out of Resources": {
+                        "value": "8",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC4486"
+                        }
+                      },
+                      "Hard Reset": {
+                        "value": "9",
+                        "info": {
+                          "chapter": "3",
+                          "refer": "RFC8538"
+                        }
+                      }
+                    },
+                    "info": {
+                      "chapter": "4.5",
+                      "refer": "RFC4271"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "BGP Cease NOTIFICATION message subcodes"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "1"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "2"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "3"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "4"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "5"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "6"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "7"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "8"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "9"
+                              }
+                            ],
+                            "connect": [
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2,
+                              2
+                            ],
+                            "type": 3,
+                            "keyword": "BGP Cease NOTIFICATION message subcodes"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "BGP ROUTE-REFRESH Message Error subcodes": {
+                    "extend_value": {
+                      "Reserved": {
+                        "value": "0",
+                        "info": {
+                          "chapter": "",
+                          "refer": "RFC7313"
+                        }
+                      },
+                      "Invalid Message Length": {
+                        "value": "1",
+                        "info": {
+                          "chapter": "5",
+                          "refer": "RFC7313"
+                        }
+                      }
+                    },
+                    "info": {
+                      "chapter": "4.5",
+                      "refer": "RFC4271"
+                    },
+                    "rule": [
+                      {
+                        "OP": {
+                          "USE": "BGP ROUTE-REFRESH Message Error subcodes"
+                        },
+                        "Cond": [
+                          {
+                            "rfc_cond": [
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "0"
+                              },
+                              {
+                                "lhs": "x",
+                                "predicate": "32",
+                                "rhs": "1"
+                              }
+                            ],
+                            "connect": [
+                              2,
+                              2
+                            ],
+                            "type": 3,
+                            "keyword": "BGP ROUTE-REFRESH Message Error subcodes"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "rule": []
+              },
+              "Data": {
+                "bitwidth": {
+                  "len": -1,
+                  "type": "bytes"
+                },
+                "rule": []
+              }
+            },
+            "info": {
+              "chapter": "4.5",
+              "refer": "RFC4271"
+            },
+            "rule": [
+              {
+                "OP": {
+                  "USE": "NOTIFICATION",
+                  "Implicit": 1
+                },
+                "Structure": {
+                  "structr_name": "NOTIFICATION"
+                },
+                "Cond": [
+                  {
+                    "rfc_cond": [
+                      {
+                        "lhs": "x",
+                        "predicate": 35,
+                        "rhs": 16
+                      }
+                    ],
+                    "connect": [],
+                    "type": 1,
+                    "keyword": "NOTIFICATION"
+                  }
+                ]
+              }
+            ]
+          },
+          "KEEPALIVE": {
+            "value": "4",
+            "info": {
+              "chapter": "4.4",
+              "refer": "RFC4271"
+            },
+            "rule": []
+          },
+          "ROUTE-REFRESH": {
+            "value": "5",
+            "struct": {
+              "Address Family Identifier": {
+                "bitwidth": {
+                  "len": 16,
+                  "type": "bytes"
+                },
+                "rule": []
+              },
+              "Reserved": {
+                "bitwidth": {
+                  "len": 8,
+                  "type": "bytes"
+                },
+                "rule": []
+              },
+              "Subsequent Address Family Identifier": {
+                "bitwidth": {
+                  "len": 8,
+                  "type": "bytes"
+                },
+                "rule": []
+              }
+            },
+            "info": {
+              "chapter": "WHOLE",
+              "refer": "RFC2918"
+            },
+            "rule": [
+              {
+                "OP": {
+                  "USE": "ROUTE-REFRESH",
+                  "Implicit": 1
+                },
+                "Structure": {
+                  "structr_name": "ROUTE-REFRESH"
+                },
+                "Cond": [
+                  {
+                    "rfc_cond": [
+                      {
+                        "lhs": "x",
+                        "predicate": 35,
+                        "rhs": 32
+                      }
+                    ],
+                    "connect": [],
+                    "type": 1,
+                    "keyword": "ROUTE-REFRESH"
+                  }
+                ]
+              }
+            ]
+          },
+          "CAPABILITY": {
+            "value": 6,
+            "struct": {
+              "Init/Ack": {
+                "bitwidth": {
+                  "len": 1,
+                  "type": "bit"
+                },
+                "rule": []
+              },
+              "Ack Request": {
+                "bitwidth": {
+                  "len": 1,
+                  "type": "bit"
+                },
+                "rule": []
+              },
+              "Reserved": {
+                "bitwidth": {
+                  "len": 5,
+                  "type": "bit"
+                },
+                "rule": []
+              },
+              "Action": {
+                "bitwidth": {
+                  "len": 1,
+                  "type": "bit"
+                },
+                "rule": []
+              },
+              "Sequence Number": {
+                "bitwidth": {
+                  "len": 32,
+                  "type": "byte"
+                },
+                "rule": []
+              },
+              "Capability Code": {
+                "bitwidth": {
+                  "len": 8,
+                  "type": "byte"
+                },
+                "rule": []
+              },
+              "Capability Length": {
+                "bitwidth": {
+                  "len": 16,
+                  "type": "byte"
+                },
+                "rule": []
+              },
+              "Capability Value": {
+                "bitwidth": {
+                  "len": -1,
+                  "type": "bytes"
+                },
+                "rule": []
+              }
+            },
+            "info": {
+              "chapter": "WHOLE",
+              "refer": "draft-ietf-idr-dynamic-cap"
+            },
+            "rule": [
+              {
+                "OP": {
+                  "USE": "CAPABILITY",
+                  "Implicit": 1
+                },
+                "Structure": {
+                  "structr_name": "CAPABILITY"
+                },
+                "Cond": [
+                  {
+                    "rfc_cond": [
+                      {
+                        "lhs": "x",
+                        "predicate": 35,
+                        "rhs": 64
+                      }
+                    ],
+                    "connect": [],
+                    "type": 1,
+                    "keyword": "CAPABILITY"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "rule": [
+          {
+            "OP": {
+              "USE": "Type"
+            },
+            "Cond": [
+              {
+                "rfc_cond": [
+                  {
+                    "lhs": "x",
+                    "predicate": "32",
+                    "rhs": "1"
+                  },
+                  {
+                    "lhs": "x",
+                    "predicate": "32",
+                    "rhs": "2"
+                  },
+                  {
+                    "lhs": "x",
+                    "predicate": "32",
+                    "rhs": "3"
+                  },
+                  {
+                    "lhs": "x",
+                    "predicate": "32",
+                    "rhs": "4"
+                  },
+                  {
+                    "lhs": "x",
+                    "predicate": "32",
+                    "rhs": "5"
+                  },
+                  {
+                    "lhs": "x",
+                    "predicate": "32",
+                    "rhs": 6
+                  }
+                ],
+                "connect": [
+                  2,
+                  2,
+                  2,
+                  2,
+                  2,
+                  2
+                ],
+                "type": 3,
+                "keyword": "Type"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "info": {
+      "chapter": "4.1",
+      "refer": "RFC4271"
+    },
+    "rule": [
+      {
+        "OP": {
+          "USE": "Message Header Format",
+          "Implicit": 1
+        },
+        "Structure": {
+          "structr_name": "Message Header Format"
+        },
+        "Cond": [
+          {
+            "rfc_cond": [
+              {
+                "lhs": "x",
+                "predicate": 35,
+                "rhs": 152
+              }
+            ],
+            "connect": [],
+            "type": 1,
+            "keyword": "Message Header Format"
+          }
+        ]
+      }
+    ]
+  }
+}

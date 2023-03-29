@@ -1,0 +1,1808 @@
+FRR 8.4.2 Release Latest
+
+Bug fixes:
+
+bfdd: fix ipv4 socket source selection
+bgpd : fix crash for set ipv4/ipv6 vpn next-hop command
+bgpd: stop overriding nexthop when bgp unnumbered
+bgpd: fix aggregated routes are withdrawn abnormally
+bgpd: fix a few memory leaks
+build: enable pim6d by default
+build: fix sed regex in lua macro
+doc : add freebsd 13 build docs
+isisd: fix memory leak
+lib: disable vrf before terminating interfaces
+lib: do not log echo ping commands from watchfrr
+ospf6d: fix infinite loop when adding asbr route
+ospfd: fix rfc conformance test cases 25.19 and 27.6
+ospfd: fix typo and report the P2P link name in the warning
+ospfd: report the router IP with opaque capability mismatch
+ospfd: fix memory leak
+pimd: consistently ignore prefix list mask len
+staticd: do not crash when modifying an existing static route with color
+zebra: free all memory associated ctx->u.iptable.interface_name_list
+zebra: fix tracepoint changes for lttng
+zebra: free up route map name memory on vrf deletion event
+zebra: use mpls enable, not mpls when generating a config
+--------
+FRR 8.4.1 Release
+
+Bug fixes:
+
+zebra: Fix dplane_fpm_nl to allow for fast configuration
+zebra: Use the enum, luke
+zebra: relax if_type check to allow early ES config creation
+zebra: Reuse netinet/if_ether.h to avoid redefinition of struct ethhdr
+zebra: fix build without AF_MPLS
+ospfd: Get route-map name for default-information originate
+ospfd: Allow unnumbered and numbered addresses to co-exist better
+ospfd: prevent from crashing when processing external lsa
+bgpd: fix "storing the address of local variable"
+bgpd: rpki was decrementing the node lock one time too many
+bgpd: Do not send Deconfig/Shutdown message when restarting
+bgpd: authorise to select bgp self peer prefix on rr case
+bgpd: fix invalid ipv4-vpn nexthop for IPv6 peer
+pimd: Convert zlog_warn to debug
+isisd: fix area NULL pointer in isis_route_update
+tools: remove backslash from declare check regex
+--------
+FRR 8.4 Release
+
+
+Release Overview
+New BGP command (neighbor PEER soo) to configure SoO to prevent routing loops and suboptimal routing on dual-homed sites.
+Command debug bgp allow-martian replaced to bgp allow-martian-nexthop because previously we allowed using martian next-hops when debug is turned on.
+Implement BGP Prefix Origin Validation State Extended Community rfc8097
+Implement Route Leak Prevention and Detection Using Roles in UPDATE and OPEN Messages rfc9234
+BMP L3VPN support
+PIMv6 support
+MLD support
+New command to enable using reserved IPv4 ranges as normal addresses for BGP next-hops, interface addresses, etc.
+As usual, lots of bugs and memory leaks were fixed \m/
+Changelog
+babeld
+
+Ignore Sub-TLV's with mandatory bit set
+Ignore unicast Hello's
+bfdd
+
+Add IPv4 BFD Echo support
+Add RTT to BFD IPv4 Echo packet processing
+Allow L3 VRF BFD sessions without UDP leaking
+bgpd
+
+Add mpls bgp forwarding to ease MPLS-VPN EBGP peering
+Add bgp allow-martian-nexthop command (remove debug bgp allow-martian)
+Add neighbor soo command
+Add no rpki command
+Add show bgp access-list command to filter routes by access-list
+Implement rfc8097
+Implement rfc9234
+Add resolution for L3VPN traffic over GRE interfaces
+Allow setting custom port for BGP unnumbered peers
+Allow statistics gathering to give more data about prefix lengths
+Apply conditional advertisements policy to update-group
+Associate appropriate family for redistributed connected addresses
+Avoid notify race between io and main pthreads
+Call a hook when as-path filter is replaced
+Cleanup memory leaks associated with t_deferral_timer
+Do not check if the whole as-path has target asn when using as-override
+Do not print new line for EVPN CLI outputs if it's a JSON
+Do not show polling_period default value in CLI for RPKI
+Don't advertise conditionally withdrawn routes
+Drop SSH public key for RPKI CLI option
+Fix show bgp nexthop a.b.c.d
+Fix for aggregate-address summary-only matching-med-only
+Fix inconsistencies with default-originate route-map
+Fix memory leak for as-override
+Fix memory leak for set as-path replace route-map command
+Fix memory leak for community alias
+Fix memory leak for community stuff
+Fix memory leak in SRv6 locator
+Fix memory leak when an SRv6 sid is removed
+Fix memory leak when setting [l]community at the egress
+Fix route-map update and delete route-map
+Fix show bgp l2vpn evpn route rd crash
+Fix the wrong next-hop BGP struct for next-hop validation
+Fixed BMP VPNv4 monitoring are withdrawn instead of updates
+Fixup PBR rule changes that were missed
+Fixup some MAC address token CLI syntax
+Free ecommunity before returning on warning/error
+Free memory for as-path filter if regexp is wrong
+Free memory for BMP listeners when deleting BGP instance
+Generate RPKI CLI config even if no cache servers are configured
+Handle origin validation state extended community via route-map match
+Handle route-refresh requests received before EOR
+Implement retain route-target all behavior
+Improve labelpool performance at scale
+Inconsistencies in snt counters with default-originate
+Prevent memory leak of the listener on shutdown
+Print peer's hostname for BGP (filtering) messages
+Print source VRF name when leaking to another VRF
+Release RCU lock in BGP keepalive pthread
+Reset BGP sessions when changing the port
+Send route updates when modifying access/aspath/prefix lists
+Set TTL for iBGP/eBGP by checking only if generic TTL security applied
+Show cache server preference in show rpki cache-server output
+Show extended communities memory consumption
+Show TTL value unconditionally for neighbors
+Start conditional advertisement timer instantly
+Stop conditional advertisements thread when terminating
+Stop LLGR thread when deleting a peer and/or gr flags changed
+Treat as withdraw if we receive as path with as_set / as_confed_set
+When specifying listen address for BGP we shouldn't imply no-fib flag
+Withdraw implicitly old paths from VRFs when import/export list changes
+Ensure that bgp open message stream has enough data to read
+Notify BGP conditional advertisement thread when the peer goes down
+bmp
+
+Add an interface source to BMP connect command
+Add L3VPN support
+eigrpd
+
+VRF variable name hides a parameter of the same name
+fabricd
+
+Turn off excessive logging when peering will not come up
+isisd
+
+Ensure rcap is freed in error case
+Fix crash with xfrm interface type
+Fix memory leak on shutdown with prefix lists
+Fix prefix-sid last-hop-behavior
+ldpd
+
+Check if the thread is scheduled before calling for remained time
+lib
+
+Abstract usage of '%pnhs' so that next-hop groups can use it too
+Add errno details to the sockopt_reuseaddr API
+Add sys_rawio to the capabilities definitions
+Allow downgrade of all caps when none are specified
+Allow using ipv4 (class e) reserved block if enabled
+Check hostname in resolver_resolve
+Cleanup red-herring memleaks in the parent of daemonizing fork
+Ensure ls_msg2edge does not use memory after freeing
+Fix show route-map name json command and memory leak
+Fix memory leak in zclient_send_localsid()
+Fix skip of every other plist deletion
+Fixup workqueue.c to use the proper thread.h semantics
+Function crypt does not need to be declared mid function
+Increase next-hop flags size to 16 bits
+Prevent uninitialized usage of data
+Remove usage of inet_ntop in lib/sockopt.c
+Require at least 2.1.42 version of sysrepo when compiling
+Return 0 as the remaining msec if the thread is not scheduled
+stream_dup memory alloc cannot fail
+Update sysrepo code with the latest API changes
+Use pi4 instead of inet_ntop in sockopt.c
+nhrpd
+
+Use frr_weak_random()
+Use nhrp_interface_update_nbma when source VRF was changed
+ospf6d
+
+Don't remove the summary route if it is a range
+Ensure that ospf6d does not memcpy beyond the end of the data
+Fix missing cost change
+Permit route delete without next-hops
+Remove ospf6enabled from JSON output
+ospfd
+
+Add how many packets the interface has queued to send
+Add router-id support to OSPF API
+Added CLIs to change default timers for lsa refresh and maxage remove delay.
+Adding per neighbor JSON details to gr helper detail command
+Crash when router acts as gr helper upon a topo change
+Fix show ip ospf neighbour <nbrid> command
+Increase packets sent at one time in ospf_write
+Refactor fifo_flush for the interface
+Remove deprecated command graceful-restart helper-only
+When a neighbor goes down clear the oi->obuf if we can
+Catch and report too small LSAs
+Remove assert on zero length LSA - which is permitted by spec
+Fix bug where acks were not be generated to incoming P2P/P2MP neighbors
+pathd
+
+no mpls-te on command was not working
+Add a zebra stop handler
+Change the vty output, when no ted is enabled on pathd
+Ensure the path is free'd after we no longer need it
+Nai adjacency fix query type f for IPv5
+pim6d
+
+(*,g) mroutes not learnt after pim6d daemon restart
+Lots of CLI changes regarding MLD
+Lots of CLI changes regarding PIMv6
+Clear interface stats on interface shutdown
+Disable pim6d compilation by default
+Don't enable MLD on pimreg interface
+Fix the code for MLD in the show pim state command
+mroute stuck in register state, multicast traffic getting drops
+Register message getting dropped in the source node, mroute stuck in regj
+Send register msg with IPv6 global address
+Update last_member_query_interval and last_member_query_count
+Use ttable for displaying show commands
+Deleting the memory malloced for JSON
+Adding JSON support for show ipv6 next-hop
+Send register msg via register socket
+Change the show running commands based on the address family
+Set rp to true if the address matches, ignore prefix-length
+pimd
+
+Allow v6 to do non-integrated configuration
+Assign a vty port value for v6
+Cleanup rpf lookup debug to help us figure out what is going on
+Correct the order of show JSON for interface traffic
+During prune pending, behave as noinfo state
+Fix invalid memory access join_timer_stop
+Fix memleak in bfd profile
+Fix PIM interface deletion flow
+Fix static mroute to also take into account the input interface
+Fix the setting of oif_flags in channel oil
+Fix unaligned accesses
+Handle receive of (*,g) register stop with src addr as 0
+Igmp querier election is not correct in lan scenario
+JSON support for next-hop
+Let the end operator know the ifindex as well in t...
+--------
+FRR 8.3.1 Release
+
+
+Release Overview
+Handle CTRL+Z without exiting the VTY shell
+In the 8.3 release, the CTRL+Z combination exited the VTY shell, it's back again!
+Ignore end when parsing frr.conf
+If frr.conf has end inside the config, BGP peering starts only after 10 minutes. This is because parsing the end keyword stopped hooks from reaching the end of the configuration and BGP thoughts the configuration is not ready.
+Changelog
+bgpd
+
+Do not announce routes that are conditionally withdrawn (a gap between conditional advertisement interval)
+Fix crash for show bgp l2vpn evpn route rd
+Do not overwrite the Link-Local address with another interface for the next-hop cache
+Call a hook when the as-path filter is replaced
+Fix memory leak when cleaning up MPLS labels
+isisd
+
+Fix memory leak when deleting adjacency
+ldpd
+
+Fix crash when hold time is configured to 65535
+ospfd
+
+Fix crash when the router is running in GR helper mode and receives a new LSA
+pimd
+
+Fix memory leak for show ip pim interface
+Allow the same group/source route to be configured on more than one interface
+vtysh
+
+Handle CTRL+Z without exiting the VTY shell
+Ignore end when parsing frr.conf
+zebra
+
+Avoid buffer overflow when parsing nested route attributes for SR-IPv6
+Fix missing VNI transition, e.g.: show evpn vni detail
+--------
+FRR 8.3 Release
+
+Release Overview
+Features
+Notification Message support for BGP Graceful Restart
+(http://docs.frrouting.org/en/latest/bgp.html#clicmd-bgp-graceful-restart-notification)
+BGP Cease Notification Subcode For BFD
+Send Hold Timer for BGP
+RFC5424 syslog support
+(http://docs.frrouting.org/en/latest/extlog.html?#clicmd-destination-syslog-supports-rfc5424)
+PIM passive command
+(http://docs.frrouting.org/en/latest/pim.html#clicmd-ip-pim-passive)
+Breaking changes
+Require librtr >= 0.8.0 for BGP RPKI
+Changelog
+General
+
+Add camelcase json keys in addition to pascalcase (Wrong JSON keys will be depracated)
+Fix corruption when route-map delete/add sequence happens (fast re-add)
+Reworked gRPC
+RFC5424 & journald extended syslog target
+bfdd
+
+Fix broken FSM in active/passive modes
+bgpd
+
+Notification Message Support for BGP Graceful Restart (rfc8538)
+BGP Cease Notification Subcode For BFD
+Send Hold Timer for BGP (own implementation without an additional knob)
+New set as-path replace command for BGP route-map
+New match peer command for BGP route-map
+New ead-es-frag evi-limit command for EVPN
+New match evpn route-type command for EVPN route-map to match Type-1/Type-4
+JSON outputs for all RPKI show commands
+Set attributes via route-map for BGP conditional advertisements
+Pass non-transitive extended communities between RS and RS-clients
+Send MED attribute when aggregate prefix is created
+Require librtr >= 0.8.0 for RPKI to fix connection handling (failover)
+Fix aspath memory leak in aggr_suppress_map_test
+Fix crash for show ip bgp vrf all all neighbors 192.168.0.1 ...
+Fix crash for show ip bgp vrf all all
+Fix memory leak for BGP Community Alias in CLI
+Fix memory leak when setting BGP community at egress
+Fix memory leak when setting BGP large-community at egress
+Fix SR color nexthop processing in BGP
+Fix setting local-preference in route-map using +/-
+Fix crash using Lua and route-map to set attributes via scripts
+Fix crash when issuing various forms of bgp no-rib
+isisd
+
+JSON output for show summary command
+Fix crash when MTU mismatch occurs
+Fix crash with xfrm interface type
+Fix infinite loop when parsing LSPs
+Fix router capability TLV parsing issues
+vtysh
+
+New show thread timers command
+ospfd6
+
+Add LSA statistics to LSA database
+Add LSA stats to show area json output
+Show time left in hello timer for show ipv6 ospf6 int
+Permit route deletion without nexthops
+Restart SPF when distance is updated
+Stop refreshing Type-5 from NSSA
+Support keychain for ospf6 authentication
+ospfd
+
+New show ip ospf reachable-routers command
+Restart SPF when distance is updated
+Use consistent JSON keys for show ip ospf neighbor and detail version
+pimd
+
+Add additional IGMP stats
+Add IGMP join sent/failed statistics
+Add IGMP total groups and total source groups to statistics
+New debug igmp trace detail command
+New ip pim passive command
+JSON support added for command show ip igmp sources
+Allow the LPM match work properly with prefix lists and normal RP's
+Do not allow 224.0.0.0/24 range in IGMP join
+Fix IGMP packet/query check
+Handle PIM join/prune receive flow for IPv6
+Handle receive of (*,G) register stop with source address as 0
+Handle of exclude mode IGMPv3 report messages for SSM-aware group
+Handle of IGMPv2 report message for SSM-aware group range
+Send immediate join with possible sg rpt prune bit set
+Show group-type under show ip pim rp-info
+Show total received messages IGMP stats
+staticd
+
+Capture zebra's advertised ECMP limit
+Don't register existing nexthop to Zebra
+Reject route config with too many nexthops
+Track nexthops per-safi
+watchfrr
+
+Add some more information to show watchfrr
+Send operational state to systemd
+zebra
+
+Add ability to know when FRR is not ASIC offloaded
+Add command for setting protodown bit
+Add dplane type for netconf data
+Add ECMP supported to show zebra
+Add EVPN status to show zebra
+Add if v4/v6 forwarding is turned on/off to show zebra
+Add initial zebra tracepoint support
+Add kernel nexthop group support to show zebra
+Add knowledge about ra and rfc 5549 to show zebra
+Add mpls status to show zebra
+Add netlink debug dump for netconf messages
+Add netlink debugs for ip rules
+Add OS and version to show zebra
+Add support for end.dt4
+Add to show zebra the type of vrf devices being used
+Allow *BSD to specify a receive buffer size
+Allow multiple connected routes to be choosen for kernel routes
+Allow system routes to recurse through themselves
+Don't send RAs w/o link-local v6 or on bridge-ports
+Evpn disable remove l2vni from l3vni list
+Evpn-mh bonds protodown check for set
+Evpn-mh use protodown update reason api
+Fix cleanup of meta queues on vrf disable
+Fix crash in evpn neigh cleanup all
+Fix missing delete vtep during vni transition
+Fix missing vrf change of l2vni on vxlan interface
+Fix rtadv startup when config read in is before interface up
+Fix use after deletion event in FreeBSD
+Fix v6 route replace failure turned into success
+Get zebra graceful restart working when restarting on *BSD
+Handle FreeBSD routing socket enobufs
+Handle protodown netlink for vxlan device
+Include mpls enabled status in interface output
+Include old reason in evpn-mh bond update
+Keep the interface flags safe on multiple ioctl calls
+Let /32 host route with same ip cross vrf
+Make router advertisement warnings show up once every 6 hours
+Prevent crash if zebra_route_all is used for a route type
+Prevent installation of connected multiple times
+Protodown-up event trigger interface up
+Register nht nexthops with proper safi
+Update advertise-svi-ip macips w/ new mac
+When handling unprocessed messages from kernel print usable string
+New show ip nht mrib command
+Handle ENOBUFS errors for FreeBSD
+--------
+FRR 8.2.2 Release
+
+
+Release Overview
+Features
+BGP Long-lived graceful restart capability
+(http://docs.frrouting.org/en/stable-8.2/bgp.html#long-lived-graceful-restart)
+BGP Extended Optional Parameters Length for BGP OPEN Message
+(http://docs.frrouting.org/en/stable-8.2/bgp.html#clicmd-neighbor-PEER-extended-optional-parameters)
+BGP Extended BGP Administrative Shutdown Communication
+IS-IS Link State Traffic Engineering support
+(http://docs.frrouting.org/en/stable-8.2/isisd.html#traffic-engineering)
+OSPFv3 Support for NSSA Type-7 address ranges
+(http://docs.frrouting.org/en/stable-8.2/ospf6d.html#ospf6-area)
+PBR VLAN actions support
+(http://docs.frrouting.org/en/stable-8.2/pbr.html#pbr-maps)
+Changelog
+babeld
+
+Fix the checks for truncated packets
+bfdd
+
+Correct one spelling error of comment
+Fix detection timeout update
+Fix possibly wrong counter of control packets
+bgpd
+
+Fix inconsistency of match ip/ipv6 next-hop commands
+Fix crash when using show bgp vrf all
+Fix setting attributes over route-maps for conditional advertisements
+Fix redirect import for route-target ipv6
+Handle TCP connection errors with connection callbacks for RPKI
+Add json option to a few more show commands
+Add show bgp <afi> <safi> json detail header data
+Add a 15 minutes warning to missing eBGP policy
+Add an ability to match ipv6 next-hop by prefix-list
+Add autocomplete for lots of BGP CLI commands
+Add Long-lived graceful restart capability
+Add Graceful-restart support for dynamic peers
+Implement rfc6938
+Implement rfc9003
+Implement rfc9072
+docker
+
+Update alpine build enable set own version
+isisd
+
+Add link state traffic engineering support
+Fix router capability tlv parsing issues
+Fix running-config for fast-reroute
+Make IS-IS work with default vrf name different than default
+ospf6d
+
+Add missing vrf parameter to clear ipv6 ospf6 interface
+Add prompt for commands with non-exist vrf
+Add support for nssa type-7 address ranges
+Add the ability of specifying router-id/area-id in no debug ospf6
+Do not originate type-4 lsa when nssa
+Do not send type-5 into stub area
+Fix ecmp inter-area route nexthop update
+Fix memory leak for show ipv6 ospf6 zebra json
+ospfd
+
+Fix wrong comparison of route-map name
+Fix crash on ospf send-extra-data zebra
+Fix incorrect detection of topology changes in helper mode
+Fix loss of mixed form in range command
+Fix no-form of graceful-restart command
+Fix summary-address deletion
+Fix wrong parsing of te subtlv
+pbrd
+
+Add vlan actions to vty
+Pbr route maps get addr family of nhgs
+Protect from a possible null dereference
+pimd
+
+Do not allow 224.0.0.0/24 range in igmp join
+Fix igmp user config
+Fix msdp mesh grp with wildcard member addr
+Fix stale forwarding entries left around after join goes away
+Handle vxlan sg add/del for upstream entries that are in a reg-join state
+Hello sent stats counter change and new flag addition to decide hello send
+Igmp messages may be longer than 8 octets
+Modify show ip pim assert to only show interesting bits
+redhat
+
+Check if frr.conf already exists
+Logrotate file has typo for staticd
+ripd
+
+Fix packet send for non primary addresses
+vtysh
+
+Add missing rpki node when showing config
+Improve startup time
+Remove address-family evpn
+watchfrr
+
+Allow an integrated config to work within a namespace
+zebra
+
+Don't lose next hop weights while exporting via fpm
+Add optional nhg id output to show ip route
+Add resolver flag for nexthop in json
+Add support for json output in srv6 locator detail command
+Fix buffer overflow
+Fix netns deletion
+Fix gRPC crashes
+--------
+FRR 8.1.0 Release
+
+
+Release Overview
+Features
+Lua hooks are now feature complete, with one hook available for use
+(http://docs.frrouting.org/en/latest/scripting.html)
+Improvements to SRv6 (Segment Routing over IPv6)
+(http://docs.frrouting.org/en/latest/zebra.html#segment-routing-ipv6)
+Improvements to Prefix-SID (Type 5)
+EVPN route type-5 gateway IP overlay Index
+(http://docs.frrouting.org/en/latest/bgp.html#evpn-overlay-index-gateway-ip)
+OSPFv3 NSSA and NSSA totally stub areas
+(http://docs.frrouting.org/en/latest/ospf6d.html#ospf6-area)
+OSPFv3 ASBR summarization
+(http://docs.frrouting.org/en/latest/ospf6d.html#asbr-summarisation-support-in-ospfv3)
+OSPFv3 Graceful Restart
+(http://docs.frrouting.org/en/latest/ospf6d.html#graceful-restart)
+OSPFv2 Graceful Restart (restarting mode added, helper was already implemented)
+(http://docs.frrouting.org/en/latest/ospfd.html#graceful-restart)
+FRRouting 2021 GSOC Project
+FRRouting's GSOC student implemented the infrastructure needed to add the
+ability to call out to user provided Lua scripts from within FRR. Keep an eye
+out for developments in this area.
+
+You can read about the work he did here:
+
+https://frrouting.github.io/frr-gsoc/year-2021/projects/lua-hook-points
+https://dlqs.dev/frr-gsoc-2021.html
+
+And its presentation at Netdev 0x15:
+https://www.youtube.com/watch?v=_8R1MYP7M48&t=1051s
+
+Thank you @dlqs!
+
+Changelog
+Behavior Changes
+
+Every node in running config now has an explicit "exit" tag
+Link bandwidth in BGP is now correctly encoded according to IEEE 754.
+To stay with old incorrect encoding use:
+neighbor PEER disable-link-bw-encoding-ieee
+bgpd
+
+Add "json" option to "show bgp as-path-access-list"
+Add disable-addpath-rx knob
+Add an ability to set extcommunity to none in route-maps
+Add counter of displayed show bgp summary when filtering
+Add knob to config cond-adv scanner period
+Add route-map match alias command
+Add rpki source address configuration
+Add show bgp summary filter by neighbor or as
+Add terse display option on show bgp summary
+Allow for auto-completion of community alias's created
+Bgp knob to teardown session immediately when peer is unreachable
+Expand 'bgp default -' cmds
+Extend evpn next hop tracking to type-1 and type-4 routes
+Fix "no router bgp x vrf default"
+Flowspec redirect vrf uses vrf table instead of allocated table id
+Handle quick flaps of an evpn prefix properly
+Initial batch of evpn lttng tracepoints
+Limit processing to what is needed in rpki validation
+Modify vrf/view display in show bgp summary
+Set 4096 instead of 65535 as new max packet size for a new peer
+Set extended msg size only if we advertised and received capability
+Show bgp community alias in json community list output
+Show bgp prefixes by community alias
+Show max packet size per update-group
+Split soft reconfigure table task into several jobs to not block vtysh
+Store distance received from a redistribute statement
+Update route-type-1 legend to match output
+isisd
+
+Fix sending of lsp with null seqno
+nhrpd
+
+Clear cache when shortcuts are cleared
+Fix corrupt address being shown for shortcuts with no cache entry
+Set prefix correctly in resolution request
+ospf6d
+
+Add debug commands for lsa all and route all
+Add warning log for late hello packets
+Add write-multiplier configuration
+Don't update router-id if at least one adjacency is full
+Extend the "redistribute" command with more options
+Fix issue when displaying the redistribute command
+Fix logging of border router routes
+Json output for database dump show command
+Link state id in lsa database json output
+Send lsa update immediately when ospf instance is deleted
+ospfd
+
+Fix crash when creating vlink in unknown vrf
+Gr conformance fix for hello packet dr election
+Print extra lsa information in some log messages
+Rfc conformance test case 25.23 issue fix
+Show ip ospf route json does not shown metric and tag
+Summary lsa is not originated when process is reset
+pathd
+
+Handle pcinitiated configuration, main thread
+Handle pcinitiated messages, thread controller
+Handle srp_id correctly
+If pce ret no-path to pcreq don't retry pcreq nor delegate
+pbrd
+
+Add match ip-protocol [tcp|udp]
+Add ability to set/unset src and dest ports
+Nhg "add" edge case for last in table range
+Start inclusion of src and dst ports for pbrd
+pimd
+
+Add tos/ttl check for igmp conformance
+Allow join prune intervals to be as small as 5 seconds
+Allow msdp group name 'default'
+Fix register suppress timer code
+Fix uaf/heap corruption in bsm code
+Fix command "no ip msdp mesh-group member"
+Igmp groups are not getting timeout
+Igmp memberships are not querier specific
+Igmp sockets need to be iface-bound too
+Prevent uninited usage of nexthop
+Support msdp global timers configuration
+vtysh
+
+Add cli timestamp '-t' flag
+Add error code if daemon is not running
+Fix searching commands in parent nodes
+zebra
+
+Add "json" option to "show interface"
+Various improvment to dataplane interface
+Add message counts for show zebra client
+Add nhg id to show ip route json
+Add show command for ra interface lists
+Fix ipv4 routes with ipv6 link local next hops install in fpm
+Handle bridge mac address update in evpn contexts
+Move individual lines to table in show zebra client command
+Refresh vxlan evpn contexts, when bridge interface goes up
+Update zl3vni when bridge link refreshed in other namespaces
+Internal improvements
+lib
+
+Add "json" option to "show ip[v6] access-list"
+Add "json" option to "show ip[v6] prefix-list"
+Add "json" option to "show route-map"
+Prevent grpc assert on missing yang node
+yang
+
+Add msdp timer configuration
+Fix bgp multicast prefix type
+Mark a couple of prefix-list/access-list leafs as mandatory
+Move multicast prefix type definition
+Replace an empty pattern with a zero-length restriction
+Rework pim msdp mesh group
+Simplify msdp peer handling
+Packaging changes
+alpine
+
+Fix path for daemons file install
+--------
+FRR 8.0.1 Release
+We are pleased to announce FRR 8.0.1
+
+This release is a bugfix release of FRR 8.0.0 and contains the fixes listed below
+
+Debian Packaging - https://deb.frrouting.org/
+RPM Packaging - https://rpm.frrouting.org/
+Snaps will be available within approx another week; when available they will be published here:
+
+Snap Packaging - https://snapcraft.io/frr
+Additional release build logs, artifacts and package sources can also be found on
+the CI system at https://ci1.netdef.org/browse/FRR-FRR80-20/artifact
+
+Changelog
+(Numbers behind the fix refer to the Github PR)
+
+bgpd
+#9146 associate correct nexthop when using peer link-local
+#9151 BGP dampening JSON fixes
+#9356 bgp_packet_process_error can access peer after deletion
+#9168 Call bgp_dest_unlock_node() inside bgp_adj_in_remove()
+#9263 Clear capabilities field when resetting a bgp neighbor
+#9171 Do not check for NULL values for vni_hash_cmp()
+#9145 Do not delete peer_af structure when deactivating peer-group from an
+address-family
+#9160 Don't forget bgp_dest_unlock_node for bgp_static_set()
+#9230 Drop double-pointer for bgp_damp_info_free()
+#9152 Drop unnecessary chars for filtered reason
+#9141 Ensure v6 LL address is available before establishing peering
+#9407 Extended community bandwidth fixes
+#9358 Fix bgp routes filtering by [large]community-list
+#9226 Fix crash in "clear ip bgp dampening "
+#9223 fix double free in dampening code (fixes crash in dampening)
+#9245 fix missing damp info free when cleaning bgp path
+#9233 fix missing list add in dampening
+#9501 fix update-source for ipv6
+#9127 Fix rpki spacing to be 1 for indentation
+#9136 Force process networks on VRF creation
+#9170 hash compare functions never receive null values
+#9311 limit the length of opaque data sent to zebra
+#9221 Mark the node as the correct type for bgp ipv6 unicast
+#9142 nht unresolved with global address next-hop
+#9155 prevent routes loop through itself
+#9149 Reflect changes to pfxSnt when using default-originate
+#9257 Set extended msg size only if we advertised and received
+capability
+#9398 Stop prepending peer-as if self-originated and last AS
+configured
+#9161 Unlock bgp_dest for bgp_distance_unset if distance does not
+match
+#9266 Use strict AS4 capability when processing parsing/generating
+pkts
+#9320 per-peer dampening revert
+fabricd
+#9132 fix running config
+isisd
+#9177 argv fixes
+#9139 fix extra space in the mpls-te config output
+#9147 fix setting of the attached bit
+#9137 fix uninitialized variable when searching for LSP
+#9173 update interface_link_params callback to check for change
+lib
+#9172 fix interface configuration after vrf change
+#9425 fix prefix-list duplication check
+#9122 remove vrf-interface config when removing the VRF
+#9415 Scan lib/resolver.c only when c-ares is installed
+#9277 Preserve user-configured VRF on netns deletion
+nhrp
+#9279 fix display of nhs command
+ospf6d
+#9154 always generate default route for stubs
+#9359 Check the cost only when asbr_present for ECMP routes
+#9119 consistent checksum JSON output
+#9296 fix argument processing in the "area ... range" command
+#9125 fix backlink check
+#9118 fix route-map config changed, not getting applied on all types of
+routes
+#9121 fix "show ipv6 ospf6 neighbor" command
+#9117 Max aged LSAs are not getting deleted from DB
+#9124 redistribute command minor fixes
+#9134 Release last dbdesc packet after router dead interval
+#9123 Drop LSA with bad seqnumber
+#9140 use per-vrf router id instead of one global
+ospfd
+#9208 don't exit when VRF socket is not created
+#9421 explicitly exit from the router configuration node
+#9135 fix external lsa handling in opaque capabilities
+enable/disable
+#9423 fix initialization when vrf doesn't exist yet
+#9268 fix "no ip ospf passive" command
+#9153 fix ospfd crash while giving 'clear ip ospf neighbor'
+#9392 ospf redistribute originating LSA internal connected routes
+#9130 show ip ospf route json does not shown metric and tag
+#9433 Summarised External LSA is not flushed in one scenario
+#9173 update interface_link_params callback to check for
+change
+pathd
+#9329 a couple of cli/doc fixes
+#9156 don't use localtime
+#9409 fix pcep node-entering commands
+pimd
+#9186 fix IGMP VRF handling and PIM RP Prefix-list matching
+#9386 make show ip mroute output consistent
+#9297 memory leak fix and issue fix
+ripd
+#9267 fix authentication key length
+staticd
+fix bug of Null0 wrongly converted into blackhole in running config
+#9144
+tools
+#9131 add mac access-list context to frr-reload.py
+#9138 limit bgp route-maps to direct changes only during reload
+#9133 make frr-reload recognize pbr table range lines as single-line
+contexts
+vtysh
+#9183 another take at "enable" in vtysh user mode
+#9128 Handle end/enable commands better when in -u for vtysh
+#9157 fix exit from link-params and pseudowire nodes
+zebra
+#9275 bugfix of error quit of zebra, due to no nexthop ACTIVE
+#9387 clean up nhg allocations in error path
+#9169 fix a couple of coverity warnings
+#9150 fix ifp pointer for groups/recursives
+#9174 Fix pseudowires with backup nexthops
+#9351 Prevent memory leak if route is rejected early
+#9278 remove checks for src address existence when using "set src"
+#9129 Remove unrelated info from evpn rmac json output
+#9159 trigger remove all access vlans info for access port
+#9277 Preserve user-configured VRF on netns deletion
+build
+#9158 fix LDFLAGS confusion & gcov
+doc
+#9270 bump sphinx version to 4.0.2, remove deprecated API, fix developer
+docs not built
+#9276 fix bgp user doc colons
+#9274 Fix code-block display for example shell commands
+#9377 move ospf6 area commands to the appropriate section
+#9406 Replace typo BANDIWDTH to BANDWIDTH
+redhat
+#9349 Install frr.conf only if no per daemon config exists
+snapcraft
+#9430 Snap update to 18.04 base
+--------
+FRR 8.0.0 Release
+The FRR community is pleased to announce FRR 8.0.
+
+In this release there are over 2200 commits from 91 different authors.
+
+Please note that we expect to release a bugfix point release relatively soon after this release.
+
+Debian Packaging - https://deb.frrouting.org/
+RPM Packaging - https://rpm.frrouting.org/
+Snaps will be delayed by several weeks; when available they will be published here:
+
+Snap Packaging - https://snapcraft.io/frr
+Due to the absence of a suitable libyang2 package for Alpine Linux, Docker builds will also be delayed.
+
+Changelog
+Major changes
+Behavior
+Coming up in the next release:
+
+Many users are familiar with vtysh's "walk up" behavior. If a command is entered which isn't valid in the current CLI context mode, vtysh will "walk up" to higher, more general contexts and attempt to evaluate the command there. In prior releases, this would happen if the command entered was ambiguous for the current context. This caused more problems than it was worth and so an upcoming release the behavior will be changed so that vtysh will no longer walk up when an ambiguous command is entered. Some users that have configurations which rely on this behavior may notice that their configurations no longer work. This should be a very small minority of users but please keep it in mind if you start seeing weird configuration issues in a future release. It's worth taking some time now to see if you're relying on ambiguous command walkup.
+Features
+A new daemon, pathd, has been added. This daemon implements support for segment routing. Documentation is currently lacking, but there are example configurations to look at
+here.
+
+EVPN Multihoming is now fully supported
+
+OSPFv3 now supports VRFs
+
+TI-LFA has been implemented in IS-IS and OSPF
+
+Zebra now has the ability to dump netlink messages in a human-friendly format
+
+LDP gained SNMP support
+
+Dependencies
+FRR uses libyang to implement support
+for YANG models and related functionality. In this release we've transitioned
+to libyang2 to provide both better performance and to receive better support
+from future libyang changes. Packaged libyang2 is provided in our Debian and
+RPM repositories.
+All daemons
+babeld
+Add distribute-list commands
+Fix memory leak in connected route handling
+bgpd
+Add support for use of aliases with communities
+Add support of tcp-mss for neighbors
+Add support for EVPN Multihoming
+Add ability to show BGP routes from a particular table version
+Add support for for RFC 8050 (MRT add-path)
+Add SNMP support for MPLS VPN
+Add show bgp summary wide command to show more detailed output on wide
+terminals
+Add ability for peer-groups to have ttl-security hops configured
+Add support for conditional Advertisement
+Add support for RFC 4271 Delay Open Timer
+Add a knob to not advertise until route is installed in fib
+Add BGP-wide configuration for graceful shutdown
+Add support for RFC 8654 extended messages
+Improve RPKI reporting as well as new show commands
+Improve handling of VRF route leaking
+Improve scaling behavior for dynamic neighbors
+Improve LL nexthop tracking to be interface based
+Improve route reachability handling with respect to blackhole routes
+Improve SNMP traps to RFC 4273 notifications
+Improve EVPN routes to use L3 NHG's where applicable
+Improvements to EVPN
+Improvements to update behavior
+Fix various issues with connection resolution
+Fix statistics commands in some situations
+Fix non-determistic locally-originated paths in bestpath selection
+Continue working on transitioning to YANG/Northbound configuration
+Various bug fixes and performance improvements
+eigrpd
+Add distribute-list commands
+Ensure received AS number is the same as ours in all situations
+Properly validate TLV lengths in some situations
+isisd
+Add ldb-sync functionality
+Add TI-LFA functionality
+Add support for Anycast-SID's
+Add support for classic LFA RFC 5286
+Add show isis fast-reroute summary command
+Add support for Remote LFA RFC 7490
+Fix Attach-bit processing in some scenarios
+Cleanup BFD integration
+Various bug fixes and performance improvements
+ldpd
+Add SNMP support
+Support for LDP IGP Synchronization
+Support for RLFA clients
+Various bug fixes and performance improvements
+libfrr
+Various bugfixes and performance improvements
+nhrpd
+Add nhrp multicast-nflog-group (1-65535) command
+Add configuration options for vici socket path
+Add support for forwarding multicast packets
+Fix handling of MTU
+Fix handling of NAT extension
+Retry IPsec under some conditions
+ospfd
+Add OSPF GR helper support
+Add JSON support for various commands
+Add summary-address A.B.C.D/M ... commands
+Add area X nssa suppress-fa command
+Add support for TI-LFA
+Add support for BFD profiles
+Add support for Traffic Engineering database
+Add support for usage of DMPVPN with OSPF
+Add clear ip ospf neighbor commands
+Add YANG support for route-maps
+Improvements to SNMP
+Fixes for type 5 and type 7 LSA handling
+Various bug fixes and performance improvements
+ospf6d
+Add support for VRFs
+Add JSON support to a bunch of commands
+Add ability to control maximum paths for routes
+Add show ipv6 ospf6 vrfs command
+Add support for BFD profiles
+Fix to not send hellos on loopbacks
+Cleanup area handling around interfaces
+YANG support for route-maps
+Various bug fixes and performance improvements
+ospfclient
+Cleanup trust of user input
+pathd
+Add support of SR-TE policy management daemon
+Add optional support for PCEP to pathd
+Integrate PCEP-LIB into FRR
+pbrd
+Add set installable nhg command
+Improve interface up/down event handling
+pimd
+Add YANG integration
+Add JSON support to various commands
+Add BFD profile support
+Fixes to IGMP conformance
+Fixes to behavior surrounding Prune and Prune-pending
+Various bug fixes and performance improvements
+ripngd
+Fix interface wakeup after shutdown
+sharpd
+Add ability to use Nexthop Groups
+Add v4 redistribute watching
+Add TED support
+Various bug fixes
+staticd
+Fix nexthop handling in some situations
+Forbid blackhole and non-blackhole nexthops in a single route
+vrrpd
+printf formatting cleanups
+vtysh
+Add a show history command
+Add show memory <daemon> support
+Start deprecation cycle for address-family evpn
+Display version with --help
+Various bug fixes
+watchfrr
+Fix some crashes
+zebra
+Add JSON support to various commands
+Add Human readable netlink dumps
+Add L2 NHG support
+Add support for LSPs to FPM dataplane
+Add ability for other protocol daemons to install nexthop groups into the kernel
+Add YANG support for route-maps
+Improve scale performance when handling a large number of VRF's
+Improve network namespace handling
+Improve asic-offload handling
+Improve FreeBSD interface and route handling
+Improve handling of neighbors in kernel dataplane plugin
+Improve label manager
+Improve route-map processing
+Improve debug-ability of routes and VRFs
+Improve FPM dataplane plugin
+Improve handling of reachability / nexthop tracking on shutdown interfaces
+Improve EVPN support
+Fix startup handling of set src X
+Various bug fixes and performance improvements
+--------
+FRR 7.5.1 Release
+
+Changelog
+Babel
+Fix connected route leak on change
+BFD
+Fix some memory leaks & handling issues
+Fix mishandling of VRFs in some situations when receiving packets
+Fix occasional error in session lookup
+BGP
+Fix issues with peers inheriting peer-group properties
+Fix erroneous BMP Peer Down Reason Code in BMP Peer Down message when
+peering fails due to nexthop tracking
+Fix evpn route-map vni filter at origin
+Fix various memory leaks in show commands
+Fix issues with encoding flowspec rules to zebra in some rare circumstances
+Fix issues parsing community and lcommunity values in some circumstances
+Fix handling of aggregator data when the AGG AS is 0
+Fix local routes using non-default distance
+Properly track if the nexthop was updated in some circumstances
+Properly withdraw exported routes when deleting a VRF
+Properly apply route-map for the default-originate command
+Properly handle neighbor peer-group allowas-in config changes
+Cleanup show running when running bgp with -e X values
+Prevent v6 routes with v4 nexthops from being installed
+Prevent attempt to peer peers reachable via blackholes
+Allow peer-groups to configure ttl-security hops
+Allow default-originate to be cleared from a peer group
+Generate statistics for routes in bgp when we have exactly 1 route
+EIGRP
+Fix various memory leaks and use of uninitialized data
+Properly set MTU for egress EIGRP packets
+ISIS
+Fix various memory leaks and use of uninitialized data
+When last area address is removed, resign if we were the DR
+LDP
+Fix various memory leaks and use of uninitialized data
+NHRP
+Use onlink routes when prefix == nh
+Shortcut routes are installed with proper nexthop
+OSPFv2
+Prevent duplicate packet read in multiple VRF situation
+Fix area removal at interface level
+Restore Point to MultiPoint interface types
+Correctly handle MTU change on startup
+Fix multi-instance initialization sometimes not succeeding
+Fix nssa translate-always not working properly
+OSPFv3
+Fix various memory leaks and use of uninitialized data
+Fix Link LSA not updating when router priority is modified
+Fix output from show commands
+Fix intra area remote connected prefixes sometimes not being installed
+Prevent sending hellos on loopback interfaces
+Improve ECMP handling when a sub-path is removed
+PBR
+Fix various memory leaks and use of uninitialized data
+PIM
+Fix various memory leaks and use of uninitialized data
+Fix (S,G,Rpt) prune received during prune not overriding holdtime
+Static routes
+Fix issues with VRF usage on startup in some instances
+Fix tableid being mishandled in some cases
+VTYSH
+Disable bracketed paste in readline
+WATCHFRR
+Fix various memory leaks and use of uninitialized data
+Zebra
+Fix various memory leaks and use of uninitialized data
+Fix routes getting stuck in Queued state when using the FPM
+Always install blackhole routes using kernel routes instead of nexthops
+Improve handling of VRF creation when using network namespaces
+Dissallow resolution to duplicate nexthops that created infinite nexthops
+Allow set src X to work on startup
+Set NUD_NOARP on sticky mac entries in addtion to NTF_STICKY
+FRR Library
+Fix various memory leaks
+Fix VRF creation in some instances
+Fix issues handling RPKI when reloading configs
+Fix issues handling route-map configuration
+Snapcraft
+Update to using rtrlib 0.7.0
+Fix passthrough path for Libyang 1.x
+Docker
+Remove old dependencies from Alpine image
+--------
+FRR 7.5 Release
+
+Changelog
+Major Behavior Changes
+- As a reminder for those upgrading from older releases, as of FRR 7.4 and beyond:
+RFC 8212 is now enabled by default. BGP will not advertise or use routes unless explicitly configured to do so with an export or import policy.
+All daemons
+Minimum libyang version is now 1.0.184
+bfdd
+Profile support
+Minimum TTL support
+bgpd
+RPKI now has support for VRFs
+Add wide option to route show commands
+Add ability to count filtered prefixes when using maximum-prefix with new force option
+Add ability to show selected bestpath routes for a given neighbor with bestpath-routes option to neighbor show command
+Add ability to specify message when admin downing a session with bgp shutdown message MSG... command
+Add IPv6 support for Flowspec
+Add ability to shut down neighbor if RTT is too high with neighbor <neigh> shutdown rtt command
+Allow update-delay to be applied globally
+Graceful Restart fixes
+Stability and performance fixes
+EVPN
+Beginning of MultiHoming support; stay tuned
+isisd
+Add VRF support
+Add support for Anycast-SIDs
+Fix adjacency timer display overflow
+ospfd
+Segment Routing support for ECMP
+Prevent crash if transferring config amongst instances
+Various LSA-related fixes
+pbrd
+Add JSON support to commands
+Add ability to match on DSCP/ECN fields
+pimd
+Add more JSON support to commands
+Add support for MSDP SA forwarding
+(s,g,rpt) ifchannel is now cleared when (*, G) prune is received
+Fix IGMP querier election and IP address mapping
+Fix missing mesh-group commands
+Fix crash when RP is removed
+staticd
+Add support for Northbound API
+zebra
+Nexthop group support for FPM
+Netlink batching support
+Northbound support for RIB model
+Backup nexthop support
+Allow upper level protocols to request ARP
+Add json output for zebra ES, ES-EVI and access vlan dumps
+vtysh
+Speed up output across daemons
+Fix build-time errors for some --enable flags
+Northbound / YANG
+Filter and route-map support
+OSPF model definition
+BGP model definition
+RPM Packaging
+Moved RPKI to subpackage
+Added SNMP subpackage
+As always there are too many bugfixes to list individually. This release comprises just over 1k commits by the community, with contributons from 70 people.
+
+--------
+FRR 7.4 Release
+We are pleased to announce FRR 7.4. Thank you to all contributors.
+
+Major additions in this release include:
+
+Segment Routing support for IS-IS
+BGP Graceful Restart
+BGP link bandwidth extended community support
+Full support for Python 3 (all platforms except Centos 6)
+As of this release, we no longer accept patches via our mailing list.
+
+Debian Packages - https://deb.frrouting.org/
+RPM Packages - https://rpm.frrouting.org/
+Snaps - https://snapcraft.io/frr
+
+Changelog
+Major Behavior Changes
+RFC 8212 is now enabled by default. BGP will not advertise or use routes unless explicitly configured to do so with an export or import policy.
+All daemons:
+
+Performance improvements for route-maps
+bfdd
+
+Improve debugging capabilities
+Fixes for VRF support
+Fix tx of garbage stack data in BFD packets
+Fix transmission timer calculation to match RFC 5880
+bgpd
+
+Added additional information to EVPN JSON output
+Added ability to display large communities in default VRF
+Added ability to use add/subtract semantics for local-preference in route-maps
+Added ability to match on IPv4 nexthops in route-maps
+Added log message when router ID collision occurs during session bringup
+Added command to show listener sockets
+Added JSON support for statistics command
+Added statistics command for L2VPN EVPN address family
+Added support for link bandwidth extended community
+Added support for RFC 7607
+Added support for RFC 6286
+Added support for graceful restart
+Added support for SRv6 VPNv4 Prefix SID subtypes 4 and 5
+Added ability to set dampening on address families other than IPv4 unicast
+PfxSnt column in peer display output now reads "(Policy)" when no eBGP policy
+is set
+Number of prefixes sent is now shown when displaying AFI/SAFI information
+Static redistributed routes are no longer suppressed due to martian nexthop
+RFC 8212 is now enabled by default
+Ingress packet queue in peer display now reflects reality instead of a
+hardcoded 0
+Weighted ECMP is now used when multipaths have link bandwidth information
+Allow overriding ORIGIN attribute for aggregate-address
+Improved BFD handling in event of peering failure
+Improved status messages for peers who fail to establish
+Indicate that prefix is malformed if aggregated by AS0 when showing prefix
+Malformed extended and large community attributes are now handled with
+treat-as-withdraw strategy, per RFC 7606
+Ignore aggregator attribute if it is 0.0.0.0, per RFC 7606
+Zero-length cluster list attributes are now handled with treat-as-withdraw
+strategy
+Malformed EVPN Type-5 messages have improved treat-as-withdraw handling
+UPDATE messages with global nexthop set to :: are no longer discarded
+Static default route is no longer withdrawn when configuring default-originate
+Deleting numbered peers now always disables RAs for them
+Fix memory leak when parsing OPEN messages containing multiple oddly
+formatted FQDN capabilities
+Fix memory leak in some EVPN JSON show commands
+Fix handling of Flowspec NLRIs longer than 240 bytes
+Fix various Flowspec issues
+Fix rare crash when asking Zebra to send RA on our behalf
+Fix rare crash when issuing clear
+Fix handling of source instance router-id update when using route leaking
+Fix SNMP & BMP reporting of whether a session just went to Established
+Fix various memory issues
+isisd
+
+Initial segment routing support per
+draft-ietf-isis-segment-routing-extensions-25
+Circuits are no longer destroyed when the underlying interface is deleted
+Support MTUs up to 16k (previous max was 8k)
+Fix issues with reloading hello-interval command
+ldpd
+
+Add support for LDP ordered label distribution
+Ingress packets coming through broken LSP are no longer dropped
+Reloading configs after removing address-family blocks now works
+ACL rule modifications are now respected
+Correct DSCP byte is now set for both sides of LDP peering
+nhrpd
+
+Added MTU and hold time to resolution request CIE, per RFC 2332
+Added JSON support for some commands
+Fix netlink handling for lladdr messages
+Fix integer underflow
+ospfd
+
+Fix incorrect range check on metric values
+Fix UAF upon RX of self-originated LSA
+Fix length checks when validating RX'd LSAs
+Fixes for multi-instance OSPF
+ospf6d
+
+Fix infinite loop when multiple ABRs acting as ASBRs in the same area were
+present
+pbrd
+
+Allow deconfiguring table ranges
+Fix reloading failures around VRF related config
+Improve handling of set and match statements in pbr-map
+pimd
+
+Add rpAddress key to JSON output for PIM rp-info
+Add support for setting IGMP group count watermarks
+Add no ip msdp mesh-group command to remove mesh groups
+JSON output for IGMP groups now lists groups in an array
+Drop JOIN, HELLO and ASSERT messages not destined for all-pim-routers address
+Change all JSON keys for BSM-related output to camelCase
+Fix incorrect BSR election
+Fix various VXLAN issues
+Fix various BSM issues
+Fix various crashes
+Fix various memory leaks
+sharpd
+
+Added ability to install & remove LSPs
+Added ability to spam log messages
+Improve support for modifying route labels
+staticd
+
+Improved debugging capabilities
+vrrpd
+
+Fix several crashes related to deleting in-use VRFs and interfaces
+zebra
+
+Added ability to toggle use of kernel nexthop IDs
+Added ability to set hoplimit for IPv6 RA's
+Added ability to set retransmit timer for IPv6 RA's
+Added support for IPv6 blackhole routes on *BSD
+Nexthop weight is now displayed in JSON output when showing nexthops
+Backup nexthops are now shown when displaying routes
+Hardened ZAPI interface against corrupt messages
+Router Advertisements now contain all IPv6 global interfaces on the egress
+interface, per RFC 4861
+Force reinstallation of EVPN-VXLAN flooding MAC if it is deleted from the
+kernel
+Fix missing weight value when installing V4 routes with V6 nexthops
+Fix various obscure memory leaks
+Fix learned kernel routes with admin distance of 255 not being marked as
+installed
+Fix IRDP checksum calculation
+Fix memory leak related to IPv6 RA's on shutdown
+Fix FPM sequencing issue when sending RMAC
+Fix intermittent 30 second delay when configuring LDP psuedowires
+Miscellaneous
+vtysh can now load config files via a new CLI command
+Certain syslog messages related to daemon startup were incorrectly indicated
+as errors; they are now marked as information
+Internal improvements
+Reloading performance improved
+Route-maps converted to use Northbound API
+Zebra gained Northbound support for some operational data
+Zebra had some commands converted to Northbound API
+Support for GCC 10
+Packaging
+Packaging work for this release is ongoing.
+
+--------
+FRR Release 7.2.1
+
+Changelog of changes for 7.2.1 over 7.2
+BGPd
+Fix Addpath issue
+Do not apply eBGP policy for iBGP peers
+Show ip and fqdn in json output for show [ip] bgp <route> json
+Fix large route-distinguisher's format
+Fix no bgp listen range ... configuration command
+Autocomplete neighbor for clear bgp
+Reflect the distance in RIB when it is changed for an arbitrary afi/safi
+Notify "Peer De-configured" after entering 'no neighbor cmd
+Fix per afi/safi addpath peer counting
+Rework BGP dampening to be per AFI/SAFI
+Do not send next-hop as :: in MP_REACH_NLRI if no link-local exists
+Override peer's TTL only if peer-group is configured with TTL
+Remove error message for unkown afi/safi combination
+Keep the session down if maximum-prefix is reached
+OSPFd
+Fix BFD down not tearing down OSPF adjacency for point-to-point net
+BFDd
+Fix multiple VRF handling
+VRF security improvement
+PIMd
+Fix rp crash
+NHRPd
+Make sure no ip nhrp map <something> works as expected
+LDPd
+Add missing sanity check in the parsing of label messages
+Zebra
+Use correct state when installing evpn macs
+Capture dplane plugin flags
+lib
+Fix interface config when vrf changes
+Fix Interface Infinite Loop Walk (for special interfaces such as bond)
+snapcraft
+Fix missing vrrpd daemon
+Others
+Rename man pages (to avoid conflicts with other packages)
+Various other fixes for code cleanup and memory leaks
+--------
+FRR 7.2 Release 
+
+Support for VRRP
+Support for BMP
+Support for PIM-BSM
+Update
+7.2 Debian packages are now available on the apt repository at https://deb.frrouting.org/.
+
+Important Note
+As of this post, we are still working on creating binary packages. Source tarballs can be found at the bottom of this post. This post will be updated when packaging operations are completed. As a reminder, our Debian repository is located at https://deb.frrouting.org/.
+
+Changelog
+All daemons:
+
+-N <namespace> allows specifying a path postfix on the normal FRR config directory. This is helpful when running multiple FRR instances within different network namespaces.
+access-lists now support sequence numbers
+Route-maps now support matching blackhole nexthops: match ip next-hop type blackhole
+Route-maps are now smarter when dependencies change
+New command log-filter WORD adds builtin support for log filtering at the output stage
+New daemon: vrrpd
+
+Adds support for VRRPv2 and VRRPv3
+bfdd
+
+Gained VRF support
+Gained support for Northbound API
+bgpd
+
+aggregate-address gained support for route maps
+show bgp ipv4 unicast command family now shows FQDN for peers, if available
+For route show commands, display the bestpath selection criterion
+New show bgp <afi> <safi> summary failed command to show neighbors that failed to Establish
+clear bgp * command now clears all peers, instead of only IPv6 peers
+Improved JSON output for many commands
+New module adds support for BMP
+eigrpd
+
+SIGHUP now signals a config reload
+Gained support for Northbound API
+Infrastructure changes to allow VRFs
+isisd
+
+Gained BFD support
+Gained Support for circuits with MTUs > 8192
+pbrd
+
+fwmark support as part of match criteria
+CLI commands gained autocomplete support for PBRMAPS
+Improved support for nexthops
+pimd
+
+Gained support for PIM-BSM
+Improved debugging support
+Unusable ECMP paths are now saved in case they become valid in the future
+IGMP queries not originated from directly connected sources are now ignored
+Many new CLI improvements
+sharpd
+
+sharp watch [import|nexthop] now accepts prefixes instead of assuming /32
+staticd
+
+Significantly improved next-hop tracking support
+zebra
+
+Many dataplane-level improvements for routes, neighbor tables and EVPN
+Next-hop tracking CLI is now VRF-aware
+Next-hop tracking show commands have new options to modify output
+Excised some duplicated work in route processing
+Improved debugging facilities
+Gained RMAC and VXLAN support for the FPM interface
+Internal improvements
+Library now has RCU primitives and facilities
+Zebra continues to gain support for nexthop groups
+ripd, isisd and ospfd can now be built to use openssl for MD5 crypto operations instead of FRR library functions, if desired
+Builds will now fail by default if libcap is not present, due to severe performance issues when it is missing
+Glue code for Lua support has been updated
+Various improvements for cross compilation
+Packaging changes
+snapcraft:
+
+Add fabricd
+Add libyang
+Update rtrlib
+Update rpki
+
+--------
+FRR 7.1 Release
+For Debian/Ubuntu packages, please refer to https://deb.frrouting.org/.
+
+For RPM packages, please scroll down
+
+Note: this version is primarily numbered "7.1" due to feedback from users about the major version number increasing too rapidly. It has the same amount of ongoing development as the usual FRR release cycle.
+
+User-visible changes since the 7.0 release:
+
+there is a new, work-in-progress gRPC northbound configuration interface plugin
+zebra:
+the table NNN command was removed from zebra since it has been broken for a long time.
+the dataplane interface modularization and multithreading work is progressing steadily.
+IPv6 Router Advertisements sent by zebra can now have RFC 8106 DNS options added to them.
+bgpd:
+EVPN can now be configured in non-default VRFs.
+RFC 8212 — a default "deny" policy for eBGP sessions — can now be selected.
+Aside from these, a huge amount of fixes and ongoing development is happening, as usual.
+
+--------
+FRR 7.0 Release
+For Debian/Ubuntu packages, please refer to https://deb.frrouting.org/.
+
+For RPM packages, please scroll down
+
+There are some major changes in this release, specifically libyang
+https://github.com/CESNET/libyang is now a hard requirement to build and run
+FRRouting. Here's the full list of major changes from 6.0.x to 7.0:
+
+YANG data modeling & NETCONF support has arrived for the following daemons:
+
+ripd
+ripngd
+isisd
+Note that this uses FRR-specific models and may still be subject to some
+changes. Feedback is strongly appreciated!
+
+Error Codes / Categories are now added to log messages. They are printed as
+[EC 99999999999] on log messages and identify classes of errors. The
+library, bgpd, ospfd and zebra have been properly extended to categorize
+errors while the other daemons have somewhat more rudimentary cateogries.
+
+configure terminal in the CLI is no longer an exclusive state on any
+daemon, i.e. multiple users can edit the configuration at the same time in
+all daemons. This was previously already the case for zebra and isisd.
+
+BGP enhancements:
+
+EVPN Duplicate Address Detection
+EVPN route servers
+EVPN extended mobility
+Global IPv6 addresses can be used for RFC5549 (v4-over-v6) nexthops
+Flowspec protocol support has been significantly extended. (Note that OS
+integration is still very incomplete.)
+Add-Path IDs are now reused on transmission when possible
+Aggregates now properly aggregate extended and large community attributes
+IS-IS:
+
+BFD support has been added
+triggered hellos have been implemented
+new daemon: OpenFabric (a datacenter variant of IS-IS - cf.
+https://datatracker.ietf.org/doc/draft-white-openfabric/)
+
+Zebra's kernel/dataplane interface is undergoing a rewrite and parts have
+been moved into a separate thread with a more extensible architecture. Work
+on this project is ongoing.
+
+staticd now supports onlink nexthops for static routes
+
+sharpd now supports nexthop groups for route installs
+
+many bugs were fixed, also including quite a few overdue documentation
+improvements. This also includes CVE-2017-3224 which is a low-severity
+low-impact OSPF vulnerability (as evident by the 2017 date.)
+
+Important packaging and build related changes:
+
+libyang is now required to build and run FRRouting. Version 0.16.74 or
+newer (e.g. 0.16-r3 which is 0.16.105) is strongly recommended. Older
+versions will create additional hazards at both build and runtime because
+an extension module needs to be installed. Support for libyang versions
+before 0.16.74 will be removed in the next non-stable FRRouting version.
+
+when using libyang before 0.16.74, make sure to specify the
+--with-libyang-pluginsdir=/usr/lib/frr/libyang_plugins option (change
+path to fit system)
+Debian packaging has been completely overhauled (matches the changes in
+6.0.2.) If you are creating derivative Debian packages, updates will be
+necessary.
+
+RPKI and SNMP are now separate packages that can be installed
+additionally. There are no longer distinct "RPKI" and "no RPKI" versions
+of FRRouting on Debian.
+
+Debian packages are now provided in a repository at:
+https://deb.frrouting.org/
+
+Snapcraft packaging has been updated to match.
+
+There is a new --enable-static-bin option to link libfrr statically into
+FRR binaries. This is the only supported way of doing any static linking
+of FRR. (--disable-shared is NOT supported.)
+
+all daemons now properly complete their startup before allowing their parent
+to exit when the -d daemonization option is used. This should remove the
+need for any "sleep" calls or start retrying in init scripts.
+
+some minor non-reproducibility issues were fixed. FRRouting should now
+always build reproducibly.
+
+the topotests system that was previously maintained separately is now
+shipped as part of the FRR source under tests/topotests.
+
+--------
+FRR 6.0.2 Release
+Main Changelog for 6.0: See Github Wiki Pages
+
+Changes of 6.0.2 over 6.0:
+(6.0.1 was built but not released before the security issue was found)
+
+Security Issue (Denial of Service): Fix BGP Attribute 255 (experimental VNC)
+handling
+Various fixes for label manager
+Fix BGP unnumbered peer setup
+Various other fixes
+Complete rewrite of the Debian Package structure
+If you are using a Debian / Ubuntu based system:
+Please be aware that we removed the previous system of backports and rebuilt the
+Debian packages from ground up. This eliminated all the backports and the separate
+RPKI build. RPKI is now simple added by installing the extra frr-rpki-rtrlib package
+(and the RTRLIB package itself - see below). The main package is unchanged.
+The same is for SNMP which was previously disabled. If needed, install the related
+frr-snmp package.
+This new package setup was submitted to Debian for inclusing into upcoming Debian 10
+and should be available from the official Debian repositories soon.
+
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+--------
+FRR 5.0.2 Release
+SECURITY RELEASE
+Please be aware that this is an old release and just a security update. Upgrading
+to the recent version is strongly encouraged as soon as possible
+
+Main Changelog for 5.0: See Github Wiki Pages
+
+Changes of 5.0.2 over 5.0.1:
+
+Security Issue (Denial of Service): Fix BGP Attribute 255 (experimental VNC)
+handling
+Fix for large AS paths
+PIM fixes
+BGP flowspec fixes
+PBR fixes
+Fix for ISIS crash
+Add backport to build FRR on Sonic Debian
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+
+--------
+FRR 4.0.1
+SECURITY RELEASE
+Please be aware that this is a very old release and just a security update. Upgrading
+to the recent version is strongly encouraged as soon as possible
+
+Main Changelog for 4.0: See Github Wiki Pages
+
+Changes over version 4.0:
+
+Security Issue (Denial of Service): Fix BGP Attribute 255 (experimental VNC)
+handling
+Fix for large AS paths
+Add json support to "show ip route" command
+bgpd: fix rpki segfault
+bgpd: fix rpki validation for ipv6
+Fix for crash with p2p interfaces on *BSD
+Fix for crash with some IPv6 tunnels
+Run WatchFRR by default on systems with systemd
+isisd: Fixed the way isis reads from bpf
+Add backport to build FRR on Sonic Debian
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+
+
+--------
+FRR 3.0.4 Release
+SECURITY RELEASE
+Please be aware that this is a very old release and just a security update. Upgrading
+to the recent version is strongly encouraged as soon as possible
+
+Main Changelog for 3.0: See Github Wiki Pages
+
+Changes over version 3.0.3:
+
+Security Issue (Denial of Service): Fix BGP Attribute 255 (experimental VNC) handling
+redhat: Fix missing lib_fpm in rpm packaging
+ospfd: allow multiple options in the redistribute command
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+
+
+--------
+FRR 6.0 Release
+Main Changelog for 6.0: See Github Wiki Pages
+
+Changes of 6.0 over 6.0:
+
+Staticd: New daemon responsible for management of static routes
+ISISd: Implement dst-src routing as per draft-ietf-isis-ipv6-dst-src-routing
+BFDd: new daemon for BFD (Bidrectional Forwarding Detection). Responsible
+for notifying link changes to make routing protocols converge faster.
+Ubuntu 12.04 is no longer supported (FRR 5.x is last supported version for it)
+various bug fixes
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+--------
+FRR 5.0.1 Release
+Main Changelog for 5.0: See Github Wiki Pages
+
+Changes of 5.0.1 over 5.0:
+
+Support Automake 1.16.1
+BGPd: Support for flowspec ICMP, DSCP, packet length, fragment and tcp flags
+BGPd: fix rpki validation for ipv6
+VRF: Workaround for kernel bug on Linux 4.14 and newer
+Zebra: Fix interface based routes from zebra not marked up
+Zebra: Fix large zebra memory usage when redistribute between protocols
+Zebra: Allow route-maps to match on source instance
+BGPd: Backport peer-attr overrides, peer-level enforce-first-as and filtered-routes fix
+BGPd: fix for crash during display of filtered-routes
+BGPd: Actually display labeled unicast routes received
+Label Manager: Fix to work correctly behind a label manager proxy
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+--------
+FRR 4.0 release
+Main Changelog for 4.0: See Github Wiki Pages
+
+Changes over version 3.x:
+
+ISIS-MT - RFC5120
+BGP - RPKI per RFC 6810
+BGP - v4 labeled unicast as per RFC 3107 with partial implementation of draft-ietf-idr-bgp-prefix-sid
+BGP/Zebra - Type 2 and Type 3 EVPN routes with ability to do symmetric and asymmetric routing
+RFC 6514 - BGP Encodings and Procedures for Multicast in MPLS/BGP IP VPN’s
+RFC 7432 - BGP MPLS-Based Ethernet VPN
+draft-ietf-bess-evpn-overlay - A Network Virtualization Overlay Solution using EVPN
+draft-ietf-bess-evpn-inter-subnet-forwarding - Integrated Routing and Bridging in EVPN
+draft-ietf-bess-evpn-prefix-advertisement - IP Prefix Advertisement in EVPN
+draft-ietf-idr-tunnel-encaps - The BGP Tunnel Encapsulation Attribute
+draft-ietf-bess-evpn-proxy-arp-nd - Operational Aspects of Proxy-ARP/ND in EVPN Networks
+EIGRP
+FRR - Tab completion for interface names, prefix-lists, route-maps and BGP peer names
+BABEL
+PIM VRF - Added the ability to work with VRF’s to PIM
+OSPFv2 VRF - Added the ability to work with VRF’s to OSPFv2
+OSPFv2 Experimental SR - draft-ietf-ospf-segment-routing-extensions-24
+ZEBRA - Add ability to create a static route that leaks across VRF’s. Additionally improve zapi to provide functionality for routing protocols to implement this.
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+--------
+FRR 3.0.3 release
+Main Changelog for 3.0: See Github Wiki Pages
+
+Changes over version 3.0.2:
+
+Fixes for GCC 7.0
+Always enable watchfrr on new installation (req for systemd operation)
+Add 'no password' command (with warning)
+Added Ubuntu 17.10 Package support in source (no binary packages built [yet])
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+--------
+FRR 3.0.2 release
+Version 3.0.2 of FRR.
+
+Main Changelog for 3.0: See Github Wiki Pages
+
+Changes over version 3.0:
+
+Some packaging fixes
+Packages for Debian 9
+Fix for miss-handling of BGP attributes in an error situation.
+Fix for reading in of a nexthop as part of set ip nexthop ... command.
+Fix for a memory leak in ISIS.
+Check for per-peer outbound configuration, in addition to the peer-group config.
+Enable '-S' usage for BGP.
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+--------
+FRR 2.0.2
+Version 2.0.2 of FRR.
+
+Main Changelog for 2.0: See Github Wiki Pages
+
+Changes over version 2.0:
+
+Improved Packaging for debian related builds.
+Fix for a invalid AS-PATH length in BGP.
+Fix for miss-handling of BGP attributes in an error situation.
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+--------
+FRR 3.0
+Version 3.0 of FRR.
+
+Changelog: See Github Wiki Pages
+
+Attached are some pre-built binaries for some Distributions and Architectures.
+(Please open an issue if you are missing something and would like a binary
+package available for download).
+
+

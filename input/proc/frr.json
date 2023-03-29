@@ -1,0 +1,9 @@
+{
+    "SPECIAL":{
+        "Type":[128],
+        "Capability Code":[66, 128,130]
+    },
+
+    "FUNC_PKT":{"stream_getw":2,"stream_getc":1, "stream_getl":4, "stream_get2":-2,"stream_get_from":-2,"stream_getc2":1,"stream_getc_from":1,"stream_getw2":2,"stream_getw_from":2,"stream_get3":3,"stream_get3_from":3,"stream_getl2":4,"stream_getl_from":4,"stream_getq":8,"stream_getq_from":8,"stream_getq2":8,"stream_get_ipv4":4,"stream_get_ipaddr":4,"stream_getf":4, "stream_getd":8,"stream_forward_getp": -1, "stream_get":-2}
+
+}

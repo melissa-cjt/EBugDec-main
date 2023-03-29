@@ -1,0 +1,442 @@
+{
+  "Capability Code": {
+    "PreInfo": [], 
+    "Value": [
+      5, 
+      64, 
+      255, 
+      2, 
+      71, 
+      8, 
+      67, 
+      9, 
+      70, 
+      1, 
+      65, 
+      6, 
+      69, 
+      3, 
+      73, 
+      66, 
+      128, 
+      130
+    ]
+  }, 
+  "Parameter Type": {
+    "PreInfo": [], 
+    "Value": [
+      0, 
+      255, 
+      2, 
+      1
+    ]
+  }, 
+  "FUNC_PKT": {
+    "stream_get2": -2, 
+    "stream_get3": 3, 
+    "stream_get_from": -2, 
+    "stream_get_ipaddr": 4, 
+    "stream_get_ipv4": 4, 
+    "stream_getc2": 1, 
+    "stream_getl2": 4, 
+    "stream_getc_from": 1, 
+    "stream_getw": 2, 
+    "stream_getq": 8, 
+    "stream_getd": 8, 
+    "stream_getq_from": 8, 
+    "stream_getf": 4, 
+    "stream_getq2": 8, 
+    "stream_getc": 1, 
+    "stream_getl": 4, 
+    "stream_get": -2, 
+    "stream_get3_from": 3, 
+    "stream_getw2": 2, 
+    "stream_forward_getp": -1, 
+    "stream_getl_from": 4, 
+    "stream_getw_from": 2
+  }, 
+  "Attribute Type Code": {
+    "PreInfo": [], 
+    "Value": [
+      32, 
+      5, 
+      255, 
+      14, 
+      7, 
+      8, 
+      1, 
+      16, 
+      6, 
+      2, 
+      15, 
+      22, 
+      9, 
+      40, 
+      35, 
+      23, 
+      4, 
+      10, 
+      25, 
+      17, 
+      3, 
+      27, 
+      18
+    ]
+  }, 
+  "BGP Role": {
+    "PreInfo": [], 
+    "Value": [
+      3, 
+      4, 
+      1, 
+      2, 
+      0
+    ]
+  }, 
+  "Struct_list": {
+    "Extended Next Hop Encoding": [
+      48, 
+      [
+        16, 
+        16, 
+        16
+      ], 
+      [
+        "NLRI AFI - 1", 
+        "NLRI SAFI - 1", 
+        "Nexthop AFI - 1"
+      ], 
+      "RFC8950"
+    ], 
+    "Graceful Restart Capability": [
+      48, 
+      [
+        4, 
+        12, 
+        16, 
+        8, 
+        8
+      ], 
+      [
+        "Restart Flags", 
+        "Restart Time in seconds", 
+        "Address Family Identifier", 
+        "Subsequent Address Family Identifier", 
+        "Flags for Address Family"
+      ], 
+      "RFC4724"
+    ], 
+    "Tunnel Encapsulation": [
+      32, 
+      [
+        16, 
+        16, 
+        -1
+      ], 
+      [
+        "Tunnel Type", 
+        "Length", 
+        "Value"
+      ], 
+      "RFC9012"
+    ], 
+    "ADD-PATH Capability": [
+      32, 
+      [
+        16, 
+        8, 
+        8
+      ], 
+      [
+        "AFI", 
+        "SAFI", 
+        "SendReceive"
+      ], 
+      "RFC7911"
+    ], 
+    "MP_REACH_NLRI": [
+      40, 
+      [
+        16, 
+        8, 
+        8, 
+        -1, 
+        8, 
+        -1
+      ], 
+      [
+        "Address Family Identifier", 
+        "Subsequent Address Family Identifier", 
+        "Length of Next Hop Network Address", 
+        "Network Address of Next Hop", 
+        "Reserved", 
+        "Network Layer Reachability Information"
+      ], 
+      "RFC4760"
+    ], 
+    "IPv6 Address Specific Extended Community": [
+      160, 
+      [
+        8, 
+        8, 
+        128, 
+        16
+      ], 
+      [
+        "0x00 or 0x40", 
+        "Sub-Type", 
+        "Global Administrator", 
+        "Local Administrator"
+      ], 
+      "RFC5701"
+    ], 
+    "LARGE_COMMUNITY": [
+      96, 
+      [
+        32, 
+        32, 
+        32
+      ], 
+      [
+        "Global Administrator", 
+        "Local Data Part 1", 
+        "Local Data Part 2"
+      ], 
+      "RFC8092"
+    ], 
+    "Long-Lived Graceful Restart (LLGR) Capability": [
+      56, 
+      [
+        16, 
+        8, 
+        8, 
+        24
+      ], 
+      [
+        "Address Family Identifier", 
+        "Subsequent Address Family Identifier", 
+        "Flags for Address Family", 
+        "Long-lived Stale Time"
+      ], 
+      "draft-uttaro-idr-bgp-persistence"
+    ], 
+    "Multiple Labels Capability": [
+      32, 
+      [
+        16, 
+        8, 
+        8
+      ], 
+      [
+        "AFI", 
+        "SAFI", 
+        "Count"
+      ], 
+      "RFC8277"
+    ], 
+    "BGP Role": [
+      8, 
+      [
+        8
+      ], 
+      [
+        "Role name"
+      ], 
+      "RFC9234"
+    ], 
+    "Capabilities": [
+      16, 
+      [
+        8, 
+        8, 
+        -1
+      ], 
+      [
+        "Capability Code", 
+        "Capability Length", 
+        "Capability Value"
+      ], 
+      "RFC5492"
+    ], 
+    "Multiprotocol Extensions for BGP-4": [
+      32, 
+      [
+        16, 
+        8, 
+        8
+      ], 
+      [
+        "AFI", 
+        "Reserved", 
+        "SAFI"
+      ], 
+      "RFC2858"
+    ], 
+    "MP_UNREACH_NLRI": [
+      24, 
+      [
+        16, 
+        8, 
+        -1
+      ], 
+      [
+        "Address Family Identifier", 
+        "Subsequent Address Family Identifier", 
+        "Withdrawn Routes"
+      ], 
+      "RFC4760"
+    ], 
+    "CAPABILITY": [
+      64, 
+      [
+        1, 
+        1, 
+        5, 
+        1, 
+        32, 
+        8, 
+        16, 
+        -1
+      ], 
+      [
+        "Init/Ack", 
+        "Ack Request", 
+        "Reserved", 
+        "Action", 
+        "Sequence Number", 
+        "Capability Code", 
+        "Capability Length", 
+        "Capability Value"
+      ], 
+      "draft-ietf-idr-dynamic-cap"
+    ], 
+    "PMSI_TUNNEL": [
+      40, 
+      [
+        8, 
+        8, 
+        24, 
+        -1
+      ], 
+      [
+        "Flags", 
+        "Tunnel Type", 
+        "MPLS Label", 
+        "Tunnel Identifier"
+      ], 
+      "RFC6514"
+    ], 
+    "Extended Length": [
+      24, 
+      [
+        8, 
+        -1, 
+        -1, 
+        -1, 
+        16, 
+        -1
+      ], 
+      [
+        "Non-Ext OP Type", 
+        "Extended Opt. Parameter Length", 
+        "Optional Parameters", 
+        "Parameter Type", 
+        "Parameter Length", 
+        "Parameter Value"
+      ], 
+      "RFC9072"
+    ], 
+    "PE Distinguisher Labels": [
+      34, 
+      [
+        17, 
+        17
+      ], 
+      [
+        "PE Address", 
+        "Label"
+      ], 
+      "RFC6514"
+    ], 
+    "BGP Prefix-SID": [
+      24, 
+      [
+        8, 
+        16, 
+        -1
+      ], 
+      [
+        "type", 
+        "length", 
+        "value"
+      ], 
+      "RFC8669"
+    ], 
+    "ROUTE-REFRESH": [
+      32, 
+      [
+        16, 
+        8, 
+        8
+      ], 
+      [
+        "Address Family Identifier", 
+        "Reserved", 
+        "Subsequent Address Family Identifier"
+      ], 
+      "RFC2918"
+    ], 
+    "Outbound Route Filtering Capability": [
+      40, 
+      [
+        16, 
+        8, 
+        8, 
+        8
+      ], 
+      [
+        "Address Family Identifier", 
+        "Reserved ", 
+        "Subsequent Address Family Identifier", 
+        "Number of ORF"
+      ], 
+      "RFC5291"
+    ], 
+    "FQDN Capability": [
+      16, 
+      [
+        8, 
+        -1, 
+        8, 
+        -1
+      ], 
+      [
+        "Hostname Length", 
+        "Hostname", 
+        "Domain Name Length", 
+        "Domain Name"
+      ], 
+      "draft-walton-bgp-hostname-capability"
+    ]
+  }, 
+  "type": {
+    "PreInfo": [], 
+    "Value": [
+      3, 
+      0, 
+      1
+    ]
+  }, 
+  "Type": {
+    "PreInfo": [], 
+    "Value": [
+      5, 
+      3, 
+      2, 
+      6, 
+      1, 
+      4, 
+      128
+    ]
+  }
+}
