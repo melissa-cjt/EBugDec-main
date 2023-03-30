@@ -8,8 +8,8 @@ import json
 # frrouting: 
 # python run_script.py -bc ../input/proc/bgpd.bc -erule ../input/config/Gen_frr_tree.json -info ../input/Text-info/frr
 
-# iscdhcp:
-# python run_script.py -bc ../input/proc/dhclient.bc -erule ../input/config/Gen_iscdhcp_tree.json -info ../input/Text-info/isc-dhcp
+#openbgpd:
+# python run_script.py -bc  ../input/proc/openbgpd.bc -erule ../input/config/Gen_openbgpd_tree.json -info ../input/Text-info/openbgpd
 
 
 if __name__ == '__main__':
@@ -39,73 +39,28 @@ if __name__ == '__main__':
         evname = re.findall(r'Gen_(.*)_tree', filename)[0]
         print(evname)
 
+    if args.information:
+        info_path = args.information
 
     
-    # EBug_exec="../../RIBDetector-1126/tool/Release_build/bin/rfc"
+
     EBug_exec="./rfc"
-    # RIB_exec="./Debug-build/bin/rfc"
+    
 
     print("Step1: Rule-Related Code Identification")
 
-    cmd1 = "python gen_impl_used_rule.py 1 ../input/config/Gen_"+evname+"_meta.json ../input/proc/"+evname+".json"
+    cmd1 = "python gen_impl_used_rule.py 1 ../input/config/Gen_"+evname+"_meta.json ../input/proc/"+evname+".json > /dev/null 2>&1"
     os.system(cmd1)
 
 
-    cmd2 = EBug_exec+" -IdentifyExt "+bc_path+" tmp_res/Impl_Gen_"+evname+"_meta.json "+evolrule+" ../input/config/Gen_"+evname+"_rule.json"
+    cmd2 = EBug_exec+" -IdentifyExt "+bc_path+" tmp_res/Impl_Gen_"+evname+"_meta.json "+evolrule+" ../input/config/Gen_"+evname+"_rule.json > /dev/null 2>&1"
     print("cmd: " + cmd2)
     os.system(cmd2)
 
     print("Step2: Rule Violation Detection")
-    cmd3 = EBug_exec+" -IdentifyOP "+bc_path+" ../output/result_of_identify/Impl_strGen_"+evname+"_meta_use.json" 
+    cmd3 = EBug_exec+" -IdentifyOP "+bc_path+" ../output/result_of_identify/Impl_strGen_"+evname+"_meta_use.json "+ info_path+" > ../output/evolutionary_bug/bug_report_"+bcname+".txt 2>&1"
+    # cmd3 = EBug_exec+" -IdentifyOP "+bc_path+" ../output/result_of_identify/Impl_strGen_"+evname+"_meta_use.json "
     print("cmd: " + cmd3)
     os.system(cmd3)
 
-
-
-
-
-    # cmd1 ="cd ../input && python extract.py "+config_path
-    # print("step 1: run Rule Extractor  ...")
-    # print("Cmd: ",cmd1)
-    # print(os.system(cmd1))
-    # # print(os.system("pwd"))
-
-    # cmd2 = RIB_exec+" --Identify "+bc_path+" "+meta_info_path
-    # print("step 2: run Identifier  ...")
-    # print("Cmd:", cmd2)
-    # print(os.system(cmd2))
-    # # print(bcname)
-
-    # if os.path.exists(pkt_rule):
-    #     cmd3 = RIB_exec+" --PktDetectz3 "+bc_path+" "+Identify_errule+" "+pkt_rule+" > ../output/inconsistency_bug/bug_report_"+bcname+"_"+raw_path.replace(".json",".txt")+" 2>&1"
-    #     print("step 3: Pkt vailation detection ...")
-    #     print("Cmd: ",cmd3)
-    #     print(os.system(cmd3))
-
-    
-    # if os.path.exists(errrule_info_path):
-
-    #     cmd4 = "./rfc --ErrDetect "+bc_path+" "+Identify_errule+" "+errrule_info_path+" > ../output/inconsistency_bug/bug_report_"+bcname+"_"+raw_path.replace(".json",".txt")+" 2>&1"
-    #     print("step 4: Error Handling vailation detection ...")
-    #     print("Cmd:", cmd4)
-    #     print(os.system(cmd4))
-
-    # if os.path.exists(fsm_rule):
-
-    #     cmd5 = "./rfc --FSMDetect "+bc_path+" "+Identify_errule
-    #     print("step5: State Machine vailation detection ...")
-    #     print("Cmd:", cmd5)
-   
-    
-    #     cmd6 ="python RFCextract/fsm_compare.py "+fsm_rule+ " "+fsm_prule+" >>  ../output/inconsistency_bug/bug_report_"+bcname+"_"+raw_path.replace(".json",".txt")+" 2>&1"
-    #     print("Cmd:", cmd5)
-    #     print("Cmd:", cmd6)
-    #     print(os.system(cmd5))
-    #     print(os.system(cmd6))
-    
-    
-
-
-
-
-   
+    print("Finished ")
