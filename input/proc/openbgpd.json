@@ -1,0 +1,13 @@
+{
+    "SPECIAL":{
+        "Attribute Type Code":[0]
+    },
+    "Decrpyted&Reserved":{
+        "Capability Code":[255],
+        "Parameter Type":[0]
+    },
+    "FUNC_PKT":{"memcpy":-2},
+    "Entry_Cand": "session_process_msg"
+    
+
+}
