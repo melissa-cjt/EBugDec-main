@@ -20,10 +20,6 @@
       "Type": 8,
       "Len": 32
     },
-    "Graceful Restart Capability": {
-      "Type": 64,
-      "Len": 48
-    },
     "ADD-PATH Capability": {
       "Type": 69,
       "Len": 32
@@ -93,33 +89,11 @@
       "Type": 32,
       "Len": 96
     },
-    "COMMUNITY": {
-      "Type": 8,
-      "Len": 32
-    },
-    "ORIGINATOR_ID": {
-      "Type": 9,
-      "Len": 32
-    },
-    "CLUSTER_LIST": {
-      "Type": 10,
-      "Len": 32
-    },
-    "EXTENDED COMMUNITIES": {
-      "Type": 16,
-      "Len": 64
-    },
     "BGP Prefix-SID": {
-      "Indirect": "", 
-      "Type": 40, 
-      "Len": 24
-      
-    }, 
-    "Only to Customer (OTC)": {
-      "Indirect": "", 
-      "Type": 35, 
-      "Len": 32
-      
+      "Type": 40,
+      "Len": 24,
+      "Indirect": "",
+      "arg": 255
     }
   }
 }

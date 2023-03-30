@@ -1,0 +1,58 @@
+{
+  "OTHER": {},
+  "Capability Code": {
+    "Impl_Loc": ["parse_capabilities"],
+    "Multiprotocol Extensions for BGP-4": {
+      "Type": 1,
+      "Len": 32
+    },
+    "Multiple Labels Capability": {
+      "Type": 8,
+      "Len": 32
+    },
+    "ADD-PATH Capability": {
+      "Type": 69,
+      "Len": 32
+    },
+    "Support for 4-octet AS number capability": {
+      "Type": 65,
+      "Len": 32
+    }
+  },
+  "Parameter Type": {
+    "Impl_Loc": [],
+    "Capabilities": {
+      "Type": 2,
+      "Len": 16
+    }
+  },
+  "Attribute Type Code": {
+    "Impl_Loc": ["rde_attr_parse"],
+    "MP_REACH_NLRI": {
+      "Type": 14,
+      "Len": 40
+    },
+    "MP_UNREACH_NLRI": {
+      "Type": 15,
+      "Len": 24
+    },
+    "LARGE_COMMUNITY": {
+      "Type": 32,
+      "Len": 96
+    },
+    "Only to Customer (OTC)": {
+      "Type": 35,
+      "Len": 32
+    }
+  },
+  "Type": {
+    "Impl_Loc": ["session_process_msg","parse_header"],
+    "ROUTE-REFRESH": {
+      "Type": 5,
+      "Len": 184
+    }
+  },
+  "FUNC_PKT": [
+    "memcpy","memcmp"
+  ]
+}
