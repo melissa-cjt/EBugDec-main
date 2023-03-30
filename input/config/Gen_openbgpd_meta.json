@@ -1,0 +1,278 @@
+{
+  "Value_list": {
+    "Parameter Type": {
+      "Reserved": 0,
+      "Authentication (deprecated)": 1,
+      "Capabilities": 2,
+      "Extended Length": 255
+    },
+    "Capability Code": {
+      "Reserved": 255,
+      "Multiprotocol Extensions for BGP-4": 1,
+      "Route Refresh Capability for BGP-4": 2,
+      "Multiple Labels Capability": 8,
+      "BGP Role": 9,
+      "Graceful Restart Capability": 64,
+      "Support for 4-octet AS number capability": 65,
+      "ADD-PATH Capability": 69,
+      "Enhanced Route Refresh Capability": 70
+    },
+    "BGP Role": {
+      "Provider": 0,
+      "RS": 1,
+      "RS-Client": 2,
+      "Customer": 3,
+      "Peer": 4
+    },
+    "Restart Flags": {
+      "Restart State": 0
+    },
+    "Attribute Type Code": {
+      "ORIGIN": 1,
+      "AS_PATH": 2,
+      "NEXT_HOP": 3,
+      "MULTI_EXIT_DISC": 4,
+      "LOCAL_PREF": 5,
+      "ATOMIC_AGGREGATE": 6,
+      "AGGREGATOR": 7,
+      "COMMUNITY": 8,
+      "ORIGINATOR_ID": 9,
+      "CLUSTER_LIST": 10,
+      "MP_REACH_NLRI": 14,
+      "MP_UNREACH_NLRI": 15,
+      "EXTENDED COMMUNITIES": 16,
+      "AS4_PATH": 17,
+      "AS4_AGGREGATOR": 18,
+      "LARGE_COMMUNITY": 32,
+      "Only to Customer (OTC)": 35
+    },
+    "Error Code": {
+      "Message Header Error": 1,
+      "OPEN Message Error": 2,
+      "UPDATE Message Error": 3,
+      "Hold Timer Expired": 4,
+      "Finite State Machine Error": 5,
+      "Cease": 6,
+      "ROUTE-REFRESH Message Error": 7
+    },
+    "Message Header Error subcodes": {
+      "Connection Not Synchronized": 1,
+      "Bad Message Length": 2,
+      "Bad Message Type": 3
+    },
+    "OPEN Message Error subcodes": {
+      "Unsupported Version Number": 1,
+      "Bad Peer AS": 2,
+      "Bad BGP Identifier": 3,
+      "Unsupported Optional Parameter": 4,
+      "Unacceptable Hold Time": 6,
+      "Unsupported Capability": 7,
+      "Role Mismatch": 11
+    },
+    "UPDATE Message Error subcodes": {
+      "Malformed Attribute List": 1,
+      "Unrecognized Well-known Attribute": 2,
+      "Missing Well-known Attribute": 3,
+      "Attribute Flags Error": 4,
+      "Attribute Length Error": 5,
+      "Invalid ORIGIN Attribute": 6,
+      "Invalid NEXT_HOP Attribute": 8,
+      "Optional Attribute Error": 9,
+      "Invalid Network Field": 10,
+      "Malformed AS_PATH": 11
+    },
+    "BGP Finite State Machine Error Subcodes": {
+      "Unspecified Error": 0,
+      "Receive Unexpected Message in OpenSent State": 1,
+      "Receive Unexpected Message in OpenConfirm State": 2,
+      "Receive Unexpected Message in Established State": 3
+    },
+    "BGP Cease NOTIFICATION message subcodes": {
+      "Maximum Number of Prefixes Reached": 1,
+      "Administrative Shutdown": 2,
+      "Peer De-configured": 3,
+      "Administrative Reset": 4,
+      "Connection Rejected": 5,
+      "Other Configuration Change": 6,
+      "Connection Collision Resolution": 7,
+      "Out of Resources": 8
+    },
+    "BGP ROUTE-REFRESH Message Error subcodes": {
+      "Reserved": 0,
+      "Invalid Message Length": 1
+    },
+    "Type": {
+      "OPEN": 1,
+      "UPDATE": 2,
+      "NOTIFICATION": 3,
+      "KEEPALIVE": 4,
+      "ROUTE-REFRESH": 5
+    }
+  },
+  "Struct_list": {
+    "Multiprotocol Extensions for BGP-4": [
+      32,
+      [
+        16,
+        8,
+        8
+      ],
+      [
+        "AFI",
+        "Reserved",
+        "SAFI"
+      ],
+      "RFC2858"
+    ],
+    "Multiple Labels Capability": [
+      32,
+      [
+        16,
+        8,
+        8
+      ],
+      [
+        "AFI",
+        "SAFI",
+        "Count"
+      ],
+      "RFC8277"
+    ],
+    "Graceful Restart Capability": [
+      48,
+      [
+        4,
+        12,
+        16,
+        8,
+        8
+      ],
+      [
+        "Restart Flags",
+        "Restart Time in seconds",
+        "Address Family Identifier",
+        "Subsequent Address Family Identifier",
+        "Flags for Address Family"
+      ],
+      "RFC4724"
+    ],
+    "ADD-PATH Capability": [
+      32,
+      [
+        16,
+        8,
+        8
+      ],
+      [
+        "Address Family Identifier",
+        "Subsequent Address Family Identifier",
+        "SendReceive"
+      ],
+      "RFC7911"
+    ],
+    "Capabilities": [
+      16,
+      [
+        8,
+        8,
+        -1
+      ],
+      [
+        "Capability Code",
+        "Capability Length",
+        "Capability Value"
+      ],
+      "RFC5492"
+    ],
+    "Extended Length": [
+      24,
+      [
+        8,
+        -1,
+        -1,
+        -1,
+        16,
+        -1
+      ],
+      [
+        "Non-Ext OP Type",
+        "Extended Opt. Parameter Length",
+        "Optional Parameters",
+        "Parameter Type",
+        "Parameter Length",
+        "Parameter Value"
+      ],
+      "RFC9072"
+    ],
+    "MP_REACH_NLRI": [
+      40,
+      [
+        16,
+        8,
+        8,
+        -1,
+        8,
+        -1
+      ],
+      [
+        "Address Family Identifier",
+        "Subsequent Address Family Identifier",
+        "Length of Next Hop Network Address",
+        "Network Address of Next Hop",
+        "Reserved",
+        "Network Layer Reachability Information"
+      ],
+      "RFC4760"
+    ],
+    "MP_UNREACH_NLRI": [
+      24,
+      [
+        16,
+        8,
+        -1
+      ],
+      [
+        "Address Family Identifier",
+        "Subsequent Address Family Identifier",
+        "Withdrawn Routes"
+      ],
+      "RFC4760"
+    ],
+    "LARGE_COMMUNITY": [
+      96,
+      [
+        32,
+        32,
+        32
+      ],
+      [
+        "Global Administrator",
+        "Local Data Part 1",
+        "Local Data Part 2"
+      ],
+      "RFC8092"
+    ],
+    "ROUTE-REFRESH": [
+      32,
+      [
+        16,
+        8,
+        8
+      ],
+      [
+        "Address Family Identifier",
+        "Reserved",
+        "Subsequent Address Family Identifier"
+      ],
+      "RFC2918"
+    ]
+  },
+  "FixVal_list": {
+    "Support for 4-octet AS number capability": 32,
+    "COMMUNITY": 32,
+    "ORIGINATOR_ID": 32,
+    "CLUSTER_LIST": 32,
+    "EXTENDED COMMUNITIES": 64,
+    "Only to Customer (OTC)": 32
+  }
+}
