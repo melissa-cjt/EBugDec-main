@@ -66,7 +66,7 @@ tool/run_script.py -bc <input bitcode> -erule <evolutionary rules> -info <Text-i
 
 -info              Release notes and source code of the implementation
 
-eg: tool/run_script.py -bc input/proc/bgpd.bc -erule input/Gen_frr_tree.json -info input/Text-info/frr
+eg: python run_script.py -bc  ../input/proc/openbgpd.bc -erule ../input/config/Gen_openbgpd_tree.json -info ../input/Text-info/openbgpd
 ```
 ## Results of EBugDec
 
