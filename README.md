@@ -17,7 +17,7 @@ The most important folders in EBugDec's root directory are:
 
     i. **'doc/rfcxxx.json'** contains the RFC document of network protocol. 
     
-    ii. **'config/xx.json'**, example of evolutionary tree and evolutionary rules generated based on the Frrouting-BGP and ISC DHCP-DHCP RFC supported.
+    ii. **'config/xx.json'**, example of evolutionary tree and evolutionary rules generated based on the Frrouting-BGP and Openbsd-BGP RFC supported.
     
     iii. **'proc/xx.bc'**, example of  .bc file of network protocol implementations complied with LLVM.
 
