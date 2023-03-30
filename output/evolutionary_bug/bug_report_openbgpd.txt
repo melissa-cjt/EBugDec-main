@@ -1,0 +1,82 @@
+openbgpd
+IDENTIFYOP !
+Reading Configuration file ... 
+Read Finished ! ==========
+Extend point : rde_attr_parse==========
+Extend Code: 32 Rule: 96
+Function : community_large_add Get: llvm.memcpy.p0i8.p0i8.i64 in line:../../../src/bgpd/rde_community.c 421
+entry
+BR: flags & -64 32 192
+BR: community_large_add() 32 -1
+  ret i32 %287, !dbg !7658
+-----------------------
+Extend point : rde_attr_parse==========
+Extend Code: 14 Rule: 40
+BR: attr_len 40 4
+in line: ../../../src/bgpd/rde.c 2017
+[Error] Missing Len check, value is 5
+   BR: attr_len 40 4
+-----------------------
+Extend point : rde_attr_parse==========
+Extend Code: 15 Rule: 24
+BR: attr_len 40 3
+[Right] Len check correct !
+-----------------------
+Extend point : rde_attr_parse==========
+Extend Code: 35 Rule: 32
+Current Func !
+Cond in sw.bb502 ../../../src/bgpd/rde.c 2081
+BR: attr_len 33 4
+Cond in if.end510 ../../../src/bgpd/rde.c 2088
+BR: flags & -64 32 192
+Cond in if.end516 ../../../src/bgpd/rde.c 2091
+BR: peer_has_open_policy() 33 0
+Cond in if.then519 ../../../src/bgpd/rde.c 2092
+  switch i32 %conv520, label %sw.epilog [
+    i32 3, label %sw.bb521
+    i32 2, label %sw.bb521
+    i32 4, label %sw.bb524
+  ], !dbg !7595
+[Right] Len check correct !
+-----------------------
+Extend point : parse_capabilities==========
+Extend Code: 69 Rule: 32
+Current Func !
+Cond in sw.bb198 ../../../src/bgpd/session.c 2704
+BR: ( capa_len % 4 ) 33 0
+Cond in if.end208 ../../../src/bgpd/session.c 2712
+Cond in for.cond209 ../../../src/bgpd/session.c 2712
+BR: i 41 ( capa_len - 4 )
+[Right] Len check correct !
+-----------------------
+Extend point : parse_capabilities==========
+Extend Code: 8 Rule: 32
+Function: parse_capabilities
+[Warning] Missing packet struct!
+Extend point : parse_capabilities==========
+Extend Code: 1 Rule: 32
+Current Func !
+Cond in sw.bb ../../../src/bgpd/session.c 2603
+BR: capa_len 33 4
+[Right] Len check correct !
+-----------------------
+Extend point : parse_capabilities==========
+Extend Code: 65 Rule: 32
+Current Func !
+Cond in sw.bb179 ../../../src/bgpd/session.c 2684
+BR: capa_len 33 4
+[Right] Len check correct !
+-----------------------
+Extend point : session_process_msg==========
+Extend Code: 5 Rule: 184
+Function : parse_rrefresh Get: llvm.memcpy.p0i8.p0i8.i64 in line:../../../src/bgpd/session.c 2322
+entry
+BR: ( 1 + processed ) 38 25
+-----------------------
+Extend point : parse_header==========
+Extend Code: 5 Rule: 184
+BR: len.addr 40 23
+[Right] Len check correct !
+-----------------------
+Running Time: 4.675000e-03
+Running Time total: 4.641810e-01
