@@ -14,14 +14,12 @@ The most important folders in EBugDec's root directory are:
 1. **'tool'**, directory containing the Python scripts for rule extraction and the LLVM pass for bug detection.
 
 2. **'input'**, directory containing examples of configuration file and RFC documents. 
-
-    i. **'doc/rfcxxx.json'** contains the RFC document of network protocol. 
     
-    ii. **'config/xx.json'**, example of evolutionary tree and evolutionary rules generated based on the Frrouting-BGP and OpenBSD-BGP RFC supported.
+    i. **'config/xx.json'**, example of evolutionary tree and evolutionary rules generated based on the Frrouting-BGP and OpenBSD-BGP RFC supported.
     
-    iii. **'proc/xx.bc'**, example of  .bc file of network protocol implementations complied with LLVM.
+    ii. **'proc/xx.bc'**, example of  .bc file of network protocol implementations complied with LLVM.
 
-    iv. **'Text-info/'**, contains the Release notes file and source code of protocol implementations.
+    iii. **'Text-info/'**, contains the Release notes file and source code of protocol implementations.
 
 
 3. **'output'**, directory containing examples of identified  and bug detection.
