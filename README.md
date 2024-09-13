@@ -68,7 +68,6 @@ tool/run_script.py -bc <input bitcode> -erule <evolutionary rules> -info <Text-i
 
 eg: python run_script.py -bc  ../input/proc/openbgpd.bc -erule ../input/config/Gen_openbgpd_tree.json -info ../input/Text-info/openbgpd
 ```
-We provide a Docker image in the link.  https://drive.google.com/file/d/1Web-Y9YpgKrML9aps68IoNovnbmfmD6b/view?usp=drive_link
 
 ## Results of EBugDec
 
