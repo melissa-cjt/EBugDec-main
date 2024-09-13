@@ -168,29 +168,4 @@ Function : bgp_capability_llgr Get: stream_getw in line:../bgpd/bgp_open.c 607
 -------
 .....
 ```
-## Evolutionary bugs that has been confirmed and fixed
 
-We have reported 12 evolutionary bugs discovered by EBugDec to the developers. So far, we have received 7 confirmed.
-
-
-**Frrouting(2)**
-
-https://github.com/FRRouting/frr/issues/13099
-
-https://github.com/FRRouting/frr/issues/13098
-
-**Wolfssl(3)**
-
-https://github.com/wolfSSL/wolfssl/issues/5436
-
-**Openbsd-BGP(1)**
-
-https://marc.info/?l=openbsd-bugs&m=167938589111527&w=2
-
-**Freebsd-DHCP(1)**
-
-https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=270379
-
-**ISC DHCP(5)**
-
-We have send the email, waiting for response.
